@@ -7,6 +7,9 @@ app.rq.push(['extension',0,'orderCreate','extensions/checkout/extension.js']);
 app.rq.push(['extension',0,'cco','extensions/cart_checkout_order.js']);
 
 
+app.rq.push(['extension',0,'store_downlite','extensions/_store_downlite.js']);
+app.rq.push(['script',0,'jquery-cycle2/jquery.cycle2.min.js']);
+
 app.rq.push(['extension',0,'store_prodlist','extensions/store_prodlist.js']);
 app.rq.push(['extension',0,'store_navcats','extensions/store_navcats.js']);
 app.rq.push(['extension',0,'store_search','extensions/store_search.js']);
@@ -61,7 +64,7 @@ app.rq.push(['templateFunction','productTemplate','onCompletes',function(P) {
 
 //group any third party files together (regardless of pass) to make troubleshooting easier.
 //app.rq.push(['script',0,(document.location.protocol == 'https:' ? 'https:' : 'http:')+'//ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/jquery-ui.min.js']);
-app.rq.push(['script',0,app.vars.baseURL+'cycle-2.9998.js']);//','validator':function(){return (jQuery().cycle) ? true : false;}});
+//app.rq.push(['script',0,app.vars.baseURL+'cycle-2.9998.js']);//','validator':function(){return (jQuery().cycle) ? true : false;}});
 
 
 /*
@@ -136,6 +139,7 @@ app.u.loadApp = function() {
 //instantiate wiki parser.
 	myCreole = new Parse.Simple.Creole();
 	}
+/*
 app.rq.push(['templateFunction','homepageTemplate','onCompletes',function(P) {
 		var $target=$('#wideSlideshow');
 		if(!$target.hasClass('slideshow')){		
@@ -144,6 +148,7 @@ app.rq.push(['templateFunction','homepageTemplate','onCompletes',function(P) {
 			$target.cycle({fx:'fade',speed:'slow',timeout:5000,pager:'#slideshowNav',pagerAnchorBuilder:function(index,el){return'<a href="#">'+(index+1)+'</a>';}});
 			}
 		}]);
+*/
 
 //Any code that needs to be executed after the app init has occured can go here.
 //will pass in the page info object. (pageType, templateID, pid/navcat/show and more)

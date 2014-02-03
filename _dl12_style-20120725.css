@@ -1267,7 +1267,7 @@ h1	{color:#665d51; font-size:18px; font-weight:bold; margin:0 0 12px 0; padding:
 #slideshowContainer  {position:relative; z-index:10; height:432px; width:661px; overflow:hidden; } /* setting height/width and overflow hidden keeps banners from showing up, then hiding once slideshow() is executed */
 #slideshowContainer  ul, .slideshow li	{list-style:none; margin:0; padding:0; display:inline; float:left; } /* the slides */
 
-#slideshowNav { z-index: 50; position: absolute; bottom: 10px; left: 10px; width:100%; text-align:left; }
+#slideshowNav { z-index:100; position: absolute; bottom: 10px; left: 10px; width:100%; text-align:left; }
 #slideshowNav a {
 	margin: 0 8px; font-size:.9em; 
 	text-decoration: none;

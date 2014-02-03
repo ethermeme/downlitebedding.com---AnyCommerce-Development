@@ -1,0 +1,22 @@
+{
+	"slides" : [
+		{
+			"src": "B/best_pillow_image.jpg",
+			"alt": "",
+			"title": "",
+			"catLink": ".100-pillows"
+		},
+		{
+			"src": "B/best_comforter_image.jpg",
+			"alt": "",
+			"title": "",
+			"catLink": ".100-pillows"
+		}
+	],
+	"cycleOptions" : {
+		"slides" : "> a",
+		"timeout" : "5000",
+		"pager" : "> #slideshowNav",
+		"pagerTemplate" : "<a href='#'>{{slideNum}}</a>"
+	}
+}
