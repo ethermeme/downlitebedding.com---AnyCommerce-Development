@@ -165,19 +165,23 @@ obj['softauth'] = "order"; // [OPTIONAL]. if user is logged in, this gets ignore
 
 			onSuccess : function(tagObj)	{
 				var $parent = $('#'+tagObj.parentID);
-				$parent.removeClass('loadingBG');
-				var L = app.data[tagObj.datapointer]['@topics'].length;
-				app.u.dump(" -> L = "+L);
-				var topicID;
-				if(L > 0)	{
-					for(var i = 0; i < L; i += 1)	{
-						topicID = app.data[tagObj.datapointer]['@topics'][i]['TOPIC_ID']
-						app.u.dump(" -> TOPIC ID = "+topicID);
-						$parent.append(app.renderFunctions.transmogrify({'id':topicID,'data-topicid':topicID},tagObj.templateID,app.data[tagObj.datapointer]['@topics'][i]))
+// ** 201336 This prevents FAQ's from being re-appended in the event the user revisits the FAQ page
+				if(!$parent.data('faqs-rendered')){
+					$parent.removeClass('loadingBG');
+					var L = app.data[tagObj.datapointer]['@topics'].length;
+					app.u.dump(" -> L = "+L);
+					var topicID;
+					if(L > 0)	{
+						for(var i = 0; i < L; i += 1)	{
+							topicID = app.data[tagObj.datapointer]['@topics'][i]['TOPIC_ID']
+							app.u.dump(" -> TOPIC ID = "+topicID);
+							$parent.append(app.renderFunctions.transmogrify({'id':topicID,'topicid':topicID},tagObj.templateID,app.data[tagObj.datapointer]['@topics'][i]))
+							}
 						}
-					}
-				else	{
-					$parent.append("There are no FAQ at this time.");
+					else	{
+						$parent.append("There are no FAQ at this time.");
+						}
+					$parent.data('faqs-rendered', true);
 					}
 				
 				}
@@ -244,14 +248,6 @@ obj['softauth'] = "order"; // [OPTIONAL]. if user is logged in, this gets ignore
 					return true;
 				else
 					return errors;
-				},
-
-			changePassword : function(obj)	{
-//				app.u.dump(obj);
-				var valid = true;
-				if(obj.password == ''){valid = false}
-				if(obj.password != obj.password2)	{valid = false}
-				return valid;
 				}
 
 			}, //validate
@@ -327,24 +323,6 @@ if the P.pid and data-pid do not match, empty the modal before openeing/populati
 
 
 
-			handleReviews : function(formID)	{
-				frmObj = $('#'+formID).serializeJSON();
-				$('#'+formID+' .zMessage').empty().remove(); //clear any existing error messages.
-				var isValid = app.ext.store_crm.validate.addReview(frmObj); //returns true or some errors.
-				app.u.dump(frmObj);
-				app.u.dump(isValid);
-				if(isValid === true)	{
-					app.calls.appReviewAdd.init(frmObj,{"callback":"showMessaging","parentID":formID,"message":"Thank you for your review. Pending approval, it will be added to the store."},'mutable');
-					app.model.dispatchThis('mutable');
-					$('#'+formID).hide(); //hide existing form to avoid confusion.
-					}
-				else	{
-					//report errors.
-					var errObj = app.u.youErrObject(isValid,'42');
-					errObj.parentID = formID
-					app.u.throwMessage(errObj);
-					}
-				},
 /*
 will output a newsletter form into 'parentid' using 'templateid'.
 */
@@ -380,26 +358,26 @@ will output a newsletter form into 'parentid' using 'templateid'.
 				},
 
 			getAllBuyerListsDetails : function(datapointer,tagObj)	{
-var data = app.data[datapointer]['@lists']; //shortcut
-var L = data.length;
-var numRequests = 0;
-for(var i = 0; i < L; i += 1)	{
-	numRequests += app.calls.buyerProductListDetail.init(data[i].id,tagObj)
-	}
-return numRequests;
+				var data = app.data[datapointer]['@lists']; //shortcut
+				var L = data.length;
+				var numRequests = 0;
+				for(var i = 0; i < L; i += 1)	{
+					numRequests += app.calls.buyerProductListDetail.init(data[i].id,tagObj)
+					}
+				return numRequests;
 				},
 
 			getBuyerListsAsUL : function(datapointer)	{
 
-var data = app.data[datapointer]['@lists']; //shortcut
-var L = data.length;
-var $r = $("<ul>");
-var $li; //recycled
-for(var i = 0; i < L; i += 1)	{
-	$li = $("<li\/>").data("buyerlistid",data[i].id).text(data[i].id+" ("+data[i].items+" items)");
-	$li.appendTo($r);
-	}
-return $r;
+				var data = app.data[datapointer]['@lists']; //shortcut
+				var L = data.length;
+				var $r = $("<ul>");
+				var $li; //recycled
+				for(var i = 0; i < L; i += 1)	{
+					$li = $("<li\/>").data("buyerlistid",data[i].id).text(data[i].id+" ("+data[i].items+" items)");
+					$li.appendTo($r);
+					}
+				return $r;
 				},
 
 /*
@@ -420,19 +398,15 @@ This is used to get add an array of skus, most likely for a product list.
 				return csvArray;
 				}, //getSkusFromList
 
-			handleChangePassword : function(formID,tagObj)	{
-				
-$('#'+formID+' .ui-widget-anymessage').empty().remove(); //clear any existing messaging
-var formObj = $('#'+formID).serializeJSON();
-if(app.ext.store_crm.validate.changePassword(formObj)){
-	app.calls.buyerPasswordUpdate.init(formObj.password,tagObj);
-	app.model.dispatchThis('immutable');
-	}
-else{
-	var errObj = app.u.youErrObject("The two passwords do not match.",'42');
-	errObj.parentID = formID
-	app.u.throwMessage(errObj);
-	}
+			handleChangePassword : function($form,tagObj)	{
+				var formObj = $form.serializeJSON();
+				if(formObj.password && formObj.password == formObj.password2)	{
+					app.calls.buyerPasswordUpdate.init(formObj.password,tagObj);
+					app.model.dispatchThis('immutable');
+					}
+				else{
+					$form.anymessage(app.u.youErrObject("The two passwords do not match.",42));
+					}
 				
 				}, //handleChangePassword
 
@@ -478,7 +452,6 @@ else{
 							}
 						$editor.wrapInner('<form \/>'); //needs this for serializeJSON later.
 						
-					
 						$editor.dialog({
 							width: ($(window).width() < 500) ? ($(window).width() - 50) : 500, //check window width/height to accomodate mobile devices.
 							height: ($(window).height() < 500) ? ($(window).height() - 50) : 500,
@@ -494,23 +467,28 @@ else{
 									var $form = $('form',$(this)).first();
 									
 									if(app.u.validateForm($form))	{
-										$('body').showLoading('Updating Address');
+										$form.showLoading('Updating Address');
 										var serializedForm = $form.serializeJSON();
 //save and then refresh the page to show updated info.
-										app.calls.buyerAddressAddUpdate.init(serializedForm,{'callback':function(rd){
-											$('body').hideLoading(); //always hide loading, regardless of errors.
-											if(app.model.responseHasErrors(rd)){
-												$form.anymessage({'message':rd});
+										app.model.addDispatchToQ({
+											'_cmd':'buyerAddressAddUpdate',
+											'_tag':	{
+												'callback':function(rd){
+													$form.hideLoading(); //always hide loading, regardless of errors.
+													if(app.model.responseHasErrors(rd)){
+														$form.anymessage({'message':rd});
+														}
+													else if(typeof onSuccessCallback === 'function')	{
+														onSuccessCallback(rd,serializedForm);
+														$editor.dialog('close');
+														}
+													else	{
+														//no callback defined 
+														$editor.dialog('close');
+														}
+													}
 												}
-											else if(typeof onSuccessCallback === 'function')	{
-												onSuccessCallback(rd,serializedForm);
-												$editor.dialog('close');
-												}
-											else	{
-												//no callback defined 
-												$editor.dialog('close');
-												}
-											}},'immutable');
+											},'immutable');
 //dump data in memory and local storage. get new copy up updated address list for display.
 										app.model.destroy('buyerAddressList');
 										app.calls.buyerAddressList.init({},'immutable');
@@ -522,6 +500,11 @@ else{
 								},
 							close : function(event, ui) {$(this).dialog('destroy').remove()}
 							});
+//* 201342 -> used in checkout (or potentailly any editor) to immediately highlight any invalid fields (useful in 'edit' as opposed to 'create' address)
+							if(vars.validateForm)	{
+								app.u.validateForm($editor);
+								}
+
 						
 						}
 					else	{
@@ -542,17 +525,39 @@ else{
 
 					r = true;
 					var $editor = $("<div \/>");
-					$editor.append("<input type='text' maxlength='6' data-minlength='6' name='shortcut' placeholder='address id (6 characters)' \/>");
+					
 					$editor.append("<input type='hidden' name='type' value='"+vars.addressType.toUpperCase()+"' \/>");
 					$editor.anycontent({'templateID':(vars.addressType == 'ship') ? 'chkoutAddressShipTemplate' : 'chkoutAddressBillTemplate','data':{},'showLoading':false});
+//* 201338 -> the address id should be at the bottom of the form, not the top. isn't that important or required.
+					$editor.append("<input type='text' maxlength='6' data-minlength='6' name='shortcut' placeholder='address id (6 characters)' \/>");
 					$editor.wrapInner('<form \/>'); //needs this for serializeJSON later.
-					
+
+//** 201338 -> if the placeholder attribute on an input is not supported (thx IE8), then add labels.
+					if(app.ext.order_create)	{
+						app.ext.order_create.u.handlePlaceholder($editor);
+						}
+					$(":input",$editor).each(function(index){
+						var $input = $(this);
+						if($input.attr('placeholder') && !$input.attr('title'))	{
+							$(this).attr('title',$input.attr('placeholder'))
+							}
+						$input.tooltip({
+							position: {
+								my: "left top",
+								at: "right top",
+								using: function( position, feedback ) {
+									$( this ).css( position );
+									}
+								}
+							});
+
+						});
 				
 					$editor.dialog({
 						width: ($(window).width() < 500) ? ($(window).width() - 50) : 500, //check window width/height to accomodate mobile devices.
 						height: ($(window).height() < 500) ? ($(window).height() - 50) : 500,
 						modal: true,
-						title: 'edit address',
+						title: 'Add a new '+vars.addressType+' address',
 						buttons : {
 							'cancel' : function(event){
 								event.preventDefault();
@@ -563,23 +568,29 @@ else{
 								var $form = $('form',$(this)).first();
 								
 								if(app.u.validateForm($form))	{
-									$('body').showLoading('Adding Address');
+									$form.showLoading('Adding Address');
 									var serializedForm = $form.serializeJSON();
 //save and then refresh the page to show updated info.
-									app.calls.buyerAddressAddUpdate.init(serializedForm,{'callback':function(rd){
-										$('body').hideLoading(); //always hide loading, regardless of errors.
-										if(app.model.responseHasErrors(rd)){
-											$form.anymessage({'message':rd});
+									app.model.addDispatchToQ({
+										'_cmd':'buyerAddressAddUpdate',
+										'_tag':	{
+											'callback':function(rd){
+												$form.hideLoading(); //always hide loading, regardless of errors.
+												if(app.model.responseHasErrors(rd)){
+													$form.anymessage({'message':rd});
+													}
+												else if(typeof onSuccessCallback === 'function')	{
+													onSuccessCallback(rd,serializedForm);
+													$editor.dialog('close');
+													}
+												else	{
+													//no callback defined or an error occured and has been reported.
+													$editor.dialog('close');
+													}
+												}
 											}
-										else if(typeof onSuccessCallback === 'function')	{
-											onSuccessCallback(rd,serializedForm);
-											$editor.dialog('close');
-											}
-										else	{
-											//no callback defined or an error occured and has been reported.
-											$editor.dialog('close');
-											}
-										}},'immutable');
+										},'mutable');
+									app.model.dispatchThis('mutable');
 //dump data in memory and local storage. get new copy up updated address list for display.
 									app.model.destroy('buyerAddressList');
 									app.calls.buyerAddressList.init({},'immutable');
@@ -604,18 +615,71 @@ else{
 		
 		e : {
 			
-			showWriteReview : function($btn)	{
-				$btn.button();
-				$btn.off('click.showWriteReview').on('click.showWriteReview',function(event){
-					event.preventDefault();
-					var pid = $btn.attr("data-pid") || $btn.closest("[data-stid]").data('stid');
-					if(pid)	{
-						app.ext.store_crm.u.showReviewFrmInModal({"pid":pid,"templateID":"reviewFrmTemplate"});
+			contactFormSubmit : function($ele,p)	{
+				p.preventDefault();
+				if(app.u.validateForm($ele))	{
+					app.calls.appSendMessage.init($ele.serializeJSON(),{
+						'callback':'showMessaging',
+						'jqObj':$ele,
+						'message':'Thank you, your message has been sent'
+						},'immutable');
+					app.model.dispatchThis('immutable');
+					}
+				else	{} //validateForm handles error display.
+				},
+			
+			productBuyerListRemoveExec : function($ele,p)	{
+				var pid = $ele.closest("[data-stid]").data('stid') || $ele.closest("[data-pid]").data('pid');
+				var listid = $ele.closest("[data-buyerlistid]").data('buyerlistid');
+				if(pid && listid)	{
+					app.u.dump(" -> templateRole.length: "+$ele.closest("[data-template-role='listitem']").length);
+					app.model.addDispatchToQ({
+						'_cmd':'buyerProductListRemoveFrom',
+						'listid' : listid,
+						'sku' : pid,
+						'_tag':	{
+							'callback':'showMessaging',
+							'message' : 'Item '+pid+' has been removed from list: '+listid,
+							'jqObjEmpty' : true,
+							'jqObj' : $ele.closest("[data-template-role='listitem']")
+							}
+						},'immutable');
+					app.model.destroy("buyerProductListDetail|"+listid); //destroy the list in memory so the next time we visit the list page, a new copy is fetched.
+					app.model.dispatchThis('immutable');
+					if(_gaq)	{
+						_gaq.push(['_trackEvent','Manage buyer list','User Event','item removed',pid]);
 						}
-					else	{
-						$('#globalMessaging').anymessage({'message':'In store_crm.e.showWriteReview, unable to determine pid/stid','gMessage':true});
-						}
-					})
+					}
+				else	{
+					$('#globalMessaging').anymessage({"message":"In store_crm.e.productByerListRemoveExec, either unable to ascertain pid ["+pid+"] and/or buyerlistid ["+listid+"].","gMessage":true});
+					}
+				},
+			
+			//add this as submit action on the form.
+			productReviewSubmit : function($ele,p)	{
+				p.preventDefault();
+				if(app.u.validateForm($ele))	{
+					var frmObj = $form.serializeJSON();
+					app.calls.appReviewAdd.init(frmObj,{
+						"callback":"showMessaging",
+						"jqObj":$form,
+						"jqObjEmpty" : true,
+						"message":"Thank you for your review. Pending approval, it will be added to the store."
+						},'immutable');
+					app.model.dispatchThis('immutable');
+					}
+				else	{} //validateForm will handle error display.
+				},
+			
+			productReviewShow : function($ele,p)	{
+				p.preventDefault();
+				var pid = $ele.closest("data-stid").data('stid') || $ele.closest("[data-pid]").data('pid'); //used on product page
+				if(pid)	{
+					app.ext.store_crm.u.showReviewFrmInModal({"pid":pid,"templateID":"reviewFrmTemplate"});
+					}
+				else	{
+					$('#globalMessaging').anymessage({'message':'In store_crm.e.productReviewShow, unable to determine pid/stid','gMessage':true});
+					}
 				}
 
 			} //e/events

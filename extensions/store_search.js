@@ -118,7 +118,8 @@ P.query = { 'and':{ 'filters':[ {'term':{'profile':'E31'}},{'term':{'tags':'IS_S
 				
 				var $list = _rtag.list;
 				if($list && $list.length)	{
-					$list.empty().removeClass('loadingBG').attr('data-app-role','searchResults');
+//*** 201336 -> setting data-app-role on the element was a bad idea. it may have already been set and it doesn't appear to get used at all.
+					$list.empty().removeClass('loadingBG'); //.attr('data-app-role','searchResults');
 					$list.closest('.previewListContainer').find('.resultsHeader').empty().remove(); //remove any previous results multipage headers
 
 					if(L == 0)	{
@@ -134,7 +135,7 @@ P.query = { 'and':{ 'filters':[ {'term':{'profile':'E31'}},{'term':{'tags':'IS_S
 						$list.append(app.ext.store_search.u.getElasticResultsAsJQObject(_rtag)); //prioritize w/ getting product in front of buyer
 						if(app.ext.admin)	{
 							$list.hideLoading();
-							app.ext.admin.u.handleAppEvents($parent);
+							app.u.handleAppEvents($parent);
 							}
 	
 						var EQ = $list.data('elastic-query'); //Elastic Query
@@ -151,6 +152,7 @@ P.query = { 'and':{ 'filters':[ {'term':{'profile':'E31'}},{'term':{'tags':'IS_S
 							$controlsContainer = $("<div \/>").addClass('ui-widget ui-widget-content resultsHeader clearfix ui-corner-bottom'); //used to hold menus and buttons.
 							
 //							$menuContainer.append($sortMenu); //sorting not working. commented out for now. !!!
+							$parent.find(".resultsHeader").remove(); //make sure headers don't stack when using pagination. // ### TODO -> test this.
 							$header.prependTo($parent);
 //pageMenu will be false if there are no pages. If there's no pagination, no further output is needed.
 							if($pageMenu)	{
@@ -175,7 +177,8 @@ P.query = { 'and':{ 'filters':[ {'term':{'profile':'E31'}},{'term':{'tags':'IS_S
 						}
 					}
 				else	{
-					$('#globalMessaging').anymessage({'message':'In store_search.callbacks.handleElasticResults, $list was not defined, not a jquery objet or empty (not on DOM).',gMessage:true});
+					$('#globalMessaging').anymessage({'message':'In store_search.callbacks.handleElasticResults, $list ['+typeof _rtag.list+'] was not defined, not a jquery object ['+(_rtag.list instanceof jQuery)+'] or does not exist ['+_rtag.list.length+'].',gMessage:true});
+					app.u.dump("handleElasticResults _rtag.list: "); app.u.dump(_rtag.list);
 					}
 				}
 			}
@@ -199,7 +202,7 @@ P.query = { 'and':{ 'filters':[ {'term':{'profile':'E31'}},{'term':{'tags':'IS_S
 				EQ = $list.data('elastic-query'); //Elastic Query
 				
 				if(datapointer && $list && EQ)	{
-					$header = $("<div \/>").addClass('ui-widget ui-widget-header resultsHeader clearfix ui-corner-top hideInMinimalMode');
+					$header = $("<div \/>").addClass('ui-widget ui-widget-header resultsHeader clearfix ui-corner-top hideInMinimalMode'); // note - resultsHeader is used to search/replace any existing headers.
 					if(EQ.query && EQ.query.query_string && EQ.query.query_string.query){
 						$header.text(app.data[datapointer].hits.total+" Results for: "+EQ.query.query_string.query);
 						}
