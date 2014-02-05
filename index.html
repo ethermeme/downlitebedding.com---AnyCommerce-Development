@@ -63,7 +63,7 @@ var app = {vars:{
 	"baseURL":"", //used in non-local mode.
 	"checkoutAuthMode" : "active",//can be passive, active or required
 	"testURL":"http://www.downlitebedding.com/" //used ONLY if protocol is file: (for testing)
-	},u:{},rq:[]};
+	},u:{},rq:[],cmr:[]};
 
 //set base url so images, css, js, etc all load from appropriate location once deployed.
 //baseURL as blank lets loadScript function run off local copy when testing locally.
@@ -87,7 +87,7 @@ css files should be included before any .js file to ensure they are downloaded i
 <link rel="stylesheet" type="text/css" href="_dl12_style-20120725.css" />
 <link rel="stylesheet" type="text/css" href="_downlite_styles.css" />
 
- pivotal to the functionality of the app. load them early -->
+<!-- jquery and jquery ui are pivotal to the functionality of the app. load them early -->
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
 <script src="resources/jquery.ui.anyplugins.js"></script>
@@ -111,7 +111,7 @@ css files should be included before any .js file to ensure they are downloaded i
 
 <script type="text/javascript">
 app.u.loadScript(app.vars.baseURL+"downlite_init.js");
-console.log(" -> domain: "+document.domain);
+//console.log(" -> domain: "+document.domain);
 </script>
 
 
@@ -126,13 +126,14 @@ console.log(" -> domain: "+document.domain);
 	<img src="images/logo-200x64.png" width="200" height="64" alt="" />
 	</td>
 	<td>
+	<div id="loader">
 	<h3>One moment please.</h3>
 	
 	<div class='alignCenter'>
-	<progress id="appPreViewProgressBar" max="100" value="0" /><br />
+	<progress id="appPreViewProgressBar" max="100" value="0"></progress><br>
 	</div>
 	<div id='appPreViewProgressText'>0% Complete</div>
-	
+	</div>
 	<div class='appMessaging'></div>
 	</td>
 </tr>

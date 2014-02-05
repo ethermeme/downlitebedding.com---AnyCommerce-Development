@@ -61,7 +61,7 @@ var tracking_hubspot = function() {
 			},
 		startExtension : {
 			onSuccess : function(){
-				app.ext.orderCreate.checkoutCompletes.push(function(infoObj){ app.ext.tracking_hubspot.u.trackBuyerConvert(infoObj); });
+				app.ext.order_create.checkoutCompletes.push(function(infoObj){ app.ext.tracking_hubspot.u.trackBuyerConvert(infoObj); });
 				},
 			onError : function(){
 				app.u.dump('BEGIN tracking_hubspot.callbacks.startExtension.onError');
