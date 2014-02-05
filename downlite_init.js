@@ -7,8 +7,7 @@ app.rq.push(['extension',0,'order_create','extensions/checkout/extension.js']);
 app.rq.push(['extension',0,'cco','extensions/cart_checkout_order.js']);
 
 
-app.rq.push(['extension',0,'store_downlite','extensions/_store_downlite.js','startExtension']);
-app.rq.push(['script',0,'jquery-cycle2/jquery.cycle2.min.js']);
+app.rq.push(['extension',1,'store_downlite','extensions/_store_downlite.js','startExtension']);
 
 app.rq.push(['extension',0,'store_prodlist','extensions/store_prodlist.js']);
 app.rq.push(['extension',0,'store_navcats','extensions/store_navcats.js']);
@@ -25,7 +24,7 @@ app.rq.push(['extension',0,'tracking_hubspot','extensions/tracking_hubspot.js','
 app.rq.push(['extension',1,'google_analytics','extensions/partner_google_analytics.js','startExtension']);
 //app.rq.push(['extension',1,'tools_ABtesting','extensions/tools_ABtesting.js']);
 app.rq.push(['extension',0,'cart_message','extensions/cart_message/extension.js']);
-app.rq.push(['extension',0,'partner_addthis','extensions/partner_addthis.js']); //old default callback.
+app.rq.push(['extension',1,'partner_addthis','extensions/partner_addthis.js']); //old default callback.
 app.rq.push(['extension',0,'google_dynamicremarketing','extensions/partner_google_dynamicremarketing.js']); 
 //app.rq.push(['extension',1,'google_ts','extensions/partner_google_trusted_store.js','startExtension']); //new default callback.
 app.rq.push(['extension',1,'google_adwords','extensions/partner_google_adwords.js','startExtension']);
@@ -39,6 +38,8 @@ app.rq.push(['script',0,app.vars.baseURL+'model.js']); //'validator':function(){
 //app.rq.push(['script',0,app.vars.baseURL+'includes.js']); //','validator':function(){return (typeof handlePogs == 'function') ? true : false;}})
 
 app.rq.push(['script',0,app.vars.baseURL+'controller.js']);
+
+app.rq.push(['script',0,'jquery-cycle2/jquery.cycle2.min.js']);
 
 app.rq.push(['script',0,app.vars.baseURL+'resources/jquery.showloading-v1.0.jt.js']); //used pretty early in process..
 app.rq.push(['script',0,app.vars.baseURL+'resources/jquery.ui.anyplugins.js']); //in zero pass in case product page is first page.
