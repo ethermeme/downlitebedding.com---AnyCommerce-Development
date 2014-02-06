@@ -7,7 +7,7 @@ app.rq.push(['extension',0,'order_create','extensions/checkout/extension.js']);
 app.rq.push(['extension',0,'cco','extensions/cart_checkout_order.js']);
 
 
-app.rq.push(['extension',1,'store_downlite','extensions/_store_downlite.js','startExtension']);
+app.rq.push(['extension',1,'store_downlite','extensions/_store_downlite.js']);
 
 app.rq.push(['extension',0,'store_prodlist','extensions/store_prodlist.js']);
 app.rq.push(['extension',0,'store_navcats','extensions/store_navcats.js']);
@@ -204,26 +204,27 @@ app.u.appInitComplete = function(P)	{
 				});
 			}
 		else	{$('.ocmFacebookComment').hide()}
+		})
 
 //Go get the brands and display them.	
-	app.ext.store_navcats.calls.appCategoryDetailMax.init('.brands',{'callback':'getChildData','extension':'store_navcats','parentID':'brandCategories','templateID':'categoryListTemplateThumb'},'passive');
+	app.ext.store_navcats.calls.appCategoryList.init('.brands',{'callback':'getChildData','extension':'store_navcats','parentID':'brandCategories','templateID':'categoryListTemplateThumb'},'passive');
 	app.model.dispatchThis('passive'); //use passive or going into checkout could cause request to get muted.		
 //Adding category nav tabs
 	app.ext.myRIA.renderFormats.simpleSubcats = function($tag,data)	{
 	//app.u.dump("BEGIN control.renderFormats.subcats");
-		var L = data.value.length;
-		var thisCatSafeID; //used in the loop below to store the cat id during each iteration
-		//app.u.dump(data);
-		for(var i = 0; i < L; i += 1)	{
-			thisCatSafeID = data.value[i].id;
-			if(data.value[i].pretty.charAt(0) == '!')	{
-				//categories that start with ! are 'hidden' and should not be displayed.
-				}
-			else	{
-				$tag.append(app.renderFunctions.transmogrify({'id':thisCatSafeID,'catsafeid':thisCatSafeID},data.bindData.loadsTemplate,data.value[i]));
+	var L = data.value.length;
+	var thisCatSafeID; //used in the loop below to store the cat id during each iteration
+	//app.u.dump(data);
+	for(var i = 0; i < L; i += 1)	{
+		thisCatSafeID = data.value[i].id;
+		if(data.value[i].pretty.charAt(0) == '!')	{
+			//categories that start with ! are 'hidden' and should not be displayed.
+			}
+		else	{
+			$tag.append(app.renderFunctions.transmogrify({'id':thisCatSafeID,'catsafeid':thisCatSafeID},data.bindData.loadsTemplate,data.value[i]));
 			}
 		}
-	} //simpleSubcats
+			} //simpleSubcats
 // Homepage Slideshow
 //	app.ext.myRIA.template.homepageTemplate.onCompletes.push(function(){
 //		$('#wideSlideshow').cycle({
@@ -234,7 +235,6 @@ app.u.appInitComplete = function(P)	{
 //			slideExpr: 'li'
 //			});
 //		}) //homepageTemplate.onCompletes
-			})
 	
 		
 		

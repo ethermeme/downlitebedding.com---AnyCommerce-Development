@@ -275,13 +275,14 @@ the formatted is specific so that getChildDataOf can be used for a specific id o
 			getRootCats : function()	{
 //				app.u.dump('BEGIN app.ext.store_navcats.u.getRootCats');
 				var r = false;
-				if(app.data.appCategoryList)	{
-					var L = app.data.appCategoryList['@paths'].length;
+				// *** 201401 path appended to appCategoryList datapointer in 201352 -mc
+ 				if(app.data["appCategoryList|"+zGlobals.appSettings.rootcat])	{
+ 					var L = app.data["appCategoryList|"+zGlobals.appSettings.rootcat]['@paths'].length;
 					r = new Array();
 	//				app.u.dump(' -> num cats = '+L);
 					for(var i = 0; i < L; i += 1)	{
-						if(app.data.appCategoryList['@paths'][i].split('.').length == 2)	{
-							r.push(app.data.appCategoryList['@paths'][i]);
+						if(app.data["appCategoryList|"+zGlobals.appSettings.rootcat]['@paths'][i].split('.').length == 2)	{
+ 							r.push(app.data["appCategoryList|"+zGlobals.appSettings.rootcat]['@paths'][i]);
 							}
 						}
 					}
@@ -297,18 +298,19 @@ the formatted is specific so that getChildDataOf can be used for a specific id o
 				if(!path)	{
 					app.u.throwGMessage("path not specified in store_navcats.u.getCatsFromCategoryList");
 					}
-				else if(!app.data.appCategoryList)	{
+				// *** 201401 path appended to appCategoryList datapointer in 201352 -mc
+ 				else if(!app.data["appCategoryList|"+path])	{
 					app.u.throwGMessage("Attempted to run store_navcats.u.getCatsFromCategoryList before appCategoryList is in data/memory.");
 					}
-				else if(path == '.')	{
+				else if(path == zGlobals.appSettings.rootcat)	{
 					r = app.ext.store_navcats.u.getRootCats();
 					}
-				else if(app.data.appCategoryList && path)	{
-					var L = app.data.appCategoryList['@paths'].length;
+				else if(app.data["appCategoryList|"+path] && path)	{
+ 					var L = app.data["appCategoryList|"+path]['@paths'].length;
 					r = new Array();
 // *** 201352 now returns only direct subcats, instead of including nested also. -mc
 					for(var i = 0; i < L; i += 1) {
-						var path = app.data.appCategoryList['@paths'][i];
+						var path = app.data["appCategoryList|"+path]['@paths'][i];
 						if(path != path && path.indexOf(path) == 0 && path.replace(path+'.', "").indexOf('.') < 0) {
 							r.push(path);
 							}
@@ -323,7 +325,7 @@ the formatted is specific so that getChildDataOf can be used for a specific id o
 			getListOfSubcats : function(path){
 //				app.u.dump("BEGIN store_navcats.u.getListOfSubcats ["+path+"]");
 				var catsArray = new Array();				
-				if(path == '.')	{
+				if(path == zGlobals.appSettings.rootcat)	{
 					catsArray = this.getRootCats();
 					}
 				else if(app.model.fetchData('appNavcatDetail|'+path))	{

@@ -1451,7 +1451,7 @@ only one extension was getting loaded, but it got loaded for each iteration in t
 					app.ext[namespace].callbacks[callback].onSuccess()
 					}
 				else if(typeof callback == 'string')	{
-					$('#globalMessaging').anymessage("A callback was defined for extension "+namespace+" but it could not be loaded.<br \/>Dev: see console for details");
+					$('#globalMessaging').anymessage({"message":"A callback was defined for extension "+namespace+" but it could not be loaded.<br \/>Dev: see console for details"});
 					app.u.dump("Callback ["+callback+"] defined for namespace: "+namespace+" but something went wrong",'warn');
 					app.u.dump(" -> typeof app.ext[namespace]: "+typeof app.ext[namespace]+" (should be object)");
 					if(typeof app.ext[namespace] == 'object')	{app.u.dump(" -> typeof app.ext[namespace].callbacks[callback]"+typeof app.ext[namespace].callbacks[callback])+" (should be function)"}
