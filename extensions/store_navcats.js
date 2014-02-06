@@ -310,9 +310,9 @@ the formatted is specific so that getChildDataOf can be used for a specific id o
 					r = new Array();
 // *** 201352 now returns only direct subcats, instead of including nested also. -mc
 					for(var i = 0; i < L; i += 1) {
-						var path = app.data["appCategoryList|"+path]['@paths'][i];
-						if(path != path && path.indexOf(path) == 0 && path.replace(path+'.', "").indexOf('.') < 0) {
-							r.push(path);
+						var p = app.data["appCategoryList|"+path]['@paths'][i];
+						if(p != path && p.indexOf(path) == 0 && p.replace(path+'.', "").indexOf('.') < 0) {
+							r.push(p);
 							}
 						}
 					}
