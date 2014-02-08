@@ -21,7 +21,7 @@ app.rq.push(['extension',0,'tools_animation','extensions/tools_animation.js']);
 
 app.rq.push(['extension',0,'tracking_hubspot','extensions/tracking_hubspot.js','startExtension']);
 
-app.rq.push(['extension',1,'google_analytics','extensions/partner_google_analytics.js','startExtension']);
+//app.rq.push(['extension',1,'google_analytics','extensions/partner_google_analytics.js','startExtension']);
 //app.rq.push(['extension',1,'tools_ABtesting','extensions/tools_ABtesting.js']);
 app.rq.push(['extension',0,'cart_message','extensions/cart_message/extension.js']);
 app.rq.push(['extension',1,'partner_addthis','extensions/partner_addthis.js']); //old default callback.
