@@ -7,7 +7,7 @@ app.rq.push(['extension',0,'order_create','extensions/checkout/extension.js']);
 app.rq.push(['extension',0,'cco','extensions/cart_checkout_order.js']);
 
 
-app.rq.push(['extension',1,'store_downlite','extensions/_store_downlite.js','init']);
+app.rq.push(['extension',0,'store_downlite','extensions/_store_downlite.js','init']);
 
 app.rq.push(['extension',0,'store_prodlist','extensions/store_prodlist.js']);
 app.rq.push(['extension',0,'store_navcats','extensions/store_navcats.js']);

@@ -37,6 +37,7 @@ var store_downlite = function() {
 				
 				app.u.dump("Begin store_downlite.callbacks.init");
 				app.templates.homepageTemplate.on('complete.downlite',function(infoObj){
+					 app.ext.store_downlite.u.loadBanners();
 					 app.ext.store_downlite.u.startHomepageSlideshow();
 				 });
 				//if there is any functionality required for this extension to load, put it here. such as a check for async google, the FB object, etc. return false if dependencies are not present. don't check for other extensions.
