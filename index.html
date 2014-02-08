@@ -652,7 +652,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
 
 <li id='categoryListTemplateRootCats'>
 	<a data-bind='var: category(pretty); format:text;' href='#' onClick="showContent('category',{'navcat':$(this).parent().attr('data-catsafeid')}); return false"></a>
-	<ul data-bind='var:category(@subcategoryDetail); format:subcategory2LevelList; extension:store_navcats;' class="child_menu">
+	<ul data-bind='var:category(@subcategoryDetail); format:stuffList; loadsTemplate:simpleSubcatTemplate;' class="child_menu">
 		<li><img src='blank.gif' class='catThumb' data-bind='var: category(%meta.CAT_THUMB); format:imageURL; bgcolor:f1f3f2;' height='155' width='155' /></li>
 	</ul>	
 	<!--
@@ -821,8 +821,8 @@ SANITY -> if you change the height and width of this image, change the .minimalM
 </li>
 
 <li id="simpleSubcatTemplate">
- <a data-bind='var:category(id); format:assignAttribute; attribute:data-id;' href="#" onClick="return showContent('category',{'navcat':$(this).attr('data-id')});">
-  <span data-bind="var:category(pretty); format:text;"></span>
+ <a data-bind='var:category(path); format:assignAttribute; attribute:data-navcat;' href="#" onClick="app.u.dump($(this).attr('data-navcat')); return showContent('category',{'navcat':$(this).attr('data-navcat')});">
+ 	<span data-bind="var:category(pretty); format:text;"></span>
  </a>
 </li>
 </ul>

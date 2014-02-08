@@ -85,19 +85,19 @@ var store_downlite = function() {
 						});
 				},
 			startHomepageSlideshow : function(attempts){
-				app.u.dump("Begin startHomepageSlideshow function");
+				//app.u.dump("Begin startHomepageSlideshow function");
 				attempts = attempts || 0;
 				if(app.ext.store_downlite.vars.bannerJSON){
-					app.u.dump("Banners.json detected. Continuing with adding slideshow");
+					//app.u.dump("Banners.json detected. Continuing with adding slideshow");
 					var $slideshow = $('#wideSlideshow');
 					if($slideshow.hasClass('slideshowRendered')){
 						//already rendered, do nothing.
-						app.u.dump("Slideshow already rendered. Doing nothing.");
+						//app.u.dump("Slideshow already rendered. Doing nothing.");
 						}
 					else {
 						//app.u.dump(bannerJSON);
 						for(var i=0; i < app.ext.store_downlite.vars.bannerJSON.slides.length; i++){
-							app.u.dump("slide = " + i);
+							//app.u.dump("slide = " + i);
 							var $banner = app.ext.store_downlite.u.makeBanner(app.ext.store_downlite.vars.bannerJSON.slides[i], 661, 432, "FFFFFF");
 							$slideshow.append($banner);
 							}
