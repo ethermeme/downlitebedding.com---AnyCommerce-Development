@@ -193,7 +193,9 @@ app.u.loadScript(app.vars.baseURL+"downlite_init.js");
 			</div>
 
 			<div class="nav_menu">
-				<ul id='tier1categories'></ul><!-- DUAL NAV WILL GO HERE -->
+				<ul id='tier1categories'>
+                </ul><!-- DUAL NAV WILL GO HERE -->
+                <ul data-bind='var:category(@subcategoryDetail); format:stuffList; loadsTemplate:simpleSubcatTemplate;' class="child_menu"></ul>
 			</div>
 			
 			<div class="index">
@@ -817,6 +819,12 @@ SANITY -> if you change the height and width of this image, change the .minimalM
 	</div>
 	<div class='hideInMinimalMode pointer moreDetails' onClick="showContent('product',{'pid':$(this).parent().attr('data-pid')});">more details</div>
 </li>
+
+<li id="simpleSubcatTemplate">
+ <a data-bind='var:category(id); format:assignAttribute; attribute:data-id;' href="#" onClick="return showContent('category',{'navcat':$(this).attr('data-id')});">
+  <span data-bind="var:category(pretty); format:text;"></span>
+ </a>
+</li>
 </ul>
 
 
@@ -951,7 +959,6 @@ this will likely become more flexible in the future. ###
 			<input type='submit' value='Add to Cart' class='applyButton ui-button ui-button-text ui-corner-all ui-state-default addToCartButton displayNone floatRight' data-bind='var: product(pid); format:addToCartButton; extension:store_product;' id='addToCartBtn' />
 			
 			<fieldset data-bind='useParentData:true; format:atcQuantityInput; extension:store_product; pretext:Quantity: ; defaultValue:1;' class='borderNone floatRight'></fieldset>
-			
 			
 			<img class='floatLeft' src='images/free_shipping-147x38.png' width='147' height='38' alt='free shipping on orders over $150' />
 		</div>

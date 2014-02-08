@@ -40,6 +40,7 @@ var myRIA = function() {
 			'pageNotFoundTemplate',
 //Custom templates
 			'categoryListTemplateThumb',
+			'simpleSubcatTemplate',
 			
 //the list of templates that, in most cases, are left alone. Also in the same order as appTemplates
 			'breadcrumbTemplate',
@@ -190,6 +191,7 @@ document.write = function(v){
 
 //The request for appCategoryList is needed early for both the homepage list of cats and tier1.
 //piggyback a few other necessary requests here to reduce # of requests
+				app.model.dispatchThis('mutable');
 				app.ext.store_navcats.calls.appCategoryList.init(zGlobals.appSettings.rootcat,{"callback":"showRootCategories","extension":"myRIA"},'mutable');
 
 				var page = app.ext.myRIA.u.handleAppInit(); //checks url and will load appropriate page content. returns object {pageType,pageInfo}

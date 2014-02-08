@@ -35,10 +35,10 @@ var store_downlite = function() {
 			onSuccess : function()	{
 				var r = false; //return false if extension won't load for some reason (account config, dependencies, etc).
 				
-				app.ext.store_downlite.u.loadBanners();
-				app.rq.push(['templateFunction','homepageTemplate','onCompletes',function(infoObj){
-					app.ext.store_downlite.u.startHomepageSlideshow();
-					}]);
+				app.u.dump("Begin store_downlite.callbacks.init");
+				app.templates.homepageTemplate.on('complete.downlite',function(infoObj){
+					 app.ext.store_downlite.u.startHomepageSlideshow();
+				 });
 				//if there is any functionality required for this extension to load, put it here. such as a check for async google, the FB object, etc. return false if dependencies are not present. don't check for other extensions.
 				r = true;
 
@@ -84,16 +84,19 @@ var store_downlite = function() {
 						});
 				},
 			startHomepageSlideshow : function(attempts){
+				app.u.dump("Begin startHomepageSlideshow function");
 				attempts = attempts || 0;
 				if(app.ext.store_downlite.vars.bannerJSON){
+					app.u.dump("Banners.json detected. Continuing with adding slideshow");
 					var $slideshow = $('#wideSlideshow');
 					if($slideshow.hasClass('slideshowRendered')){
 						//already rendered, do nothing.
+						app.u.dump("Slideshow already rendered. Doing nothing.");
 						}
 					else {
 						//app.u.dump(bannerJSON);
 						for(var i=0; i < app.ext.store_downlite.vars.bannerJSON.slides.length; i++){
-							app.u.dump(i);
+							app.u.dump("slide = " + i);
 							var $banner = app.ext.store_downlite.u.makeBanner(app.ext.store_downlite.vars.bannerJSON.slides[i], 661, 432, "FFFFFF");
 							$slideshow.append($banner);
 							}
@@ -103,6 +106,7 @@ var store_downlite = function() {
 						}
 					}
 				else {
+					app.u.dump("Banners.json not detected. Looping function in .3 seconds.");
 					setTimeout(function(){app.ext.store_downlite.u.startHomepageSlideshow();}, 250);
 					}
 				},
