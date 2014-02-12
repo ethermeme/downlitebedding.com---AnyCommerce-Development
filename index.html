@@ -1668,26 +1668,25 @@ sticky, so they're fixed. Makes it easier on the designer and the developer.
 So the cart template should contain these two elements and the extension should contain these two templates.
 -->
 
-<div id='cartTemplate' class='clearfix'>
+<div id='cartTemplate' class='clearfix'><!-- template role gets added by the app. don't add it yourself -->
 
-<form id='cartTemplateForm' action='#' onSubmit='return false'>
-<table class='cartContainer'>
-<tr>
-	<td class='cartStuffContainer'>
+<form action='#' onSubmit='return false'>
+
+<div class='cartStuffContainer'>
 	<ul data-bind="var: cart(@ITEMS); format:processList; loadsTemplate:productListTemplateCart;" class='listStyleNone fluidList clearfix noPadOrMargin productList lineItemProdlist'></ul>
-	</td>
+</div>
 
-	<td class='cartSummaryTotalsContainer'>
-	<div class='ui-widget ui-widget-content ui-helper-clearfix ui-corner-all'>
-		<h2 class='ui-widget-header ui-helper-clearfix ui-corner-all ui-header'>Cart Totals</h2>
-		<div class='cartSummaryContainer'>
-		
-<section id='cartTemplateCostSummary' class='cartSummary'>
+<div class='cartSummaryTotalsContainer'>
+	<div class='ui-widget ui-corner-all'>
+		<h2 class='ui-widget-header ui-helper-clearfix ui-corner-all ui-header stdPadding'>Cart Totals</h2>
+		<div class='cartSummaryContainer stdPadding ui-widget-content clearfix'>
+
+<section class='cartSummary marginBottom'>
 
 	<div data-bind="var: cart(sum/items_total); format:money; className:orderSubtotal; hideZero:false; currencySign: $; pretext:Subtotal: ; "></div>
-	
+
 	<div data-bind='var: cart(sum/tax_total); format:money; className:orderTax; hideZero:true;currencySign: $; pretext:Tax: ; '></div>
-	
+
 	<div class='orderShipping' data-bind='useParentData:true; format:shipInfoById; extension:cco;'></div>
 
 	<div data-bind='var: cart(sum/order_total); format:money; className:orderTotal; hideZero:false; currencySign: $; pretext:Order Total: ; '></div>
@@ -1697,16 +1696,12 @@ So the cart template should contain these two elements and the extension should 
 	<div data-bind='var: cart(sum/rmc_total); format:money; className:returnsCreditTotal; hideZero:false; currencySign: $; pretext:Returns Credit: ; '></div>
 
 	<div data-bind='var: cart(sum/balance_due_total); format:orderBalance; className:orderBalanceDue; hideZero:false; currencySign: $; pretext:Estimated Total: ; extension:cco;'></div>
+
 </section>
 
 <section id='cartTemplateShippingContainer' data-app-role='cartTemplateShippingContainer' class='cartTemplateShippingContainer'>
 	<h3>Shipping:</h3>
-	<div data-bind="var: cart(ship/postal); format:showIfSet;" class="displayNone">
-		<ul class='noPadOrMargin listStyleNone cartShipMethods' data-bind='var: cart(@SHIPMETHODS); format:shipMethodsAsRadioButtons; extension:store_cart;'></ul>
-	</div>
-</section>
-		
-<section class='stdMargin'>
+
 
 	<div class='cartZipCodeContainer'>
 	<label for='data-ship_zip'>Zip/Postal Code:</label>
@@ -1719,7 +1714,10 @@ So the cart template should contain these two elements and the extension should 
 <section class='marginBottom'>
 
 	
-	<div class='checkoutButtonsContainer'>
+
+</section>
+
+		</div>
 		<div class='ui-state-default cartButtons stdPadding clearfix'>
 			<!-- spans are set around the buttons so each element has one consitent tag type around it -->
 			<span class='continueShoppingSpan thisButton'><button class='applyButton continueShoppingButton' data-app-click='myRIA|dialogClose'>Continue Shopping</button></span>
@@ -1735,12 +1733,8 @@ So the cart template should contain these two elements and the extension should 
 
 <span id="buySAFE_Kicker" name="buySAFE_Kicker" type="Kicker Guaranteed PostIt 170x52"></span>
 
-		</div>
 	</div>
-	</td>
-</tr>
-
-</table>
+</div>
 </form>
 </div><!-- /cartTemplate -->
 
