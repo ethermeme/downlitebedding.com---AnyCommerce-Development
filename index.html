@@ -182,7 +182,7 @@ app.u.loadScript(app.vars.baseURL+"downlite_init.js");
 					<ul class="account">
 						<li ><a href="#customer?show=myaccount" class='bindByAnchor'>Sign In</a></li>
 						<li><a href="#company?show=about" class='bindByAnchor'>About Us</a></li>
-						<li ><a href="#customer?show=newsletter" class='bindByAnchor'>New Account</a></li>
+						<!--<li ><a href="#customer?show=newsletter" class='bindByAnchor'>New Account</a></li>-->
 						<li><a href="#company?show=faq" class='bindByAnchor'>Help</a></li>
 					</ul>
 				</div>
@@ -953,7 +953,7 @@ this will likely become more flexible in the future. ###
 	
    
     
-    <form data-bind='var: product(pid); format:atcForm; extension:store_product;' class='prodViewerAddToCartForm clearfix' action='#' data-app-submit='myRIA|productAdd2Cart' data-show='modal'>
+    <form data-bind='var: product(pid); format:atcForm; extension:store_downlite;' class='prodViewerAddToCartForm clearfix' action='#' data-app-submit='myRIA|productAdd2Cart' data-show='none'>
 	
 		<fieldset data-bind='var: product(pid); format:atcVariations; extension:store_product;' class='borderNone'></fieldset>
 		<div class='qtyAndATCContainer clearfix qtyInput'>
