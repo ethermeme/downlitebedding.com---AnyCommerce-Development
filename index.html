@@ -1670,72 +1670,67 @@ So the cart template should contain these two elements and the extension should 
 
 <div id='cartTemplate' class='clearfix'><!-- template role gets added by the app. don't add it yourself -->
 
-<form action='#' onSubmit='return false'>
+	<form action='#' onSubmit='return false'>
 
-<div class='cartStuffContainer'>
-	<ul data-bind="var: cart(@ITEMS); format:processList; loadsTemplate:productListTemplateCart;" class='listStyleNone fluidList clearfix noPadOrMargin productList lineItemProdlist'></ul>
-</div>
-
-<div class='cartSummaryTotalsContainer'>
-	<div class='ui-widget ui-corner-all'>
-		<h2 class='ui-widget-header ui-helper-clearfix ui-corner-all ui-header stdPadding'>Cart Totals</h2>
-		<div class='cartSummaryContainer stdPadding ui-widget-content clearfix'>
-
-<section class='cartSummary marginBottom'>
-
-	<div data-bind="var: cart(sum/items_total); format:money; className:orderSubtotal; hideZero:false; currencySign: $; pretext:Subtotal: ; "></div>
-
-	<div data-bind='var: cart(sum/tax_total); format:money; className:orderTax; hideZero:true;currencySign: $; pretext:Tax: ; '></div>
-
-	<div class='orderShipping' data-bind='useParentData:true; format:shipInfoById; extension:cco;'></div>
-
-	<div data-bind='var: cart(sum/order_total); format:money; className:orderTotal; hideZero:false; currencySign: $; pretext:Order Total: ; '></div>
-
-	<div data-bind='var: cart(sum/gfc_total); format:money; className:orderGiftcardTotal; hideZero:false; currencySign: $; pretext:Giftcard(s): ; '></div>
-	<div data-bind='var: cart(sum/pnt_total); format:money; className:rewardPointsTotal; hideZero:false; currencySign: $; pretext:Reward Points: ; '></div>
-	<div data-bind='var: cart(sum/rmc_total); format:money; className:returnsCreditTotal; hideZero:false; currencySign: $; pretext:Returns Credit: ; '></div>
-
-	<div data-bind='var: cart(sum/balance_due_total); format:orderBalance; className:orderBalanceDue; hideZero:false; currencySign: $; pretext:Estimated Total: ; extension:cco;'></div>
-
-</section>
-
-<section id='cartTemplateShippingContainer' data-app-role='cartTemplateShippingContainer' class='cartTemplateShippingContainer'>
-	<h3>Shipping:</h3>
-
-
-	<div class='cartZipCodeContainer'>
-	<label for='data-ship_zip'>Zip/Postal Code:</label>
-	<input type='text' size='6'  name='ship/postal' id='data-ship_zip' value='' data-bind='var: cart(ship/postal); format:popVal;' maxlength='10' data-app-blur='cco|cartZipUpdateExec'  />
-	</div>
-
-	<ul class='noPadOrMargin listStyleNone' data-bind='useParentData:true; format:shipMethodsAsRadioButtons; extension: order_create;' data-app-role='shipMethodsUL' ></ul>
-</section>
-
-<section class='marginBottom'>
-
-	
-
-</section>
-
+		<div class='cartStuffContainer'>
+			<ul data-bind="var: cart(@ITEMS); format:processList; loadsTemplate:productListTemplateCart;" class='listStyleNone fluidList clearfix noPadOrMargin productList lineItemProdlist'></ul>
 		</div>
-		<div class='ui-state-default cartButtons stdPadding clearfix'>
-			<!-- spans are set around the buttons so each element has one consitent tag type around it -->
-			<span class='continueShoppingSpan thisButton'><button class='applyButton continueShoppingButton' data-app-click='myRIA|dialogClose'>Continue Shopping</button></span>
-	
-			<span id='inStoreCheckoutButton thisButton' title='proceed to secure checkout'><button class='applyButton ui-state-highlight checkoutButton' onClick="showContent('checkout',{});">Store Checkout</button></span>
-	
-			<span id='paypalECButton' class='thisButton' data-bind='var: cart(cart/cartid); format:paypalECButton; extension:cco;'></span>
-	
+
+		<div class='cartSummaryTotalsContainer'>
+			<div class='ui-widget ui-corner-all'>
+				<h2 class='ui-widget-header ui-helper-clearfix ui-corner-all ui-header stdPadding'>Cart Totals</h2>
+				<div class='cartSummaryContainer stdPadding ui-widget-content clearfix'>
+
+					<section class='cartSummary marginBottom'>
+
+						<div data-bind="var: cart(sum/items_total); format:money; className:orderSubtotal; hideZero:false; currencySign: $; pretext:Subtotal: ; "></div>
+
+						<div data-bind='var: cart(sum/tax_total); format:money; className:orderTax; hideZero:true;currencySign: $; pretext:Tax: ; '></div>
+
+						<div class='orderShipping' data-bind='useParentData:true; format:shipInfoById; extension:cco;'></div>
+
+						<div data-bind='var: cart(sum/order_total); format:money; className:orderTotal; hideZero:false; currencySign: $; pretext:Order Total: ; '></div>
+
+						<div data-bind='var: cart(sum/gfc_total); format:money; className:orderGiftcardTotal; hideZero:false; currencySign: $; pretext:Giftcard(s): ; '></div>
+						<div data-bind='var: cart(sum/pnt_total); format:money; className:rewardPointsTotal; hideZero:false; currencySign: $; pretext:Reward Points: ; '></div>
+						<div data-bind='var: cart(sum/rmc_total); format:money; className:returnsCreditTotal; hideZero:false; currencySign: $; pretext:Returns Credit: ; '></div>
+
+						<div data-bind='var: cart(sum/balance_due_total); format:orderBalance; className:orderBalanceDue; hideZero:false; currencySign: $; pretext:Estimated Total: ; extension:cco;'></div>
+
+					</section>
+				</div>
+
+				<section id='cartTemplateShippingContainer' data-app-role='cartTemplateShippingContainer' class='cartTemplateShippingContainer'>
+					<h3>Shipping:</h3>
+
+
+					<div class='cartZipCodeContainer'>
+						<label for='data-ship_zip'>Zip/Postal Code:</label>
+						<input type='text' size='6'  name='ship/postal' id='data-ship_zip' value='' data-bind='var: cart(ship/postal); format:popVal;' maxlength='10' data-app-blur='cco|cartZipUpdateExec'  />
+					</div>
+
+					<ul class='noPadOrMargin listStyleNone' data-bind='useParentData:true; format:shipMethodsAsRadioButtons; extension: order_create;' data-app-role='shipMethodsUL' ></ul>
+				</section>
+
+				<section class='marginBottom'>
+				</section>
+
+			</div>
+			<div class='ui-state-default cartButtons stdPadding clearfix'>
+				<!-- spans are set around the buttons so each element has one consitent tag type around it -->
+				<span class='continueShoppingSpan thisButton'><button class='applyButton continueShoppingButton' data-app-click='myRIA|dialogClose'>Continue Shopping</button></span>
+		
+				<span id='inStoreCheckoutButton thisButton' title='proceed to secure checkout'><button class='applyButton ui-state-highlight checkoutButton' onClick="showContent('checkout',{});">Store Checkout</button></span>
+		
+				<span id='paypalECButton' class='thisButton' data-bind='var: cart(cart/cartid); format:paypalECButton; extension:cco;'></span>
+		
+			</div>
 		</div>
-	</div>
-			
-</section>
+				
 
-<span id="buySAFE_Kicker" name="buySAFE_Kicker" type="Kicker Guaranteed PostIt 170x52"></span>
+		<span id="buySAFE_Kicker" name="buySAFE_Kicker" type="Kicker Guaranteed PostIt 170x52"></span>
 
-	</div>
-</div>
-</form>
+	</form>
 </div><!-- /cartTemplate -->
 
 
