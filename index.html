@@ -617,8 +617,13 @@ don't modify the 'data-templateid' unless you are changing template names and up
 
 	<ul data-bind="var: category(@subcategoryDetail); format: categoryList; extension: store_navcats; loadsTemplate: categoryListTemplate; detail: max;" class='listStyleNone clearfix noPadOrMargin fluidList categoryList marginBottom'></ul>
 
-	<ul data-bind="var: category(@products); format: infiniteProductList; extension:prodlist_infinite; loadsTemplate: productListTemplate;" class='listStyleNone fluidList clearfix noPadOrMargin productList'></ul>	
-	
+	<div class="nativeProductList">
+        <ul data-bind="var: category(@products); format: infiniteProductList; extension:prodlist_infinite; loadsTemplate: productListTemplate;" class='listStyleNone fluidList clearfix noPadOrMargin productList'></ul>	
+	</div>
+    <div class="searchFilterResults">
+        <ul class="categoryFilterResults productList" data-app-role='productList'></ul>
+    </div>
+    
 <!-- DEFAULT CODE
 	<img data-bind="var: category(%page.banner1); format: banner; editor: banner; height:250; width:750; extension: myRIA;" />
 
@@ -2131,6 +2136,53 @@ The 'data-action' attribute is used to assign an onclick.
 	</div>
 
 </div>
+
+
+
+
+
+<!--****FILTERED SEARCH FORMS****-->
+<div id='appFilters' class='displayNone'>
+<!--**GENERIC, ALL FILTERS FORM-->
+<form action='#' name='masterFilterSearchForm' id='masterFilterSearchForm' class='layeredSearch'>
+
+    <button class="resetButton">RESET OPTIONS</button>
+    
+    <fieldset class="filterPriceCat" data-elastic-key="base_price" data-filtertype="slider">
+        <legend class="filterCatTitle">Price</legend>
+        <div class="filterCategoryCont">
+            <input type="text" disabled="disabled" class='sliderValue' />
+            <div class="slider-range"></div>
+       	</div>
+    </fieldset>
+    
+    <!--
+    <fieldset data-elastic-key="prod_type" data-filtertype="hidden">
+        <input type='hidden' name="prod_type" value="chesspieces" />
+    </fieldset>
+    -->
+    
+    <!--
+    <fieldset class="filterDressTypeCat" data-elastic-key="dress_type" data-filtertype="checkboxes">
+        <legend class="filterCatTitle">Dress Type</legend>
+        <div class="filterCategoryCont">
+            <label class='break'><input class="fsCheckbox" type='checkbox' value='prom' />Prom</label>
+        </div>
+    </fieldset>
+    -->
+    
+    
+    <button class="resetButton resetButtonBottom">RESET OPTIONS</button>
+
+</form>
+
+
+</div>
+<!--****END FILTER FORMS****-->
+
+
+
+
 
 
 
