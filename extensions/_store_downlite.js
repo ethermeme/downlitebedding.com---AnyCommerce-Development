@@ -69,6 +69,38 @@ var store_downlite = function() {
 //on a data-bind, format: is equal to a renderformat. extension: tells the rendering engine where to look for the renderFormat.
 //that way, two render formats named the same (but in different extensions) don't overwrite each other.
 		renderFormats : {
+		
+				atcForm : function($tag,data)	{
+					$tag.append("<input type='hidden' name='sku' value='"+data.value+"' />");
+					/*REPLACE THIS ATTRIBUTE WITH NEW CUSTOM ATTRIBUTE WHENEVER IT IS CREATED.*/if(data.value["%attribs"]["is:user2"]){
+						$tag.attr("onSubmit","").unbind("submit");
+						$tag.bind('submit', function(){
+							var $notice = $('<div><h3>Would you like to add a pillow protector to your order?</h3></div>');
+							
+							var $buttonYes = $('<div class="alignRight"><button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"><span class="ui-button-text">Let\'s see them</span></button></div>');
+							$buttonYes.bind('click',function(){
+								$notice.dialog('close');
+								app.ext.myRIA.u.productAdd2Cart($tag,{'action':'none'}); 
+								return false;
+								});
+								
+							$notice.append($buttonbuttonYes);
+							
+							var $buttonNo = $('<div class="alignRight"><button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"><span class="ui-button-text">No thanks</span></button></div>');
+							$buttonNo.bind('click',function(){
+								$notice.dialog('close');
+								app.ext.myRIA.u.productAdd2Cart($tag,{'action':'modal'}); 
+								return false;
+								});
+								
+							$notice.append($buttonNo);
+							
+							$notice.dialog({'modal':'true','title':'Add a pillow protector', 'width':400});
+							return false;
+							});
+					}
+				} //END atcForm
+
 
 			}, //renderFormats
 ////////////////////////////////////   UTIL [u]   \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -146,39 +178,6 @@ var store_downlite = function() {
 			
 			
 			
-			renderformats : {
-				atcForm : function($tag,data)	{
-				$tag.append("<input type='hidden' name='sku' value='"+data.value+"' />");
-				/*REPLACE THIS ATTRIBUTE WITH NEW CUSTOM ATTRIBUTE WHENEVER IT IS CREATED.*/if(data.value["%attribs"]["is:user2"]){
-					$tag.attr("onSubmit","").unbind("submit");
-					$tag.bind('submit', function(){
-						var $notice = $('<div><h3>Would you like to add a pillow protector to your order?</h3></div>');
-						
-						var $buttonYes = $('<div class="alignRight"><button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"><span class="ui-button-text">Let\'s see them</span></button></div>');
-						$buttonYes.bind('click',function(){
-							$notice.dialog('close');
-							app.ext.myRIA.u.productAdd2Cart($tag,{'action':'modal'}); 
-							return false;
-							});
-							
-						$notice.append($buttonbuttonYes);
-						
-						var $buttonNo = $('<div class="alignRight"><button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"><span class="ui-button-text">No thanks</span></button></div>');
-						$buttonNo.bind('click',function(){
-							$notice.dialog('close');
-							app.ext.myRIA.u.productAdd2Cart($tag,{'action':'modal'}); 
-							return false;
-							});
-							
-						$notice.append($buttonNo);
-						
-						$notice.dialog({'modal':'true','title':'Add a pillow protector', 'width':400});
-						return false;
-						});
-					}
-				} //END atcForm
-			},
-
 //app-events are added to an element through data-app-event="extensionName|functionName"
 //right now, these are not fully supported, but they will be going forward. 
 //they're used heavily in the admin.html file.

@@ -2067,7 +2067,7 @@ CATEGORY TEMPLATE
 .textBlock {display:inline;}
 
 .categoryList li	{height:300px;}
-.productList li	{height:370px;}
+.productList li	{height:430px;}
 .categoryList li, .productList li	{width:230px;  margin:4px; color:#6f7376; font-size:15px;}
 .catDesc .categoryList li {height:auto; width:auto;} 
 .categoryBox, .productBox	{border:1px solid #d2d2d2;} /* separate class for border because 'categoryList' is shared and not all lists need a border. */

@@ -28,6 +28,7 @@ app.rq.push(['extension',1,'partner_addthis','extensions/partner_addthis.js']); 
 app.rq.push(['extension',0,'google_dynamicremarketing','extensions/partner_google_dynamicremarketing.js']); 
 //app.rq.push(['extension',1,'google_ts','extensions/partner_google_trusted_store.js','startExtension']); //new default callback.
 app.rq.push(['extension',1,'google_adwords','extensions/partner_google_adwords.js','startExtension']);
+app.rq.push(['extension',0,'prodlist_infinite','extensions/prodlist_infinite.js']);
 //app.rq.push(['extension',1,'resellerratings_survey','extensions/partner_buysafe_guarantee.js','startExtension']); /// !!! needs testing.
 //app.rq.push(['extension',1,'buysafe_guarantee','extensions/partner_buysafe_guarantee.js','startExtension']);
 //app.rq.push(['extension',1,'powerReviews_reviews','extensions/partner_powerreviews_reviews.js','startExtension']);

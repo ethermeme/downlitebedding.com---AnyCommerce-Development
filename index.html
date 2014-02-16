@@ -200,9 +200,9 @@ app.u.loadScript(app.vars.baseURL+"downlite_init.js");
 			
 			<div class="index">
 				<div class="searchBox">
-					<form id='headerSearchFrm' name='headerSearchFrm' action='#' class='productSearchForm' method="get">
-						<input type='search' name='KEYWORDS' id='headerKeywords' class="productSearchKeyword handleDefault box" value='Enter Search Term' />
-						<input class="search" id='headerSearchSubmit' type="submit" value="Search" />
+					<form name='headerSearchFrm' action='#' class='productSearchForm' method="get" id="searchFunc">
+                        <input type='search' name='KEYWORDS' class="productSearchKeyword handleDefault secondary box" placeholder="Enter Search Term..." id="searchBar"/>
+                        <input class="search pointer" type="submit" value="Search" id="searchButton" />
 					</form>
 				</div>
 				<div class="dotted"></div>
@@ -617,7 +617,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
 
 	<ul data-bind="var: category(@subcategoryDetail); format: categoryList; extension: store_navcats; loadsTemplate: categoryListTemplate; detail: max;" class='listStyleNone clearfix noPadOrMargin fluidList categoryList marginBottom'></ul>
 
-	<ul data-bind="var: category(@products); format: productList; editor: finder; extension: store_prodlist; loadsTemplate: productListTemplate;" class='listStyleNone fluidList clearfix noPadOrMargin productList'></ul>	
+	<ul data-bind="var: category(@products); format: infiniteProductList; extension:prodlist_infinite; loadsTemplate: productListTemplate;" class='listStyleNone fluidList clearfix noPadOrMargin productList'></ul>	
 	
 <!-- DEFAULT CODE
 	<img data-bind="var: category(%page.banner1); format: banner; editor: banner; height:250; width:750; extension: myRIA;" />
