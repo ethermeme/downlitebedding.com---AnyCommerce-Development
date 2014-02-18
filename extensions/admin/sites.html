@@ -132,7 +132,9 @@
 	<td class='isSearchable' data-bind="var: domain(PRT); hideZero:false; format:text;"></td>
 	<td></td>
 	<td class='alignRight'>
-	<button data-app-click='admin_sites|adminDomainDetailShow' class='applyButton' data-text='false' data-icon-primary='ui-icon-info'>Details</button>
+	<button data-app-click="admin_batchjob|adminBatchJobExec" class='applyButton' data-text='false' data-icon-primary='ui-icon-refresh' data-type="UTILITY/SITEMAP" data-whitelist="DOMAINNAME,PRT">Update Sitemap</button>
+	<button data-app-click='admin_sites|domainPutInFocus' class='applyButton' data-text='false' data-icon-primary='ui-icon-check' title="Use this domain">Use Domain</button>
+	<button data-app-click='admin_sites|adminDomainDetailShow' class='applyButton' data-text='false' data-icon-primary='ui-icon-pencil' title="Edit this domain">Details</button>
 	</td>
 </tr>
 <tr>
@@ -261,13 +263,12 @@
 		<span>Host Type</span>
 		<select name='HOSTTYPE' data-input-change="panel-selector" data-panel-selector=".domainNewHostSelectType" required='required' data-bind="var: host(HOSTTYPE); format:popVal;">
 			<option value=''>Please choose</option>
-			<option value='APPTIMIZER' data-show-panel='domainNewHostTypeSITEPTR,domainForceHTTPS'>App</option>
+			<option value='APPTIMIZER' data-show-panel='domainNewHostTypeSITEPTR,domainForceHTTPS'>Apptimizer</option>
 			<option value='REDIR' data-show-panel='domainNewHostTypeREDIR'>Redirect</option>
 			<option value='VSTORE' data-show-panel='domainNewHostTypeVSTORE' class='showForZoovyOnly'>V-Store</option>
-			<option value='VSTORE-APP' data-show-panel='domainNewHostTypeVSTORE' class='showForZoovyOnly'>V-Store/App</option>
+			<option value='VSTORE-APP' data-show-panel='domainNewHostTypeVSTORE' class='showForZoovyOnly' style='display:block;'>V-Store/App</option><!-- inline css to override a behavior w/ showforzoovyonly. ### FUTURE -> fix -->
 			<option value='CUSTOM'>Custom</option>
 		</select>
-
 	</label>
 
 	</fieldset>
@@ -281,8 +282,8 @@
 		<label>
 			<span>Project Source: </span>
 			<select name='project_source' data-input-change="panel-selector" data-panel-selector=".domainNewHostProjectSource">
-				<option value='project' data-show-panel='domainNewHostProjectSource_project'>Project</option>
-				<option value='template' data-show-panel='domainNewHostProjectSource_template'>From Template</option>
+				<option value='project' data-show-panel='domainNewHostProjectSource_project'>Existing project</option>
+				<option value='template' data-show-panel='domainNewHostProjectSource_template'>New project from Template</option>
 			</select>
 		
 		</label>
@@ -427,6 +428,12 @@ That's also why the template does not contain a form
 				<input type='checkbox' class='applyAnycb' name='IS_PRIMARY'  data-bind="var: domain(IS_PRIMARY); format:popVal;" />
 				<span>Tag as primary</span>
 				<span class='toolTip' title="Only 1 primary domain per partition.">?</span>
+			</label>
+						
+			<label>
+				<input type='checkbox' class='applyAnycb' name='IS_FAVORITE'  data-bind="var: domain(IS_FAVORITE); format:popVal;" />
+				<span>Tag as favorite</span>
+				<span class='toolTip' title="Will show domain at the top of some lists and enable it in the domain chooser.">?</span>
 			</label>		
 	
 			<label>

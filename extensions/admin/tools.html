@@ -407,7 +407,7 @@ has to be within the fieldset to for data-table to work right.
 
 <div id='CIE_DSA_AddUpdateTemplate'>
 
-<form action='#' onsubmit="return false" class='labelsAsBreaks alignedLabels alignedInputs'>
+<form action='#' onsubmit="return false" class='labelsAsBreaks alignedLabels alignedInputs' data-app-submit="admin|submitForm">
 
 <input type='hidden' name='GUID' value=''  data-bind='var: agent(GUID); format:popVal;' />
 
@@ -415,7 +415,7 @@ has to be within the fieldset to for data-table to work right.
 
 <label>
 	<span>Name</span>
-	<input name='AGENTID' value='' data-bind='var: agent(AGENTID); format:popVal;' data-app-event='admin|alphaNumeric' />
+	<input name='AGENTID' value='' data-bind='var: agent(AGENTID); format:popVal;' data-input-keyup="format" data-input-format='alphanumeric' />
 </label>
 
 <label>
@@ -424,7 +424,7 @@ has to be within the fieldset to for data-table to work right.
 </label>
 
 
-<button data-app-event="admin|processForm">Save</button>
+<button class='applyButton'>Save</button>
 
 </fieldset>
 </form>
@@ -624,61 +624,61 @@ has to be within the fieldset to for data-table to work right.
 		<table class='marginTop'>
 		<tbody>
 		<tr>
-			<td class='valignTop'><button class='applyButton' onclick="app.ext.admin_batchjob.a.adminBatchJobCreate({'type':'UTILITY/INVENTORY_RESUMMARIZE','%vars':{}}); return false;">Inventory Resummarize</button></td>
+			<td class='valignTop'><button class='applyButton' onclick="adminApp.ext.admin_batchjob.a.adminBatchJobCreate({'type':'UTILITY/INVENTORY_RESUMMARIZE','%vars':{}}); return false;">Inventory Resummarize</button></td>
 			<td class='valignTop small'>
 			Forces the system to recompute the summary inventory for all SKU's. 
 			This should not be necessary unless you have encountered a bug which caused inventory summaries to not match inventory detail.
 			</td>
 		</tr>
 		<tr>
-			<td class='valignTop'><button class='applyButton' onclick="app.ext.admin_batchjob.a.adminBatchJobCreate({'type':'UTILITY/PRODUCT_CLEANUP','%vars':{}}); return false;">Product Cleanup</button></td>
+			<td class='valignTop'><button class='applyButton' onclick="adminApp.ext.admin_batchjob.a.adminBatchJobCreate({'type':'UTILITY/PRODUCT_CLEANUP','%vars':{}}); return false;">Product Cleanup</button></td>
 			<td class='valignTop small'>
 			Resets/Rebuilds Product Index, clears out deleted items, and source pid from zoovy:related_products, and zoovy:accessory_products. Removes unicode characters. 
 			</td>
 		</tr>
 		<tr>
-			<td class='valignTop'><button class='applyButton' onclick="app.ext.admin_batchjob.a.adminBatchJobCreate({'type':'UTILITY/INVENTORY_CLEANUP','%vars':{}}); return false; ">Inventory Cleanup</button></td>
+			<td class='valignTop'><button class='applyButton' onclick="adminApp.ext.admin_batchjob.a.adminBatchJobCreate({'type':'UTILITY/INVENTORY_CLEANUP','%vars':{}}); return false; ">Inventory Cleanup</button></td>
 			<td class='valignTop small'>
 			Removes orphan inventory records which are not associated with a sku, creates records w/0 qty for pids which don't have inv. records.
 			</td>
 		</tr>
 		<tr>
-			<td class='valignTop'><button class='applyButton' onclick="app.ext.admin_batchjob.a.adminBatchJobCreate({'type':'UTILITY/INVENTORY_UPDATE_RESERVES','%vars':{}}); return false; ">Inventory Update Reserves</button></td>
+			<td class='valignTop'><button class='applyButton' onclick="adminApp.ext.admin_batchjob.a.adminBatchJobCreate({'type':'UTILITY/INVENTORY_UPDATE_RESERVES','%vars':{}}); return false; ">Inventory Update Reserves</button></td>
 			<td class='valignTop small'>
 			Removes orphaned inventory reservations / verifies reserves.
 			</td>
 		</tr>
 		<tr>
 			<td class='valignTop'>
-			<button class='applyButton' onclick="app.ext.admin_batchjob.a.adminBatchJobCreate({'type':'UTILITY/IMAGE_REINDEX','%vars':{}}); return false; ">Image Reindex</button></td>
+			<button class='applyButton' onclick="adminApp.ext.admin_batchjob.a.adminBatchJobCreate({'type':'UTILITY/IMAGE_REINDEX','%vars':{}}); return false; ">Image Reindex</button></td>
 			<td class='valignTop small'>
 			Image Reindex
 			</td>
 		</tr>
 		<tr>
 			<td class='valignTop'>
-			<button class='applyButton' onclick="app.ext.admin_batchjob.a.adminBatchJobCreate({'type':'UTILITY/ELASTIC_REBUILD','%vars':{'index':'public'}}); return false; ">Elastic Rebuild (Public)</button></td>
+			<button class='applyButton' onclick="adminApp.ext.admin_batchjob.a.adminBatchJobCreate({'type':'UTILITY/ELASTIC_REBUILD','%vars':{'index':'public'}}); return false; ">Elastic Rebuild (Public)</button></td>
 			<td class='valignTop small'>
 			Elastic Product Search Rebuild (note: will be offline/unavailable during rebuild)
 			</td>
 		</tr>
 		<tr>
 			<td class='valignTop'>
-			<button class='applyButton' onclick="app.ext.admin_batchjob.a.adminBatchJobCreate({'type':'UTILITY/ELASTIC_REBUILD','%vars':{'index':'private'}}); return false; ">Elastic Rebuild (Private)</button></td>
+			<button class='applyButton' onclick="adminApp.ext.admin_batchjob.a.adminBatchJobCreate({'type':'UTILITY/ELASTIC_REBUILD','%vars':{'index':'private'}}); return false; ">Elastic Rebuild (Private)</button></td>
 			<td class='valignTop small'>
 			Elastic Private Search Rebuild (note: will be offline/unavailable during rebuild)
 			</td>
 		</tr>
 		<tr>
 			<td class='valignTop'>
-			<button class='applyButton' onclick="app.ext.admin_batchjob.a.adminBatchJobCreate({'type':'UTILITY/EBAY_LISTING_DOWNLOAD','%vars':{}}); return false; ">eBay Listing Download</button></td>
+			<button class='applyButton' onclick="adminApp.ext.admin_batchjob.a.adminBatchJobCreate({'type':'UTILITY/EBAY_LISTING_DOWNLOAD','%vars':{}}); return false; ">eBay Listing Download</button></td>
 			<td class='valignTop small'>
 			eBay Listing Complete Download (note: do not launch any new listings while this is running, eBay limits this to once per day per token)
 			</td>
 		</tr>
 		<tr>
 			<td class='valignTop'>
-			<button class='applyButton' onclick="app.ext.admin_batchjob.a.adminBatchJobCreate({'type':'UTILITY/PRODUCT_SALESRANK','%vars':{}}); return false; ">Update SalesRanks</button></td>
+			<button class='applyButton' onclick="adminApp.ext.admin_batchjob.a.adminBatchJobCreate({'type':'UTILITY/PRODUCT_SALESRANK','%vars':{}}); return false; ">Update SalesRanks</button></td>
 			<td class='valignTop small'>
 			Goes through all products which have customer reviews and updates zoovy:prod_salesrank
 			<p class="warning ui-corner-all stdPadding">Notice about Sales Rank:<br />
@@ -698,11 +698,11 @@ has to be within the fieldset to for data-table to work right.
 		<table class='marginTop'>
 		<tbody>
 		<tr>
-			<td class='valignTop'><button class='applyButton' onClick="navigateTo('#!showPlatformInfo'); return false;">App/Server Details</button></td>
+			<td class='valignTop'><button class='applyButton' onClick="navigateTo('#!ext/admin_support/showPlatformInfo'); return false;">App/Server Details</button></td>
 			<td>Some details about the server you are on, app version, etc.</td>
 		</tr>
 		<tr>
-			<td class='valignTop'><button class='applyButton' onclick="app.ext.admin.u.selectivelyNukeLocalStorage();">Clear Some localStorage</button></td>
+			<td class='valignTop'><button class='applyButton' onclick="adminApp.ext.admin.u.selectivelyNukeLocalStorage();">Clear Some localStorage</button></td>
 			<td class='valignTop small'>
 			This will selectively clear local storage for the admin interface. Clear all data but login and device specific preferences from localStorage.
 			</td>
@@ -737,7 +737,7 @@ has to be within the fieldset to for data-table to work right.
 		<table class='marginTop'>
 		<tbody>
 		<tr>
-			<td class='valignTop'><button class='applyButton' onclick="app.ext.admin_batchjob.a.adminBatchJobCreate({'guid' : app.u.guidGenerator(),'type' : 'UTILITY/CUSTOMER_SCRUB'}); return false; ">Clean Subscriber Lists</button></td>
+			<td class='valignTop'><button class='applyButton' onclick="adminApp.ext.admin_batchjob.a.adminBatchJobCreate({'guid' : adminApp.u.guidGenerator(),'type' : 'UTILITY/CUSTOMER_SCRUB'}); return false; ">Clean Subscriber Lists</button></td>
 			<td class='valignTop small'>
 			Remove all duplicates and clear invalid emails.
 			</td>
@@ -754,7 +754,7 @@ has to be within the fieldset to for data-table to work right.
 		<table class='marginTop'>
 		<tbody>
 		<tr>
-			<td class='valignTop'><button class='applyButton' onclick="app.ext.admin_batchjob.a.adminBatchJobCreate({'type':'UTILITY/EBAY_UPDATE','%vars':{'f':'end-all'}}); return false; ">Close All Listings</button></td>
+			<td class='valignTop'><button class='applyButton' onclick="adminApp.ext.admin_batchjob.a.adminBatchJobCreate({'type':'UTILITY/EBAY_UPDATE','%vars':{'f':'end-all'}}); return false; ">Close All Listings</button></td>
 			<td class='valignTop small'>
 			Ends all active listings on eBay.
 			</td>
@@ -771,7 +771,7 @@ has to be within the fieldset to for data-table to work right.
 		<tbody>
 		<tr>
 			<td class='valignTop'>
-			<button class='applyButton' onclick="app.ext.admin_batchjob.a.adminBatchJobCreate({'type':'UTILITY/KPIBI_RESET','%vars':{}}); return false; ">Reset KPIBI</button>
+			<button class='applyButton' onclick="adminApp.ext.admin_batchjob.a.adminBatchJobCreate({'type':'UTILITY/KPIBI_RESET','%vars':{}}); return false; ">Reset KPIBI</button>
 			</td>
 			<td class='valignTop'>
 			Rebuilds all KPIBI data for the last year
@@ -793,8 +793,8 @@ has to be within the fieldset to for data-table to work right.
 		
 		<form><label><span>Shipping Methods/Rules</span><span class='toolTip' title="This will list the ship methods and their rules for the partition in focus.">?</span></label><button class='marginLeft' data-app-click='admin_tools|inspectorExec' data-inspect='shipmethods'>Go</button></form>		
 		<!--
-		started, but not done yet.
-		<form><label><span>Site Debug</span><span class='toolTip' title="A variety of site debuggging tools (shipping, tax, promotions, etc)">?</span></label><button class='marginLeft' onClick='app.ext.admin_tools.a.siteDebugger(); return false;'>Go</button></form> -->
+		started, but not done yet. -->
+		<form><label><span>Site Debug</span><span class='toolTip' title="A variety of site debuggging tools (shipping, tax, promotions, etc)">?</span></label><button class='marginLeft' onClick='adminApp.ext.admin_tools.a.siteDebugger(); return false;'>Go</button></form>
 		
 	</section>
 
@@ -815,17 +815,6 @@ has to be within the fieldset to for data-table to work right.
 
 </div><!-- /accountUtilitiesTemplate -->
 
-<!--
-
-<h2>Desktop Client</h2>
-	<div class="hint">reset the changed to 0 (will cause orders to resync)</div>
-	From YYYYMMDDHHMMSS:<input type="textbox" value="" name="FROMYYYYMMDDHHMMSS" id="FROM" class='applyDatepicker'><br>
-	Till YYYYMMDDHHMMSS:<input type="textbox" value="" name="TILLYYYYMMDDHHMMSS" id="TILL" class='applyDatepicker'><br>
-	<button onclick="navigateTo('/biz/manage/support/index.cgi?VERB=RESET-ORDER-CHANGED&amp;FROM='+jQuery('#FROM').val()+'&amp;TILL='.jQuery('#TO').val());">Reset</button>
-
-</div>
-
--->
 
 <table>
 <tr id='accountUtilityLogRowTemplate'>
@@ -862,14 +851,16 @@ has to be within the fieldset to for data-table to work right.
 				<label>
 					<span>Type</span>
 					<select name='type' data-bind='var: flexedit(type); format:popVal;' data-panel-selector=".flexEditTypeInputs" data-input-change='show-panel'>
+						<option value='boolean'>Boolean (checkbox)</option>
 						<option value='checkbox'>Checkbox</option>
 						<option value='currency'>Currency</option>
 						<option value='image'>Image</option>
 						<option value='keyword'>Keyword</option>
+						<option value='keywordlist'>Keyword list</option>
 						<option value='number'>Number</option>
 						<option value='select' data-show-panel='flexEditOptionsInput'>Select</option>
-						<option value='textbox'>Text (small block)</option>
-						<option value='textarea'>Text (big block)</option>
+						<option value='textbox'>Text (single line)</option>
+						<option value='textarea'>Text (multi line)</option>
 						<option value='weight'>Weight</option>
 					</select>
 				</label>
@@ -895,12 +886,15 @@ has to be within the fieldset to for data-table to work right.
 	</div>
 	
 	
-	<section class='ui-widget twoColumn column2'>
+	<section class='ui-widget twoColumn column2' data-tablefilter-role='container'>
 		<h3 class='stdPadding ui-widget-header ui-corner-top'>Popular Attributes</h3>
 		<div class='ui-widget-content ui-corner-bottom stdPadding flexeditMasterListContainer' data-app-role='flexeditMasterListContainer'>
-			<div class='buttonset alignRight'><button data-app-click="admin_tools|flexeditAttributesFullListShow" class='applyButton'>Full Attribute List</button></div>
+			<div class='buttonset'>
+				<input name='tableSearchQuery' type='search' placeholder='filter attributes' x-webkit-speech="x-webkit-speech" data-app-keyup="admin|tableFilter" />
+				<button data-app-click="admin_tools|flexeditAttributesFullListShow" class='applyButton floatRight'>Full Attribute List</button>
+				</div>
 			<p>To enable a new attribute, simply drag it to the 'enabled' list on the left</p>
-			<table class='fullWidth gridTable'>
+			<table class='fullWidth gridTable' data-tablefilter-role='table' data-tablefilter-selector='tr'>
 				<tbody data-bind="var: flexedit(contents); format:processList; loadsTemplate:flexeditAttributeRowTemplate;" data-app-role='flexeditAttributeListTbody'>
 				</tbody>
 			</table>
@@ -918,7 +912,7 @@ has to be within the fieldset to for data-table to work right.
 <table>
 <tr id='flexeditAttributeRowTemplate'>
 	<td class='width1 hideInMasterList'><span class="ui-icon ui-icon-arrowthick-2-n-s"></span></td>
-	<td class='alignLeft'>
+	<td class='alignLeft isSearchable'>
 		<div data-bind='var:flexedit(id); format:text;'></div>
 		<div>
 			<span data-bind='var:flexedit(title); defaultVar:flexedit(tag); format:text;'></span>
@@ -1035,5 +1029,8 @@ has to be within the fieldset to for data-table to work right.
 	<button data-app-click="admin_tools|siteDebugExec" data-icon-primary='ui-icon-wrench' class='applyButton'>Go</button>
 	</div>
 
+	<div data-app-role='siteDebugContent'></div>
 </form>
+
+
 </div>

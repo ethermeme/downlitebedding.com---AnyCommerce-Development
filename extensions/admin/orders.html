@@ -12,7 +12,7 @@
 <fieldset>
 
 	<label>
-	<span>Keyword: </span>
+	<span>Keyword: <span class='toolTip' title="Enter the orderid or marketplace id into keyword or enable detailed search to query by email, marketplace id (ebay item #), address, payment or shipment">?</span></span>
 	<input type='search' name='keyword' class='fixedWidth' />
 	</label>
 	<label><input type='checkbox' name='isDetailedSearch' />detailed search</label>
@@ -109,7 +109,7 @@
 	
 			<div class='ui-widget-header ui-corner-tr clearfix' data-app-role='ordersButtonContainer'>
 				<div data-app-role='orderCreateButtonset' class='positionRelative floatRight'>
-				<button class='applyButton' data-app-role='createOrderButton' onClick="navigateTo('#!orderCreate');">New Order</button>
+				<button class='applyButton' data-app-role='createOrderButton' onClick="navigateTo('#!ext/order_create/appCartCreate');">New Order</button>
 				<button class='applyButton' data-app-click='admin_orders|inProgressOrderEditShowList' data-text='false' data-icon-primary='ui-icon-cart' data-icon-secondary='ui-icon-triangle-1-s'>Edit In Progress Order</button>
 				<ul class='displayNone' data-app-role='inProgressOrderList'></ul>
 				</div>
@@ -300,12 +300,12 @@ That'll allow us to easily change the viewer from a modal to a plain dialog to a
 
 <div id='orderDetailsTemplate' class='orderDetails '>
 
-<div class='clearfix marginBottom topCol'>
+<div class='clearfix marginBottom topCol' data-bind='var:order(our/orderid);format:assignAttribute; attribute:data-orderid;'>
 
 
 	<hgroup class='floatLeft marginRight'>
 		<h1 data-bind="var:order(our/orderid);format:text;"></h1>
-		<h2>Order Pool: <select data-bind="var:order(flow/pool); format:orderPoolSelect; extension:admin_orders;" onChange="$(this).addClass('edited'); app.ext.admin_orders.u.updateOrderChangeCount($(this));" data-app-role='orderUpdatePool'></select></h2>
+		<h2>Order Pool: <select data-bind="var:order(flow/pool); format:orderPoolSelect; extension:admin_orders;" onChange="$(this).addClass('edited'); adminApp.ext.admin_orders.u.updateOrderChangeCount($(this));" data-app-role='orderUpdatePool'></select></h2>
 		<h3 data-bind="var:order(flow/payment_status);format:paystatus; extension:admin_orders; pretext: Payment Status: ; hideZero:false;"></h3>
 		<div data-bind="var:order(our/profile);format:text; pretext: profile: ;"></div>
 		<div data-bind="var:order(our/domain);format:text; pretext: domain: ;"></div>
@@ -399,8 +399,9 @@ That'll allow us to easily change the viewer from a modal to a plain dialog to a
 				
 				<div><b data-bind='var: cart(sum/balance_due_total); format:orderBalance; className:orderBalanceDue; hideZero:false; currencySign: $; pretext:Balance Due: ; extension:cco;'></b></div>
 			</fieldset>
-
+			<div data-bind='var:order(our/orderid); format:assignAttribute; attribute:data-orderid;'>
 			<table class='orderContentsTable' data-app-role='orderContentsTable' data-bind="var:order(@ITEMS); format:processList; loadsTemplate: orderStuffItemEditorTemplate;"></table>
+			</div>
 		</div>
 		
 		<div class="ui-tabs ui-widget ui-widget-content ui-corner-all clearfix orderDetailButtonBar">
@@ -410,9 +411,6 @@ That'll allow us to easily change the viewer from a modal to a plain dialog to a
 		<button data-app-event="admin_orders|orderItemAddBasic" title="Use simple inputs to add an item to the order.">Use Inputs</button>
 		</div>
 	
-<!--		
-		<button data-bind='var:order(our/orderid);format:assignAttribute; attribute:data-orderid;' disabled='disabled' onclick="navigateTo('/biz/orders/edit.cgi?CMD=EDIT&amp;OID='+$(this).data('orderid')+'&amp;ts=',{'dialog':true}); return false;" class="button">Edit Contents</button>
--->
 	</form>
 	</section>
 	</div>
@@ -609,6 +607,7 @@ The following templates are used in the 'order detail' modal/view.
 
 	<td class='sum'><span data-bind='var: order(extended); format:money; currencySign: $; hideZero:false; pretext: = ;'></span></td>
 	<td>
+		
 		<button data-app-event="admin_orders|orderItemUpdate">Update Item Price and/or Quantity</button>
 		<button data-app-event="admin_orders|orderItemRemove">Remove From Order</button>
 		<button data-app-event='admin_orders|routingDialogShow' data-app-role='itemSupplierRoutingButton' class='displayNone'>Route</button>
@@ -617,6 +616,7 @@ The following templates are used in the 'order detail' modal/view.
 			<li><a href="#" data-verb='DONE' data-app-event='admin_orders|inventoryDetailOptionsExec'>Done</a></li>
 			<li><a href="#" data-verb='RESET' data-app-event='admin_orders|inventoryDetailOptionsExec'>Reset</a></li>
 		</menu>
+
 		</td>
 	<td></td>
 </tr>

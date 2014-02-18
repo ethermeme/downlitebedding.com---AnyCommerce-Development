@@ -62,7 +62,7 @@
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // 3a. change any of these variables to match your project:
-var TESTING_DOMAIN = "www-sporktacular-com.app-hosted.com"; //www.zoovy.com
+var TESTING_DOMAIN = "www.sporktacular.com"; //www.zoovy.com
 var PROJECT_DIRECTORY = process.cwd() + "/../..";		// the root directory where your project files are located
 
 // 3b. run: node nodeproxy.js
@@ -134,9 +134,14 @@ http.createServer(function(req, res) {
 		// for now we'll do all our requests http (we still need a way to know if origin request was http or https)
 // *** 201352 -> new API for httpProxy
 //		FILEMISSINGproxy.proxyRequest(req, res, {
-		FILEMISSINGproxy.ws(req,res,{
-			host: req.headers.host,
-			port: 80
+		console.log(req.connection);
+		
+//!!! THIS DOES NOT CURRENTLY ADEQUATELY FORWARD SECURE REQUESTS
+		var target = (req.connection.encrypted ? "https://" : "http://")+req.headers.host+":80"+uri;
+		console.log(target);
+		FILEMISSINGproxy.web(req,res,{
+			target : target,
+			secure : false
 			});
 			
 		return;
