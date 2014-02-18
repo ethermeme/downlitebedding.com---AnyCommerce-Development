@@ -72,7 +72,10 @@ var store_downlite = function() {
 		
 				atcForm : function($tag,data)	{
 					$tag.append("<input type='hidden' name='sku' value='"+data.value+"' />");
-					/*REPLACE THIS ATTRIBUTE WITH NEW CUSTOM ATTRIBUTE WHENEVER IT IS CREATED.*/if(data.value["%attribs"]["is:user2"]){
+					app.u.dump($tag);
+					app.u.dump("data.value = " + data.value);
+					/*REPLACE THIS ATTRIBUTE WITH NEW CUSTOM ATTRIBUTE WHENEVER IT IS CREATED.*/if(data.value["%attribs"] && data.value["%attribs"]["is:user2"]){
+						app.u.dump("user2 is checked. running the modal pop for pillow protectors.");
 						$tag.attr("onSubmit","").unbind("submit");
 						$tag.bind('submit', function(){
 							var $notice = $('<div><h3>Would you like to add a pillow protector to your order?</h3></div>');
@@ -80,16 +83,17 @@ var store_downlite = function() {
 							var $buttonYes = $('<div class="alignRight"><button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"><span class="ui-button-text">Let\'s see them</span></button></div>');
 							$buttonYes.bind('click',function(){
 								$notice.dialog('close');
-								app.ext.myRIA.u.productAdd2Cart($tag,{'action':'none'}); 
+								app.ext.store_downlite.u.productAdd2Cart($tag,{'action':'modal'}); 
+								showContent('category',{'navcat':'.415-protectors-and-covers.100-pillow-protectors'});
 								return false;
 								});
 								
-							$notice.append($buttonbuttonYes);
+							$notice.append($buttonYes);
 							
 							var $buttonNo = $('<div class="alignRight"><button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"><span class="ui-button-text">No thanks</span></button></div>');
 							$buttonNo.bind('click',function(){
 								$notice.dialog('close');
-								app.ext.myRIA.u.productAdd2Cart($tag,{'action':'modal'}); 
+								app.ext.store_downlite.u.productAdd2Cart($tag,{'action':'modal'}); 
 								return false;
 								});
 								
@@ -99,10 +103,16 @@ var store_downlite = function() {
 							return false;
 							});
 					}
+					else{
+						app.u.dump("user2 is not checked. Continuing as normal.");
+					}
 				} //END atcForm
 
 
 			}, //renderFormats
+			
+			
+						
 ////////////////////////////////////   UTIL [u]   \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 //utilities are typically functions that are exected by an event or action.
@@ -172,18 +182,70 @@ var store_downlite = function() {
 					//just a banner!
 					}
 				return $banner;
-				}
+				},
+				
+			productAdd2Cart : function($ele,p)	{
+				p.preventDefault();
+				//the buildCartItemAppendObj needs a _cartid param in the form.
+				app.u.dump("$ele.data('show')" + $ele.data('show'));
+				if($("input[name='_cartid']",$ele).length)	{}
+				else	{
+					$ele.append("<input type='hidden' name='_cartid' value='"+app.model.fetchCartID()+"' \/>");
+					}
+
+				var cartObj = app.ext.store_product.u.buildCartItemAppendObj($ele);
+				if(cartObj)	{
+					app.ext.cco.calls.cartItemAppend.init(cartObj,{},'immutable');
+					app.model.destroy('cartDetail|'+cartObj._cartid);
+					app.calls.cartDetail.init(cartObj._cartid,{'callback':function(rd){
+						if(app.model.responseHasErrors(rd)){
+							$('#globalMessaging').anymessage({'message':rd});
+							}
+						else	{
+							showContent('cart',{'show':$ele.data('show')});
+							}
+						}},'immutable');
+					app.model.dispatchThis('immutable');
+					}
+				else	{} //do nothing, the validation handles displaying the errors.
+				},
 			}, //u [utilities]
 			
 			
 			
 			
 //app-events are added to an element through data-app-event="extensionName|functionName"
-//right now, these are not fully supported, but they will be going forward. 
 //they're used heavily in the admin.html file.
 //while no naming convention is stricly forced, 
 //when adding an event, be sure to do off('click.appEventName') and then on('click.appEventName') to ensure the same event is not double-added if app events were to get run again over the same template.
 		e : {
+				productAdd2Cart : function($ele,p)	{
+				app.u.dump("productAdd2Cart is running");
+				//p.preventDefault();
+				//the buildCartItemAppendObj needs a _cartid param in the form.
+				/*
+				if($("input[name='_cartid']",$ele).length)	{}
+				else	{
+					$ele.append("<input type='hidden' name='_cartid' value='"+app.model.fetchCartID()+"' \/>");
+					}
+				
+				var cartObj = app.ext.store_product.u.buildCartItemAppendObj($ele);
+				if(cartObj)	{
+					app.ext.cco.calls.cartItemAppend.init(cartObj,{},'immutable');
+					app.model.destroy('cartDetail|'+cartObj._cartid);
+					app.calls.cartDetail.init(cartObj._cartid,{'callback':function(rd){
+						if(app.model.responseHasErrors(rd)){
+							$('#globalMessaging').anymessage({'message':rd});
+							}
+						else	{
+							showContent('cart',{'show':$ele.data('show')});
+							}
+						}},'immutable');
+					app.model.dispatchThis('immutable');
+					}
+				else	{} //do nothing, the validation handles displaying the errors.
+				*/
+				}
 			} //e [app Events]
 		} //r object.
 	return r;
