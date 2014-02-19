@@ -220,31 +220,28 @@ var store_downlite = function() {
 //when adding an event, be sure to do off('click.appEventName') and then on('click.appEventName') to ensure the same event is not double-added if app events were to get run again over the same template.
 		e : {
 				productAdd2Cart : function($ele,p)	{
-				myApp.u.dump("productAdd2Cart is running");
-				//p.preventDefault();
+				p.preventDefault();
 				//the buildCartItemAppendObj needs a _cartid param in the form.
-				/*
 				if($("input[name='_cartid']",$ele).length)	{}
 				else	{
-					$ele.append("<input type='hidden' name='_cartid' value='"+myApp.model.fetchCartID()+"' \/>");
+					$ele.append("<input type='hidden' name='_cartid' value='"+_app.model.fetchCartID()+"' \/>");
 					}
-				
-				var cartObj = myApp.ext.store_product.u.buildCartItemAppendObj($ele);
+
+				var cartObj = _app.ext.store_product.u.buildCartItemAppendObj($ele);
 				if(cartObj)	{
-					myApp.ext.cco.calls.cartItemAppend.init(cartObj,{},'immutable');
-					myApp.model.destroy('cartDetail|'+cartObj._cartid);
-					myApp.calls.cartDetail.init(cartObj._cartid,{'callback':function(rd){
-						if(myApp.model.responseHasErrors(rd)){
+					_app.ext.cco.calls.cartItemAppend.init(cartObj,{},'immutable');
+					_app.model.destroy('cartDetail|'+cartObj._cartid);
+					_app.calls.cartDetail.init(cartObj._cartid,{'callback':function(rd){
+						if(_app.model.responseHasErrors(rd)){
 							$('#globalMessaging').anymessage({'message':rd});
 							}
 						else	{
 							showContent('cart',{'show':$ele.data('show')});
 							}
 						}},'immutable');
-					myApp.model.dispatchThis('immutable');
+					_app.model.dispatchThis('immutable');
 					}
 				else	{} //do nothing, the validation handles displaying the errors.
-				*/
 				}
 			} //e [app Events]
 		} //r object.
