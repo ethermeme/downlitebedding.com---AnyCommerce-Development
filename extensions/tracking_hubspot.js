@@ -38,13 +38,13 @@ var tracking_hubspot = function() {
 			onSuccess : function()	{
 				var r = false; //return false if extension won't load for some reason (account config, dependencies, etc).
 				
-				app.rq.push(['templateFunction','homepageTemplate',	'onCompletes',	function(infoObj){ app.ext.tracking_hubspot.u.trackPageView(infoObj); }]);
-				app.rq.push(['templateFunction','categoryTemplate',	'onCompletes',	function(infoObj){ app.ext.tracking_hubspot.u.trackPageView(infoObj); }]);
-				app.rq.push(['templateFunction','productTemplate',	'onCompletes',	function(infoObj){ app.ext.tracking_hubspot.u.trackPageView(infoObj); }]);
-				app.rq.push(['templateFunction','companyTemplate',	'onCompletes',	function(infoObj){ app.ext.tracking_hubspot.u.trackPageView(infoObj); }]);
-				app.rq.push(['templateFunction','customerTemplate',	'onCompletes',	function(infoObj){ app.ext.tracking_hubspot.u.trackPageView(infoObj); }]);
-				app.rq.push(['templateFunction','cartTemplate',		'onCompletes',	function(infoObj){ app.ext.tracking_hubspot.u.trackPageView(infoObj); }]);
-				app.rq.push(['templateFunction','checkoutTemplate',	'onCompletes',	function(infoObj){ app.ext.tracking_hubspot.u.trackPageView(infoObj); }]);
+				myApp.rq.push(['templateFunction','homepageTemplate',	'onCompletes',	function(infoObj){ app.ext.tracking_hubspot.u.trackPageView(infoObj); }]);
+				myApp.rq.push(['templateFunction','categoryTemplate',	'onCompletes',	function(infoObj){ app.ext.tracking_hubspot.u.trackPageView(infoObj); }]);
+				myApp.rq.push(['templateFunction','productTemplate',	'onCompletes',	function(infoObj){ app.ext.tracking_hubspot.u.trackPageView(infoObj); }]);
+				myApp.rq.push(['templateFunction','companyTemplate',	'onCompletes',	function(infoObj){ app.ext.tracking_hubspot.u.trackPageView(infoObj); }]);
+				myApp.rq.push(['templateFunction','customerTemplate',	'onCompletes',	function(infoObj){ app.ext.tracking_hubspot.u.trackPageView(infoObj); }]);
+				myApp.rq.push(['templateFunction','cartTemplate',		'onCompletes',	function(infoObj){ app.ext.tracking_hubspot.u.trackPageView(infoObj); }]);
+				myApp.rq.push(['templateFunction','checkoutTemplate',	'onCompletes',	function(infoObj){ app.ext.tracking_hubspot.u.trackPageView(infoObj); }]);
 				
 				
 				
@@ -56,15 +56,15 @@ var tracking_hubspot = function() {
 			onError : function()	{
 //errors will get reported for this callback as part of the extensions loading.  This is here for extra error handling purposes.
 //you may or may not need it.
-				app.u.dump('BEGIN tracking_hubspot.callbacks.init.onError');
+				myApp.u.dump('BEGIN tracking_hubspot.callbacks.init.onError');
 				}
 			},
 		startExtension : {
 			onSuccess : function(){
-				app.ext.order_create.checkoutCompletes.push(function(infoObj){ app.ext.tracking_hubspot.u.trackBuyerConvert(infoObj); });
+				myApp.ext.order_create.checkoutCompletes.push(function(infoObj){ app.ext.tracking_hubspot.u.trackBuyerConvert(infoObj); });
 				},
 			onError : function(){
-				app.u.dump('BEGIN tracking_hubspot.callbacks.startExtension.onError');
+				myApp.u.dump('BEGIN tracking_hubspot.callbacks.startExtension.onError');
 				}
 			}
 		}, //callbacks

@@ -35,10 +35,10 @@ var store_downlite = function() {
 			onSuccess : function()	{
 				var r = false; //return false if extension won't load for some reason (account config, dependencies, etc).
 				
-				app.u.dump("Begin store_downlite.callbacks.init");
-				app.templates.homepageTemplate.on('complete.downlite',function(infoObj){
-					 app.ext.store_downlite.u.loadBanners();
-					 app.ext.store_downlite.u.startHomepageSlideshow();
+				myApp.u.dump("Begin store_downlite.callbacks.init");
+				myApp.templates.homepageTemplate.on('complete.downlite',function(infoObj){
+					 myApp.ext.store_downlite.u.loadBanners();
+					 myApp.ext.store_downlite.u.startHomepageSlideshow();
 				 });
 				//if there is any functionality required for this extension to load, put it here. such as a check for async google, the FB object, etc. return false if dependencies are not present. don't check for other extensions.
 				r = true;
@@ -48,7 +48,7 @@ var store_downlite = function() {
 			onError : function()	{
 //errors will get reported for this callback as part of the extensions loading.  This is here for extra error handling purposes.
 //you may or may not need it.
-				app.u.dump('BEGIN admin_orders.callbacks.init.onError');
+				myApp.u.dump('BEGIN admin_orders.callbacks.init.onError');
 				}
 			}
 		}, //callbacks
@@ -72,10 +72,10 @@ var store_downlite = function() {
 		
 				atcForm : function($tag,data)	{
 					$tag.append("<input type='hidden' name='sku' value='"+data.value+"' />");
-					app.u.dump($tag);
-					app.u.dump("data.value = " + data.value);
+					myApp.u.dump($tag);
+					myApp.u.dump("data.value = " + data.value);
 					/*REPLACE THIS ATTRIBUTE WITH NEW CUSTOM ATTRIBUTE WHENEVER IT IS CREATED.*/if(data.value["%attribs"] && data.value["%attribs"]["is:user2"]){
-						app.u.dump("user2 is checked. running the modal pop for pillow protectors.");
+						myApp.u.dump("user2 is checked. running the modal pop for pillow protectors.");
 						$tag.attr("onSubmit","").unbind("submit");
 						$tag.bind('submit', function(){
 							var $notice = $('<div><h3>Would you like to add a pillow protector to your order?</h3></div>');
@@ -83,7 +83,7 @@ var store_downlite = function() {
 							var $buttonYes = $('<div class="alignRight"><button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"><span class="ui-button-text">Let\'s see them</span></button></div>');
 							$buttonYes.bind('click',function(){
 								$notice.dialog('close');
-								app.ext.store_downlite.u.productAdd2Cart($tag,{'action':'modal'}); 
+								myApp.ext.store_downlite.u.productAdd2Cart($tag,{'action':'modal'}); 
 								showContent('category',{'navcat':'.415-protectors-and-covers.100-pillow-protectors'});
 								return false;
 								});
@@ -93,7 +93,7 @@ var store_downlite = function() {
 							var $buttonNo = $('<div class="alignRight"><button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"><span class="ui-button-text">No thanks</span></button></div>');
 							$buttonNo.bind('click',function(){
 								$notice.dialog('close');
-								app.ext.store_downlite.u.productAdd2Cart($tag,{'action':'modal'}); 
+								myApp.ext.store_downlite.u.productAdd2Cart($tag,{'action':'modal'}); 
 								return false;
 								});
 								
@@ -104,7 +104,7 @@ var store_downlite = function() {
 							});
 					}
 					else{
-						app.u.dump("user2 is not checked. Continuing as normal.");
+						myApp.u.dump("user2 is not checked. Continuing as normal.");
 					}
 				} //END atcForm
 
@@ -120,44 +120,44 @@ var store_downlite = function() {
 		u : {
 			loadBanners : function(){
 				$.getJSON("_banners.json?_v="+(new Date()).getTime(), function(json){
-					app.ext.store_downlite.vars.bannerJSON = json;
+					myApp.ext.store_downlite.vars.bannerJSON = json;
 					}).fail(function(a,b,c){
-						app.ext.store_downlite.vars.bannerJSON = {};
-						app.u.dump("BANNERS FAILED TO LOAD");
+						myApp.ext.store_downlite.vars.bannerJSON = {};
+						myApp.u.dump("BANNERS FAILED TO LOAD");
 						});
 				},
 			startHomepageSlideshow : function(attempts){
-				//app.u.dump("Begin startHomepageSlideshow function");
+				//myApp.u.dump("Begin startHomepageSlideshow function");
 				attempts = attempts || 0;
-				if(app.ext.store_downlite.vars.bannerJSON){
-					//app.u.dump("Banners.json detected. Continuing with adding slideshow");
+				if(myApp.ext.store_downlite.vars.bannerJSON){
+					//myApp.u.dump("Banners.json detected. Continuing with adding slideshow");
 					var $slideshow = $('#wideSlideshow');
 					if($slideshow.hasClass('slideshowRendered')){
 						//already rendered, do nothing.
-						//app.u.dump("Slideshow already rendered. Doing nothing.");
+						//myApp.u.dump("Slideshow already rendered. Doing nothing.");
 						}
 					else {
-						//app.u.dump(bannerJSON);
-						for(var i=0; i < app.ext.store_downlite.vars.bannerJSON.slides.length; i++){
-							//app.u.dump("slide = " + i);
-							var $banner = app.ext.store_downlite.u.makeBanner(app.ext.store_downlite.vars.bannerJSON.slides[i], 661, 432, "FFFFFF");
+						//myApp.u.dump(bannerJSON);
+						for(var i=0; i < myApp.ext.store_downlite.vars.bannerJSON.slides.length; i++){
+							//myApp.u.dump("slide = " + i);
+							var $banner = myApp.ext.store_downlite.u.makeBanner(myApp.ext.store_downlite.vars.bannerJSON.slides[i], 661, 432, "FFFFFF");
 							$slideshow.append($banner);
 							}
-						$slideshow.addClass('slideshowRendered').cycle(app.ext.store_downlite.vars.bannerJSON.cycleOptions);
+						$slideshow.addClass('slideshowRendered').cycle(myApp.ext.store_downlite.vars.bannerJSON.cycleOptions);
 						$slideshow.cycle('next');
 						$slideshow.cycle('prev');
 						}
 					}
 				else {
-					app.u.dump("Banners.json not detected. Looping function in .3 seconds.");
-					setTimeout(function(){app.ext.store_downlite.u.startHomepageSlideshow();}, 250);
+					myApp.u.dump("Banners.json not detected. Looping function in .3 seconds.");
+					setTimeout(function(){myApp.ext.store_downlite.u.startHomepageSlideshow();}, 250);
 					}
 				},
 			makeBanner : function(bannerJSON, w, h, b){
 				var $banner = $('<a></a>');
 				
 				var $img = $('<img />');
-				var src = app.u.makeImage({
+				var src = myApp.u.makeImage({
 					w : w,
 					h : h,
 					b : b,
@@ -187,25 +187,25 @@ var store_downlite = function() {
 			productAdd2Cart : function($ele,p)	{
 				p.preventDefault();
 				//the buildCartItemAppendObj needs a _cartid param in the form.
-				app.u.dump("$ele.data('show')" + $ele.data('show'));
+				myApp.u.dump("$ele.data('show')" + $ele.data('show'));
 				if($("input[name='_cartid']",$ele).length)	{}
 				else	{
-					$ele.append("<input type='hidden' name='_cartid' value='"+app.model.fetchCartID()+"' \/>");
+					$ele.append("<input type='hidden' name='_cartid' value='"+myApp.model.fetchCartID()+"' \/>");
 					}
 
-				var cartObj = app.ext.store_product.u.buildCartItemAppendObj($ele);
+				var cartObj = myApp.ext.store_product.u.buildCartItemAppendObj($ele);
 				if(cartObj)	{
-					app.ext.cco.calls.cartItemAppend.init(cartObj,{},'immutable');
-					app.model.destroy('cartDetail|'+cartObj._cartid);
-					app.calls.cartDetail.init(cartObj._cartid,{'callback':function(rd){
-						if(app.model.responseHasErrors(rd)){
+					myApp.ext.cco.calls.cartItemAppend.init(cartObj,{},'immutable');
+					myApp.model.destroy('cartDetail|'+cartObj._cartid);
+					myApp.calls.cartDetail.init(cartObj._cartid,{'callback':function(rd){
+						if(myApp.model.responseHasErrors(rd)){
 							$('#globalMessaging').anymessage({'message':rd});
 							}
 						else	{
 							showContent('cart',{'show':$ele.data('show')});
 							}
 						}},'immutable');
-					app.model.dispatchThis('immutable');
+					myApp.model.dispatchThis('immutable');
 					}
 				else	{} //do nothing, the validation handles displaying the errors.
 				},
@@ -220,28 +220,28 @@ var store_downlite = function() {
 //when adding an event, be sure to do off('click.appEventName') and then on('click.appEventName') to ensure the same event is not double-added if app events were to get run again over the same template.
 		e : {
 				productAdd2Cart : function($ele,p)	{
-				app.u.dump("productAdd2Cart is running");
+				myApp.u.dump("productAdd2Cart is running");
 				//p.preventDefault();
 				//the buildCartItemAppendObj needs a _cartid param in the form.
 				/*
 				if($("input[name='_cartid']",$ele).length)	{}
 				else	{
-					$ele.append("<input type='hidden' name='_cartid' value='"+app.model.fetchCartID()+"' \/>");
+					$ele.append("<input type='hidden' name='_cartid' value='"+myApp.model.fetchCartID()+"' \/>");
 					}
 				
-				var cartObj = app.ext.store_product.u.buildCartItemAppendObj($ele);
+				var cartObj = myApp.ext.store_product.u.buildCartItemAppendObj($ele);
 				if(cartObj)	{
-					app.ext.cco.calls.cartItemAppend.init(cartObj,{},'immutable');
-					app.model.destroy('cartDetail|'+cartObj._cartid);
-					app.calls.cartDetail.init(cartObj._cartid,{'callback':function(rd){
-						if(app.model.responseHasErrors(rd)){
+					myApp.ext.cco.calls.cartItemAppend.init(cartObj,{},'immutable');
+					myApp.model.destroy('cartDetail|'+cartObj._cartid);
+					myApp.calls.cartDetail.init(cartObj._cartid,{'callback':function(rd){
+						if(myApp.model.responseHasErrors(rd)){
 							$('#globalMessaging').anymessage({'message':rd});
 							}
 						else	{
 							showContent('cart',{'show':$ele.data('show')});
 							}
 						}},'immutable');
-					app.model.dispatchThis('immutable');
+					myApp.model.dispatchThis('immutable');
 					}
 				else	{} //do nothing, the validation handles displaying the errors.
 				*/

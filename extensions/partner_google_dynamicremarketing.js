@@ -41,14 +41,14 @@ var google_dynamicremarketing = function() {
 			onSuccess : function()	{
 				var r = false; //return false if extension won't load for some reason (account config, dependencies, etc).
 				
-				app.rq.push(['templateFunction','productTemplate','onCompletes',function(P){
+				myApp.rq.push(['templateFunction','productTemplate','onCompletes',function(P){
 					app.ext.google_dynamicremarketing.u.trackEvent({
 						"ecomm_prodid":P.pid,
 						"ecomm_pagetype":"product",
 						"ecomm_totalvalue":app.data["appProductGet|"+P.pid]["%attribs"]["zoovy:base_price"]
 						});
 					}]);
-				app.rq.push(['templateFunction','cartTemplate','onCompletes',function(P){
+				myApp.rq.push(['templateFunction','cartTemplate','onCompletes',function(P){
 					var prods = [];
 					if(app.data.cartDetail['@ITEMS'] && app.data.cartDetail['@ITEMS'].length > 0){
 						for(var index in app.data.cartDetail['@ITEMS']){
