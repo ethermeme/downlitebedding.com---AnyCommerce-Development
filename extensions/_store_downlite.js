@@ -82,7 +82,7 @@ var store_downlite = function(_app) {
 						$tag.bind('submit', function(){
 							var $notice = $('<div><h3>Would you like to add a pillow protector to your order?</h3></div>');
 							
-							var $buttonYes = $('<div class="alignRight"><button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"><span class="ui-button-text">Let\'s see them</span></button></div>');
+							var $buttonYes = $('<div class="pillowProtPopupButtonYes"><button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"><span class="ui-button-text">Let\'s see them</span></button></div>');
 							$buttonYes.bind('click',function(){
 								$notice.dialog('close');
 								var cartShow = "none";
@@ -93,7 +93,7 @@ var store_downlite = function(_app) {
 								
 							$notice.append($buttonYes);
 							
-							var $buttonNo = $('<div class="alignRight"><button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"><span class="ui-button-text">No thanks</span></button></div>');
+							var $buttonNo = $('<div class="pillowProtPopupButtonNo"><button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"><span class="ui-button-text">No thanks</span></button></div>');
 							$buttonNo.bind('click',function(){
 								$notice.dialog('close');
 								var cartShow = $tag.data('show');

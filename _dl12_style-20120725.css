@@ -1501,6 +1501,7 @@ h1	{color:#665d51; font-size:18px; font-weight:bold; margin:0 0 12px 0; padding:
     padding: 9px;
     padding: 10px 0\0/;
 	width:80px;
+	position: relative;
 }
 .hotelFinder {
     background-image: url("images/SearchBg.png");

@@ -221,10 +221,14 @@ ANIMATION TESTING
 			
 			<div class="index">
 				<div class="searchBox">
-					<form name='headerSearchFrm' action='#' class='productSearchForm' method="get" id="searchFunc">
-                        <input type='search' name='KEYWORDS' class="productSearchKeyword handleDefault secondary box" placeholder="Enter Search Term..." id="searchBar"/>
-                        <input class="search pointer" type="submit" value="Search" id="searchButton" />
-					</form>
+					
+                    
+                    <form name='headerSearchFrm' action='#' class='productSearchForm marginLeft' method="get" data-app-submit='myRIA|searchFormSubmit'>
+                         <input type='search' name='KEYWORDS' placeholder='Enter Search Term...' class="productSearchKeyword handleDefault secondary box" />
+                         <button class="search pointer">Search</button>
+                    </form>
+                    <!--
+                    
 				</div>
 				<div class="dotted"></div>
 				<div class="index_ads shopbybrand-btn">

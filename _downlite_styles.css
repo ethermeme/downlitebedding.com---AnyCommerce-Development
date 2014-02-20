@@ -20,3 +20,20 @@ label span span.anycbText {
     height: 21px !important;
     line-height: 17px !important;
 }
+
+.pillowProtPopupButtonYes{
+	float: left;
+	margin-top:20px;
+}
+
+.pillowProtPopupButtonNo{
+	float: left;
+    margin-left: 68px;
+	margin-top:20px;
+}
+
+.ui-icon-search {
+    background-position: -160px -112px;
+    left: -2px;
+    position: absolute;
+}
