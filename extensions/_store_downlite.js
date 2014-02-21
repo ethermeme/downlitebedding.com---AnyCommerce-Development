@@ -73,11 +73,9 @@ var store_downlite = function(_app) {
 				atcForm : function($tag,data)	{
 					$tag.append("<input type='hidden' name='sku' value='"+data.value+"' />");
 					//_app.u.dump($tag);
-					_app.u.dump(data.value);
-					//_app.data['appProductGet|'+pid]['%attribs']['zoovy:base_price'] == '') 
+					//_app.u.dump(data.value);
 					/*REPLACE THIS ATTRIBUTE WITH NEW CUSTOM ATTRIBUTE WHENEVER IT IS CREATED.*/if(_app.data['appProductGet|'+data.value]['%attribs'] && _app.data['appProductGet|'+data.value]['%attribs']["is:user2"]){
-					/*REPLACE THIS ATTRIBUTE WITH NEW CUSTOM ATTRIBUTE WHENEVER IT IS CREATED.if(data.value["%attribs"] && data.value["%attribs"]["is:user2"]){*/
-						_app.u.dump("user2 is checked. running the modal pop for pillow protectors.");
+						//_app.u.dump("user2 is checked. running the modal pop for pillow protectors.");
 						$tag.attr("onSubmit","").unbind("submit");
 						$tag.bind('submit', function(){
 							var $notice = $('<div><h3>Would you like to add a pillow protector to your order?</h3></div>');
@@ -110,7 +108,41 @@ var store_downlite = function(_app) {
 					else{
 						_app.u.dump("user2 is not checked. Continuing as normal.");
 					}
-				} //END atcForm
+				}, //END atcForm
+				
+				
+				renderYouTubeVideos : function($tag,data)	{
+					//_app.u.dump(data);
+					var videoIds = data.value.split(',');
+					_app.u.dump("videoIds = " + videoIds);
+					var totalVideoAmount = videoIds.length;
+					_app.u.dump("totalVideoAmount = " + totalVideoAmount);
+					//var videoTitles = 
+					
+					for(var i=0;i<totalVideoAmount;i++){
+						var $videoContent = $("<div class='prodVideoContainer pointer clearfix youtubeVideo"+i+"' onClick=\"myApp.ext.myRIA.a.showYoutubeInModal($(this).attr('data-videoid'));\">"
+							+ "<div class='vidThumb'><img src='blank.gif' width='120' height='90' /></div>"
+							+"</div>"
+						);
+						$($tag).append($videoContent);
+						$(".youtubeVideo" + i + " div img", $tag).attr('src',"https://i3.ytimg.com/vi/"+videoIds[i]+"/default.jpg");
+						
+						$(".youtubeVideo" + i, $tag).attr("data-videoid",videoIds[i]);
+					}
+					
+					$("#ytVideoCont").carouFredSel({
+						width   : 140,
+						height	: 130,
+						items   : 1,
+						scroll: 1,
+						auto : false,
+						prev : "#prodYTPrev",
+						next : "#prodYTNext"
+					});
+					
+					
+					
+				}
 
 
 			}, //renderFormats
@@ -191,7 +223,7 @@ var store_downlite = function(_app) {
 			addItemToCartPillowProtector : function($ele,cartType)	{
 				//p.preventDefault();
 				//the buildCartItemAppendObj needs a _cartid param in the form.
-				_app.u.dump($ele.data('show'));
+				//_app.u.dump($ele.data('show'));
 				if($("input[name='_cartid']",$ele).length)	{}
 				else	{
 					$ele.append("<input type='hidden' name='_cartid' value='"+_app.model.fetchCartID()+"' \/>");

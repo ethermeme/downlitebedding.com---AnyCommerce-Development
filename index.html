@@ -227,7 +227,7 @@ ANIMATION TESTING
                          <input type='search' name='KEYWORDS' placeholder='Enter Search Term...' class="productSearchKeyword handleDefault secondary box" />
                          <button class="search pointer">Search</button>
                     </form>
-                    <!--
+                    
                     
 				</div>
 				<div class="dotted"></div>
@@ -263,9 +263,9 @@ ANIMATION TESTING
 					<h5><img src="images/msg_img.png" alt="" /> SIGN UP FOR DEALS</h5>
 					<p>Get Product Updates &amp; Coupons</p>
 				</div>
-				<form action='#' id='subscribeFrmFooter' name='subscribeFrm' onSubmit="app.ext.store_crm.u.handleSubscribe(this.id); return false">
-					<input required='required' type='email' value='email address' class='newsSubscribeInput textbox email'  maxlength='50' size='25' name='login' id='subscribeLoginFooter' onFocus="app.ext.myRIA.u.handleFormField(this);"  onBlur="app.ext.myRIA.u.handleFormField(this);" />
-					<input required='required' type='text'  value='full name' class='newsSubscribeInput textbox fullname' maxlength='50' size='25' name='fullname' id='subscribeFullnameFooter' onFocus="app.ext.myRIA.u.handleFormField(this);"  onBlur="app.ext.myRIA.u.handleFormField(this);" />
+				<form action='#' id='subscribeFrmFooter' name='subscribeFrm' onSubmit="myApp.ext.store_crm.u.handleSubscribe(this.id); return false">
+					<input required='required' type='email' value='email address' class='newsSubscribeInput textbox email'  maxlength='50' size='25' name='login' id='subscribeLoginFooter' onFocus="myApp.ext.myRIA.u.handleFormField(this);"  onBlur="myApp.ext.myRIA.u.handleFormField(this);" />
+					<input required='required' type='text'  value='full name' class='newsSubscribeInput textbox fullname' maxlength='50' size='25' name='fullname' id='subscribeFullnameFooter' onFocus="myApp.ext.myRIA.u.handleFormField(this);"  onBlur="myApp.ext.myRIA.u.handleFormField(this);" />
 
 					<input type="submit" class="submit" value="SUBMIT" />
 				</form>
@@ -621,7 +621,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
 		<div class='catMediaContainer displayNone' data-bind='var:category(%page.picture1);format:showIfSet;'>
 			<div class='catBigImageContainer displayNone' data-bind='var:category(%page.picture1);format:showIfSet;'><img src='blank.gif' data-bind='var: category(%page.picture1); format:imageURL;' width='480' height='360' /></div>
 			<div class='displayNone' data-bind='var:category(%page.youtube_videoid); format:showIfSet;'>
-				<div class='catVideoContainer clearfix pointer' data-bind='var:category(%page.youtube_videoid);format:assignAttribute; attribute:data-videoid;' onClick="app.ext.myRIA.a.showYoutubeInModal($(this).attr('data-videoid'));" >
+				<div class='catVideoContainer clearfix pointer' data-bind='var:category(%page.youtube_videoid);format:assignAttribute; attribute:data-videoid;' onClick="myApp.ext.myRIA.a.showYoutubeInModal($(this).attr('data-videoid'));" >
 				<div class='vidThumb'><img src='blank.gif' data-bind='var: category(%page.youtube_videoid); format:youtubeThumbnail; extension:myRIA;'  width='120' height='90' /></div>
 				<h2 data-bind="var: category(%page.youtube_videoheader); format: text;"></h2>
 				<p  data-bind="var: category(%page.youtube_videodescription); format: text;"></p>
@@ -852,7 +852,7 @@ SANITY -> if you change the height and width of this image, change the .minimalM
 </li>
 
 <li id="simpleSubcatTemplate">
- <a data-bind='var:category(path); format:assignAttribute; attribute:data-navcat;' href="#" onClick="app.u.dump($(this).attr('data-navcat')); return showContent('category',{'navcat':$(this).attr('data-navcat')});">
+ <a data-bind='var:category(path); format:assignAttribute; attribute:data-navcat;' href="#" onClick="myApp.u.dump($(this).attr('data-navcat')); return showContent('category',{'navcat':$(this).attr('data-navcat')});">
  	<span data-bind="var:category(pretty); format:text;"></span>
  </a>
 </li>
@@ -919,19 +919,24 @@ this will likely become more flexible in the future. ###
 
 		<div data-bind='var:product(pid);format:assignAttribute; attribute:data-pid;' class='prodThumbs'>
 	
-	<div onClick='myApp.ext.store_product.u.showPicsInModal({"pid":$(this).parent().attr("data-pid"),"int":"2"});' class='pointer'><img src='blank.gif' data-bind='var: product(zoovy:prod_image2); format:imageURL;' alt='' width='100' height='100' /></div>
-	
-	<div onClick='myApp.ext.store_product.u.showPicsInModal({"pid":$(this).parent().attr("data-pid"),"int":"3"});' class='pointer'><img src='blank.gif' data-bind='var: product(zoovy:prod_image3); format:imageURL;' alt=''  width='100' height='100' /></div>
-	
-	<div onClick='myApp.ext.store_product.u.showPicsInModal({"pid":$(this).parent().attr("data-pid"),"int":"4"});' class='pointer'><img src='blank.gif' data-bind='var: product(zoovy:prod_image4); format:imageURL;' alt='' width='100' height='100' /></div>
+            <div onClick='myApp.ext.store_product.u.showPicsInModal({"pid":$(this).parent().attr("data-pid"),"int":"2"});' class='pointer'><img src='blank.gif' data-bind='var: product(zoovy:prod_image2); format:imageURL;' alt='' width='100' height='100' /></div>
+            
+            <div onClick='myApp.ext.store_product.u.showPicsInModal({"pid":$(this).parent().attr("data-pid"),"int":"3"});' class='pointer'><img src='blank.gif' data-bind='var: product(zoovy:prod_image3); format:imageURL;' alt=''  width='100' height='100' /></div>
+            
+            <div onClick='myApp.ext.store_product.u.showPicsInModal({"pid":$(this).parent().attr("data-pid"),"int":"4"});' class='pointer'><img src='blank.gif' data-bind='var: product(zoovy:prod_image4); format:imageURL;' alt='' width='100' height='100' /></div>
 	
 		</div>
-		<div class='displayNone' data-bind='var: product(youtube:videoid); format:showIfSet;'>
-			<div class='prodVideoContainer pointer clearfix' data-bind='var:product(youtube:videoid);format:assignAttribute; attribute:data-videoid;' onClick="app.ext.myRIA.a.showYoutubeInModal($(this).attr('data-videoid'));">
+		<div class='displayNone youTubeVideoCont' data-bind='var: product(youtube:videoid); format:showIfSet;'>
+        	<img id="prodYTPrev" src="images/prodYTPrev.png" />
+            <img id="prodYTNext" src="images/prodYTNext.png" />
+            <div id="ytVideoCont" data-bind='var: product(youtube:videoid); format:renderYouTubeVideos; extension:store_downlite;'></div>
+			<!--
+            <div class='prodVideoContainer pointer clearfix' data-bind='var:product(youtube:videoid);format:assignAttribute; attribute:data-videoid;' onClick="myApp.ext.myRIA.a.showYoutubeInModal($(this).attr('data-videoid'));">
 				<div class='vidThumb'><img src='blank.gif' data-bind='var: product(youtube:videoid); format:youtubeThumbnail; extension:myRIA;'  width='120' height='90' /></div>
 				<h2 data-bind="var: product(youtube:video_title); format: text;"></h2>
 				<p  data-bind="var: product(youtube:video_description); format: text;"></p>
 			</div>
+            -->
 		</div>		
 	</td>
 
@@ -949,7 +954,7 @@ this will likely become more flexible in the future. ###
 	<!--<h5 data-bind='var: product(zoovy:prod_mfgid); format:text; pretext: Mfg ID: ;'></h5>-->
 	
 	<section id='prodViewerReviewSummary'>
-		<a href='#' onClick='app.ext.store_crm.u.showReviewFrmInModal({"pid":$(this).parent().attr("data-pid"),"templateID":"reviewFrmTemplate"}); return false;'>Review This Item</a> <span data-bind='var: reviews(reviews.average); format:addClass; className:review_;' class='reviewSprite'></span>
+		<a href='#' onClick='myApp.ext.store_crm.u.showReviewFrmInModal({"pid":$(this).parent().attr("data-pid"),"templateID":"reviewFrmTemplate"}); return false;'>Review This Item</a> <span data-bind='var: reviews(reviews.average); format:addClass; className:review_;' class='reviewSprite'></span>
 	</section>
 
 	

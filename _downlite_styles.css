@@ -37,3 +37,23 @@ label span span.anycbText {
     left: -2px;
     position: absolute;
 }
+
+.youTubeVideoCont{
+	position:relative;
+}
+#prodYTPrev{
+	border: medium none;
+    cursor: pointer;
+    height: 20px;
+    position: absolute;
+    left: 0;
+    width: 20px;
+}
+#prodYTNext{
+	border: medium none;
+    cursor: pointer;
+    height: 20px;
+    position: absolute;
+    right: 0;
+    width: 20px;
+}
