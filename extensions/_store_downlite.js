@@ -131,8 +131,8 @@ var store_downlite = function(_app) {
 					}
 					
 					$("#ytVideoCont").carouFredSel({
-						width   : 140,
-						height	: 130,
+						//width   : 140,
+						//height	: 130,
 						items   : 1,
 						scroll: 1,
 						auto : false,
