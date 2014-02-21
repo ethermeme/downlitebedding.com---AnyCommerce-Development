@@ -1940,7 +1940,7 @@ PRODUCT TEMPLATE
 .prodImages img, .imageContainer img	{border:1px solid #b1b1af;}
 #prodViewerTable .prodThumbs div:last-child	{margin-right:0;}
 
-.prodVideoContainer	{border:1px solid #939393; background:#ffffff; padding:8px; margin-top:10px;}
+.prodVideoContainer	{border:1px solid #939393; background:#ffffff; padding:8px;}
 .prodVideoContainer .vidThumb	{float:left; margin-right:8px;}
 .prodVideoContainer h2	{color:#655e4e; font-size:16px; font-weight:normal; padding:0; margin:0;}
 .prodVideoContainer P	{margin:2px 0; padding:0; font-size:13px;}

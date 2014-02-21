@@ -113,11 +113,11 @@ var store_downlite = function(_app) {
 				
 				renderYouTubeVideos : function($tag,data)	{
 					//_app.u.dump(data);
+					var $context = $tag.parent();
 					var videoIds = data.value.split(',');
 					_app.u.dump("videoIds = " + videoIds);
 					var totalVideoAmount = videoIds.length;
 					_app.u.dump("totalVideoAmount = " + totalVideoAmount);
-					//var videoTitles = 
 					
 					for(var i=0;i<totalVideoAmount;i++){
 						var $videoContent = $("<div class='prodVideoContainer pointer clearfix youtubeVideo"+i+"' onClick=\"myApp.ext.myRIA.a.showYoutubeInModal($(this).attr('data-videoid'));\">"
@@ -130,17 +130,51 @@ var store_downlite = function(_app) {
 						$(".youtubeVideo" + i, $tag).attr("data-videoid",videoIds[i]);
 					}
 					
-					$("#ytVideoCont").carouFredSel({
-						//width   : 140,
-						//height	: 130,
-						items   : 1,
-						scroll: 1,
-						auto : false,
-						prev : "#prodYTPrev",
-						next : "#prodYTNext"
-					});
+					if(totalVideoAmount > 1){
+						
+						$(".ytVideoCont", $context).carouFredSel({
+							width   : 478,
+							height	: 110,
+							items   : 1,
+							scroll: 1,
+							auto : false,
+							prev : ".prodYTPrev",
+							next : ".prodYTNext"
+						});
+						$(".ytVideoCont", $context).css("left","0");
+						
+					}
+					else{
+						$(".prodYTPrev", $context).hide();
+						$(".prodYTNext", $context).hide();
+					}
+				},
+				
+				renderYouTubeTitles : function($tag,data)	{
+					var $context = $tag.parent();
+					var videoTitles = data.value.split(',');
+					_app.u.dump("videoTitles = " + videoTitles);
+					var totalTitlesAmount = videoTitles.length;
+					_app.u.dump("totalTitlesAmount = " + totalTitlesAmount);
 					
+					for(var i=0;i<totalTitlesAmount;i++){
+						var $title = $("<h2>"+videoTitles[i]+"</h2>");
+						$(".youtubeVideo" + i, $context).append($title);
+					}
 					
+				},
+				
+				renderYouTubeDesc : function($tag,data)	{
+					var $context = $tag.parent();
+					var videoDesc = data.value.split(',');
+					_app.u.dump("videoDesc = " + videoDesc);
+					var totalDescAmount = videoDesc.length;
+					_app.u.dump("totalDescAmount = " + totalDescAmount);
+					
+					for(var i=0;i<totalDescAmount;i++){
+						var $desc = $("<p>"+videoDesc[i]+"</p>");
+						$(".youtubeVideo" + i, $context).append($desc);
+					}
 					
 				}
 

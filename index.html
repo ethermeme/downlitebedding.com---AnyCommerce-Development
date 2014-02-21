@@ -927,9 +927,12 @@ this will likely become more flexible in the future. ###
 	
 		</div>
 		<div class='displayNone youTubeVideoCont' data-bind='var: product(youtube:videoid); format:showIfSet;'>
-        	<img id="prodYTPrev" src="images/prodYTPrev.png" />
-            <img id="prodYTNext" src="images/prodYTNext.png" />
-            <div id="ytVideoCont" data-bind='var: product(youtube:videoid); format:renderYouTubeVideos; extension:store_downlite;'></div>
+        	<img class="prodYTPrev" src="images/prodYTPrev.png" />
+            <img class="prodYTNext" src="images/prodYTNext.png" />
+            <div class="ytVideoCont" data-bind='var: product(youtube:videoid); format:renderYouTubeVideos; extension:store_downlite;'>
+            	<span class="displayNone" data-bind="var: product(youtube:video_title); format:renderYouTubeTitles; extension:store_downlite;"></span>
+                <span class="displayNone" data-bind="var: product(youtube:video_description); format:renderYouTubeDesc; extension:store_downlite;"></span>
+            </div>
 			<!--
             <div class='prodVideoContainer pointer clearfix' data-bind='var:product(youtube:videoid);format:assignAttribute; attribute:data-videoid;' onClick="myApp.ext.myRIA.a.showYoutubeInModal($(this).attr('data-videoid'));">
 				<div class='vidThumb'><img src='blank.gif' data-bind='var: product(youtube:videoid); format:youtubeThumbnail; extension:myRIA;'  width='120' height='90' /></div>

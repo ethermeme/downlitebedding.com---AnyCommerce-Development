@@ -38,22 +38,33 @@ label span span.anycbText {
     position: absolute;
 }
 
+.youTubeVideoCont div.caroufredsel_wrapper{
+}
 .youTubeVideoCont{
-	position:relative;
+	float: left;
+    position: relative;
+    width: 478px;
 }
-#prodYTPrev{
+.ytVideoCont{
+	float:left;
+}
+img.prodYTPrev{
 	border: medium none;
     cursor: pointer;
     height: 20px;
     position: absolute;
-    left: 0;
+    left: -10px;
+	top: 45px;
     width: 20px;
+	z-index:2;
 }
-#prodYTNext{
+img.prodYTNext{
 	border: medium none;
     cursor: pointer;
     height: 20px;
     position: absolute;
-    right: 0;
+    right: -10px;
+    top: 45px;
     width: 20px;
+    z-index: 2;
 }
