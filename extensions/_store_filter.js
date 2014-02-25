@@ -22,7 +22,7 @@ The functions here are designed to work with 'reasonable' size lists of categori
 */
 
 
-var _store_filter = function() {
+var _store_filter = function(_app) {
 	var r = {
 		
 	vars : {
@@ -43,6 +43,11 @@ var _store_filter = function() {
 		"exec" : function($form,infoObj){app.ext._store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:2000});}
 		},
 		*/
+		//HOTEL FINDER
+			".hotels":{
+			"filter": "hotelFinderFilterForm",
+			"exec" : function($form,infoObj){_app.ext._store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:1000});}
+			},
 			
 			
 			
@@ -64,9 +69,97 @@ var _store_filter = function() {
 			onError : function()	{
 //errors will get reported for this callback as part of the extensions loading.  This is here for extra error handling purposes.
 				}
+			},
+			
+		startExtension : {
+			onSuccess : function()	{
+				_app.u.dump('BEGIN app.ext._store_filter.startExtension.onSuccess ');
+				_app.templates.categoryTemplate.on('complete',function(event, $context, infoObj){
+					//var $context = $(_app.u.jqSelector('#',infoObj.parentID));
+					//**COMMENT TO REMOVE AUTO-RESETTING WHEN LEAVING CAT PAGE FOR FILTERED SEARCH**
+					
+					_app.ext._store_filter.vars.catPageID = $context;
+					
+					_app.u.dump($context);
+					_app.u.dump(infoObj);  
+					
+					_app.u.dump("BEGIN categoryTemplate onCompletes for filtering");
+					if(_app.ext._store_filter.filterMap[infoObj.navcat])	{
+						_app.u.dump(" -> safe id DOES have a filter.");
+				
+						var $page = $(_app.u.jqSelector('#',infoObj.parentID));
+						_app.u.dump(" -> $page.length: "+$page.length);
+						if($page.data('filterAdded'))	{} //filter is already added, don't add again.
+						else	{
+							$page.data('filterAdded',true)
+							var $form = $("[name='"+_app.ext._store_filter.filterMap[infoObj.navcat].filter+"']",'#appFilters').clone().appendTo($('.catProdListSidebar',$page));
+							$form.on('submit.filterSearch',function(event){
+								event.preventDefault()
+								_app.u.dump(" -> Filter form submitted.");
+								_app.ext._store_filter.a.execFilter($form,$page);
+								});
+					
+							if(typeof _app.ext._store_filter.filterMap[infoObj.navcat].exec == 'function')	{
+								_app.ext._store_filter.filterMap[infoObj.navcat].exec($form,infoObj)
+								}
+					
+					//make all the checkboxes auto-submit the form and show results list.
+							$(":checkbox",$context).off('click.formSubmit').on('click.formSubmit',function() {
+								$form.submit(); 
+								//_app.u.dump("A filter checkbox was clicked.");
+								$("#resultsProductListContainer",$context).hide();  
+								
+								$group1 = $('.fsCheckbox',$context);
+								
+								if(($group1.filter(':checked').length === 0) && ($(".sliderValue",$context).val() == "$0 - $1000")){
+									//_app.u.dump("All checkboxes removed. Showing stock product list.");
+									$(".nativeProductList", $context).show(); 
+									$(".searchFilterResults", $context).hide(); 
+								}
+								else{
+									//_app.u.dump("Checkbox is active. Showing Search results.");
+									$(".nativeProductList", $context).hide(); 
+									$(".searchFilterResults", $context).show();  
+								}  
+							});
+							
+							//_app.u.dump($(".sliderValue",$context));
+						}
+					}
+						
+								
+							
+						
+						$('.resetButton', $context).click(function(){
+							$('.fsCheckbox').attr('checked', false);
+							$(".nativeProductList").show(); 
+							$(".searchFilterResults").hide();    
+						});
+						
+						//**ADD ID/FOR VALUES FOR CHECKBOX VISUAL MODIFIER**
+						/*
+						$('.filterCB', $context).each(function() {
+							$(this).attr('id', 'filterCB'+filterIDNum);
+							filterIDNum += 1;
+						});
+						$('.break', $context).each(function() {
+							$(this).attr('for', 'filterCB'+filterForNum);
+							filterForNum += 1;
+						});
+						*/
+						
+						
+				});
+				var r = true; //return false if extension won't load for some reason (account config, dependencies, etc).
+				return r;
+			},
+			onError : function()	{
+				dump("filter startExtension failed. Aw crap.");
+//errors will get reported for this callback as part of the extensions loading.  This is here for extra error handling purposes.
 			}
+		}
 
-		}, //callbacks
+	}, //callbacks
 
 
 ////////////////////////////////////   getFilterObj    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\

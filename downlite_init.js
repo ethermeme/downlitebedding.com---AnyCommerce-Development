@@ -39,7 +39,7 @@ myApp.rq.push(['extension',0,'tracking_hubspot','extensions/tracking_hubspot.js'
 
 myApp.rq.push(['extension',0,'google_dynamicremarketing','extensions/partner_google_dynamicremarketing.js']); 
 myApp.rq.push(['extension',0,'prodlist_infinite','extensions/prodlist_infinite.js']);
-myApp.rq.push(['extension',0,'_store_filter','extensions/_store_filter.js']);
+myApp.rq.push(['extension',0,'_store_filter','extensions/_store_filter.js','startExtension']);
 
 myApp.rq.push(['script',0,'jquery-cycle2/jquery.cycle2.min.js']);
 myApp.rq.push(['script',0,myApp.vars.baseURL+'carouFredSel-6.2.1/jquery.carouFredSel-6.2.1-packed.js']);
@@ -50,79 +50,6 @@ myApp.rq.push(['css',1,myApp.vars.baseURL+'resources/anyplugins.css']);
 
 
 
-myApp.rq.push(['templateFunction','categoryTemplate','onCompletes',function(P) {
-	var $context = $(myApp.u.jqSelector('#',P.parentID));
-	//**COMMENT TO REMOVE AUTO-RESETTING WHEN LEAVING CAT PAGE FOR FILTERED SEARCH**
-	
-	myApp.ext._store_filter.vars.catPageID = $(myApp.u.jqSelector('#',P.parentID));  
-	
-	myApp.u.dump("BEGIN categoryTemplate onCompletes for filtering");
-	if(myApp.ext._store_filter.filterMap[P.navcat])	{
-		myApp.u.dump(" -> safe id DOES have a filter.");
-
-		var $page = $(myApp.u.jqSelector('#',P.parentID));
-		myApp.u.dump(" -> $page.length: "+$page.length);
-		if($page.data('filterAdded'))	{} //filter is already added, don't add again.
-		else	{
-			$page.data('filterAdded',true)
-			var $form = $("[name='"+myApp.ext._store_filter.filterMap[P.navcat].filter+"']",'#appFilters').clone().appendTo($('.catProdListSidebar',$page));
-			$form.on('submit.filterSearch',function(event){
-				event.preventDefault()
-				myApp.u.dump(" -> Filter form submitted.");
-				myApp.ext._store_filter.a.execFilter($form,$page);
-				});
-	
-			if(typeof myApp.ext._store_filter.filterMap[P.navcat].exec == 'function')	{
-				myApp.ext._store_filter.filterMap[P.navcat].exec($form,P)
-				}
-	
-	//make all the checkboxes auto-submit the form and show results list.
-			$(":checkbox",$context).off('click.formSubmit').on('click.formSubmit',function() {
-				$form.submit(); 
-				//myApp.u.dump("A filter checkbox was clicked.");
-				$("#resultsProductListContainer",$context).hide();  
-				
-				$group1 = $('.fsCheckbox',$context);
-				
-				if(($group1.filter(':checked').length === 0) && ($(".sliderValue",$context).val() == "$0 - $1000")){
-					//myApp.u.dump("All checkboxes removed. Showing stock product list.");
-					$(".nativeProductList", $context).show(); 
-					$(".searchFilterResults", $context).hide(); 
-				}
-				else{
-					//myApp.u.dump("Checkbox is active. Showing Search results.");
-					$(".nativeProductList", $context).hide(); 
-					$(".searchFilterResults", $context).show();  
-				}  
-			});
-			
-			//myApp.u.dump($(".sliderValue",$context));
-		}
-	}
-		
-				
-			
-		
-		$('.resetButton', $context).click(function(){
-			$('.fsCheckbox').attr('checked', false);
-			$(".nativeProductList").show(); 
-			$(".searchFilterResults").hide();    
-		});
-		
-		//**ADD ID/FOR VALUES FOR CHECKBOX VISUAL MODIFIER**
-		/*
-		$('.filterCB', $context).each(function() {
-			$(this).attr('id', 'filterCB'+filterIDNum);
-			filterIDNum += 1;
-		});
-		$('.break', $context).each(function() {
-			$(this).attr('for', 'filterCB'+filterForNum);
-			filterForNum += 1;
-		});
-		*/
-		
-		
-}]);
 
 //Cart Messaging Responses.
 
