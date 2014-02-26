@@ -40,7 +40,7 @@ var _store_filter = function(_app) {
 		/*
 		"searchPage":{
 		"filter": "SearchPageFilterSearchForm",
-		"exec" : function($form,infoObj){app.ext._store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:2000});}
+		"exec" : function($form,infoObj){_app.ext._store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:2000});}
 		},
 		*/
 		//HOTEL FINDER
@@ -62,7 +62,7 @@ var _store_filter = function(_app) {
 //the callback is auto-executed as part of the extensions loading process.
 		init : {
 			onSuccess : function()	{
-//				app.u.dump('BEGIN app.ext.store_navcats.init.onSuccess ');
+//				_app.u.dump('BEGIN _app.ext.store_navcats.init.onSuccess ');
 				var r = true; //return false if extension won't load for some reason (account config, dependencies, etc).
 				return r;
 				},
@@ -73,15 +73,15 @@ var _store_filter = function(_app) {
 			
 		startExtension : {
 			onSuccess : function()	{
-				_app.u.dump('BEGIN app.ext._store_filter.startExtension.onSuccess ');
+				_app.u.dump('BEGIN _app.ext._store_filter.startExtension.onSuccess ');
 				_app.templates.categoryTemplate.on('complete',function(event, $context, infoObj){
 					//var $context = $(_app.u.jqSelector('#',infoObj.parentID));
 					//**COMMENT TO REMOVE AUTO-RESETTING WHEN LEAVING CAT PAGE FOR FILTERED SEARCH**
 					
 					_app.ext._store_filter.vars.catPageID = $context;
 					
-					_app.u.dump($context);
-					_app.u.dump(infoObj);  
+					//_app.u.dump($context);
+					//_app.u.dump(infoObj);  
 					
 					_app.u.dump("BEGIN categoryTemplate onCompletes for filtering");
 					if(_app.ext._store_filter.filterMap[infoObj.navcat])	{
@@ -154,7 +154,7 @@ var _store_filter = function(_app) {
 				return r;
 			},
 			onError : function()	{
-				dump("filter startExtension failed. Aw crap.");
+				dump("filter startExtension failed.");
 //errors will get reported for this callback as part of the extensions loading.  This is here for extra error handling purposes.
 			}
 		}
@@ -179,22 +179,22 @@ var _store_filter = function(_app) {
 						}
 					}
 				else	{
-					app.u.dump("WARNING! could not detect .ui-slider class within fieldset for slider filter.");
+					_app.u.dump("WARNING! could not detect .ui-slider class within fieldset for slider filter.");
 					}
 				return r;
 				}, //slider
 			hidden : function($fieldset){
-				return app.ext._store_filter.u.buildElasticTerms($("input:hidden",$fieldset),$fieldset.attr('data-elastic-key'));
+				return _app.ext._store_filter.u.buildElasticTerms($("input:hidden",$fieldset),$fieldset.attr('data-elastic-key'));
 				},
 			hiddenOr : function($fieldset){
 				var r = {"or":[]};
 				$("input:hidden",$fieldset).each(function(){
-					r.or.push(app.ext._store_filter.u.buildElasticTerms($(this),$fieldset.attr('data-elastic-key')));
+					r.or.push(_app.ext._store_filter.u.buildElasticTerms($(this),$fieldset.attr('data-elastic-key')));
 					});
 				return r;
 				},
 			checkboxes : function($fieldset)	{
-				return app.ext._store_filter.u.buildElasticTerms($(':checked',$fieldset),$fieldset.attr('data-elastic-key'));
+				return _app.ext._store_filter.u.buildElasticTerms($(':checked',$fieldset),$fieldset.attr('data-elastic-key'));
 				} //checkboxes
 			
 			}, //getFilterObj
@@ -209,44 +209,44 @@ var _store_filter = function(_app) {
 			
 			execFilter : function($form,$page){
 
-app.u.dump("BEGIN store_filter.a.filter");
+_app.u.dump("BEGIN store_filter.a.filter");
 var $prodlist = $("[data-app-role='productList']",$page).first().empty();
 
 
 $('.categoryList',$page).hide(); //hide any subcategory lists in the main area so customer can focus on results
 $('.categoryText',$page).hide(); //hide any text blocks.
 
-if(app.ext._store_filter.u.validateFilterProperties($form))	{
-//	app.u.dump(" -> validated Filter Properties.")
+if(_app.ext._store_filter.u.validateFilterProperties($form))	{
+//	_app.u.dump(" -> validated Filter Properties.")
 	var query = {
 		"mode":"elastic-native",
 		"size":50,
-		"filter" : app.ext._store_filter.u.buildElasticFilters($form),
+		"filter" : _app.ext._store_filter.u.buildElasticFilters($form),
 		}//query
-//	app.u.dump(" -> Query: "); app.u.dump(query);
+//	_app.u.dump(" -> Query: "); _app.u.dump(query);
 	if(query.filter.and.length > 0)	{
 		$prodlist.addClass('loadingBG');
-		app.ext.store_search.calls.appPublicProductSearch.init(query,{'callback':function(rd){
+		_app.ext.store_search.calls.appPublicProductSearch.init(query,{'callback':function(rd){
 
-			if(app.model.responseHasErrors(rd)){
+			if(_app.model.responseHasErrors(rd)){
 				$page.anymessage({'message':rd});
 				}
 			else	{
-				var L = app.data[rd.datapointer]['_count'];
+				var L = _app.data[rd.datapointer]['_count'];
 				$prodlist.removeClass('loadingBG')
 				if(L == 0)	{
 					$page.anymessage({"message":"Your query returned zero results."});
 					}
 				else	{
-					$prodlist.append(app.ext.store_search.u.getElasticResultsAsJQObject(rd));
+					$prodlist.append(_app.ext.store_search.u.getElasticResultsAsJQObject(rd));
 					}
 				}
 			
 			},'datapointer':'appPublicSearch|elasticFiltering',
-			'templateID': $form.data('loadstemplate') || 'productListTemplateResults'
+			'templateID': $form.data('loadstemplate') || 'productListHotelFilteredSearch'
 			});
-			app.u.dump(JSON.stringify(query));
-		app.model.dispatchThis();
+			_app.u.dump(JSON.stringify(query));
+		_app.model.dispatchThis();
 		}
 	else	{
 		$page.anymessage({'message':"Please make some selections from the list of filters"});
@@ -259,6 +259,99 @@ $('html, body').animate({scrollTop : 0},200); //new page content loading. scroll
 
 				
 				},//filter
+				
+				
+				showFilterResultsOnPriceChange : function($context){
+					//Make all altering of the price slider submit the form and show results list.
+						$context.submit(); 
+						//app.u.dump("The price slider was moved.");
+						$("#resultsProductListContainer",$context).hide();  
+		
+						$group1 = $('.fsCheckbox',$context);
+						$priceGroup = $( ".sliderValue",$context ).val().toString();
+						
+						if($(".sliderValue",$context).val() == "$0 - $1000"){
+							//app.u.dump("Price slider is set to stock. Checking For filter options being checked.");
+							if($group1.filter(':checked').length === 0){
+								//app.u.dump("No filter options checked. Showing stock product list.");
+								$(".nativeProductList", ($context.parent().parent().parent())).show(); 
+								$(".searchFilterResults", ($context.parent().parent().parent())).hide(); 
+							}
+							else{
+								//app.u.dump("One or more filter options were checked. Still showing filter search results.");
+							}
+						}
+						else{
+							//app.u.dump("Price slider is set to custom value. Showing Search results.");
+							$(".nativeProductList", ($context.parent().parent().parent())).hide(); 
+							$(".searchFilterResults", ($context.parent().parent().parent())).show();  
+						}  
+				},
+				
+				
+				filterSelected : function(checkbox,$context){
+					//dump(checkbox);
+					//dump($context);
+					$("input.fsCheckbox", $context).removeClass("fsCBSelected");
+					$(checkbox).addClass("fsCBSelected");
+					$("input.fsCheckbox:not(input.fsCBSelected)", $context).attr('checked', false);
+				},
+				
+				
+				hotelTypeSelected : function(radioButton,$context){
+					var hotelType = $(radioButton, $context).val();
+					dump(hotelType);
+					switch(hotelType){
+						case "natChainHotel":
+							$(".filterCat", $context).hide();
+							$(".filterNatHotelCat", $context).slideDown(1000);
+						break;
+						case "luxResortHotel":
+							$(".filterCat", $context).hide();
+							$(".filterLuxResortCat", $context).slideDown(1000);
+						break;
+						case "luxHotel":
+							$(".filterCat", $context).hide();
+							$(".filterluxHotelCat", $context).slideDown(1000);
+						break;
+						case "boutHotel":
+							$(".filterCat", $context).hide();
+							$(".filterBoutHotelCat", $context).slideDown(1000);
+						break;
+						case "cruiseLine":
+							$(".filterCat", $context).hide();
+							$(".filterCruiseLineCat", $context).slideDown(1000);
+						break;
+						case "bnb":
+							$(".filterCat", $context).hide();
+							$(".filterBNBCat", $context).slideDown(1000);
+						break;
+						case "lasVegasHotel":
+							$(".filterCat", $context).hide();
+							$(".filterLasVegasHotelCat", $context).slideDown(1000);
+						break;
+						case "casinoHotel":
+							$(".filterCat", $context).hide();
+							$(".filterCasinoHotelCat", $context).slideDown(1000);
+						break;
+						case "golfResort":
+							$(".filterCat", $context).hide();
+							$(".filterGolfResortCat", $context).slideDown(1000);
+						break;
+						case "beachHotel":
+							$(".filterCat", $context).hide();
+							$(".filterBeachHotelCat", $context).slideDown(1000);
+						break;
+						case "confCenterHotel":
+							$(".filterCat", $context).hide();
+							$(".filterConfCenterHotelCat", $context).slideDown(1000);
+						break;
+						case "nycHotel":
+							$(".filterCat", $context).hide();
+							$(".filterNYCHotelCat", $context).slideDown(1000);
+						break;
+					}
+				}
 				
 			
 			}, //actions
@@ -281,9 +374,9 @@ $('html, body').animate({scrollTop : 0},200); //new page content loading. scroll
 						r = false;
 						$form.anymessage({"message":"In _store_filters.u.validateFilterProperties,  no data-filtertype set on fieldset. can't include as part of query. [index: "+index+"]",gMessage:true});
 						}
-					else if(typeof app.ext._store_filter.getElasticFilter[filterType] != 'function')	{
+					else if(typeof _app.ext._store_filter.getElasticFilter[filterType] != 'function')	{
 						r = false;
-						$form.anymessage({"message":"WARNING! type ["+filterType+"] has no matching getElasticFilter function. [typoof: "+typeof app.ext._store_filter.getElasticFilter[filterType]+"]",gMessage:true});
+						$form.anymessage({"message":"WARNING! type ["+filterType+"] has no matching getElasticFilter function. [typoof: "+typeof _app.ext._store_filter.getElasticFilter[filterType]+"]",gMessage:true});
 						}
 					else if(!$fieldset.attr('data-elastic-key'))	{
 						r = false;
@@ -306,7 +399,7 @@ var filters = {
 
 $('fieldset',$form).each(function(){
 	var $fieldset = $(this),
-	filter = app.ext._store_filter.getElasticFilter[$fieldset.attr('data-filtertype')]($fieldset);
+	filter = _app.ext._store_filter.getElasticFilter[$fieldset.attr('data-filtertype')]($fieldset);
 	if(filter)	{
 		filters.and.push(filter);
 		}
@@ -319,7 +412,7 @@ $('fieldset',$form).each(function(){
  	if(filters.and.length == 1)	{
 		filters.and.push({match_all:{}})
  		}
-		app.u.dump("$( '.sliderValue',$form ).val() = " + $( ".sliderValue",$form ).val())
+		_app.u.dump("$( '.sliderValue',$form ).val() = " + $( ".sliderValue",$form ).val())
 
 return filters;				
 				
@@ -355,7 +448,7 @@ return filters;
 					max: props.MAX,
 					values: [ props.MIN, props.MAX ],
 					stop : function(){
-						app.ext._store_filter.a.showFilterResultsOnPriceChange($form);
+						_app.ext._store_filter.a.showFilterResultsOnPriceChange($form);
 						},
 					slide: function( event, ui ) {
 						$( ".sliderValue",$form ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
