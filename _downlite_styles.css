@@ -208,6 +208,15 @@ label.break{
 	.bannerDuoContainer .stacked{
 		margin-right: 235px;
 	}
+	
+	
+	/*CATEGORY*/
+	#categoryTemplate_hotels div.nativeProductList{
+		width: 555px;
+	}
+	#categoryTemplate_hotels div.searchFilterResults{
+		width: 555px;
+	}
 }
 /*END 989 - 800 X 480*/
 
