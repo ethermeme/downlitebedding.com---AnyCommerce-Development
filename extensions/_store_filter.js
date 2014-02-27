@@ -46,7 +46,7 @@ var _store_filter = function(_app) {
 		//HOTEL FINDER
 			".hotels":{
 			"filter": "hotelFinderFilterForm",
-			"exec" : function($form,infoObj){_app.ext._store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:1000});}
+			"exec" : function($form,infoObj){_app.ext._store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:10000});}
 			},
 			
 			

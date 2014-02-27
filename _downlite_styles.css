@@ -117,3 +117,123 @@ label.break{
     margin: 0;
     padding: 9px 30px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*************************************************************************************
+	media querries - responsive design
+*************************************************************************************/
+
+
+/*989 - 800 X 480*/
+@media screen and (max-width: 989px) {
+	.wrapper{
+		width:800px;
+	}
+	
+	/*HEADER*/
+	.header_ads{
+		float: left;
+		height: 50px;
+		margin: 21px 0 0 5px;
+		width: 180px;
+	}
+	.header_contact{
+		margin: 6px 0 0 5px;
+	}
+	.header_cart_menu{
+		margin-right: 5px;
+	}
+	#brandCategories li{
+		margin: 0;
+	}
+	.nav_menu ul li a{
+		padding: 21px 6px;
+	}
+	
+	
+	/*FOOTER*/
+	.footer .sign_up_form_inner{
+		width: 800px;
+	}
+	.social_icon{
+		padding: 10px 5px 10px 0;
+	}
+	.sign_up_text{
+		padding: 10px;
+		width: 160px;
+	}
+	.sign_up_form_inner form{
+		margin: 17px 5px 0 0;
+	}
+	.sign_up_form_inner form input{
+		margin: 0 0 0 5px;
+		width: 155px;
+	}
+	.sign_up_form_inner form input.submit{
+		margin: 0 0 0 5px;
+	}
+	
+	.footer .footer_bottom_inner{
+		width: 800px;
+	}
+	.footer_widget{
+		width: 169px;
+	}
+	.footer_copyright{
+		width: 795px;
+	}
+	
+	.nav_menu ul li:hover ul.child_menu{
+		display:none !important;
+	}
+	
+	
+	/*HOMEPAGE*/
+	input.productSearchKeyword {
+		width: 270px;
+	}
+	.bannerDuoContainer .stacked{
+		margin-right: 235px;
+	}
+}
+/*END 989 - 800 X 480*/
+
+
+
+/*799 - 640 X 480*/
+@media screen and (max-width: 799px) {
+	.wrapper{
+	}
+}
+/*END 799 - 640 X 480*/
+
+
+
+/*639 - 480 X 360*/
+@media screen and (max-width: 639px) {
+	.wrapper{
+	}
+}
+/*END 639 - 480 X 360*/
+
+
+
+/*479 - 320 X 480*/
+@media screen and (max-width: 479px) {
+	.wrapper{
+	}
+}
+/*END 479 - 320 X 480*/
