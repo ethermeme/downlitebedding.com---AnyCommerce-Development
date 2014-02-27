@@ -131,9 +131,12 @@ var _store_filter = function(_app) {
 							
 						
 						$('.resetButton', $context).click(function(){
-							$('.fsCheckbox').attr('checked', false);
-							$(".nativeProductList").show(); 
-							$(".searchFilterResults").hide();    
+							$('.fsCheckbox', $context).attr('checked', false);
+							//dump("$('.ui-slider-range', $context).val() = " + $('.ui-slider-range', $context).val());
+							//$('.sliderValue', $context).val() = "$0 - $1000";
+							$(".nativeProductList",$context).show(); 
+							$(".searchFilterResults",$context).hide();
+							setTimeout(function(){$(".categoryList",$context).show();},150); 
 						});
 						
 						//**ADD ID/FOR VALUES FOR CHECKBOX VISUAL MODIFIER**
@@ -255,7 +258,7 @@ if(_app.ext._store_filter.u.validateFilterProperties($form))	{
 else	{
 	$page.anymessage({"message":"Uh Oh! It seems an error occured. Please try again or contact the site administator if error persists."});
 	}
-$('html, body').animate({scrollTop : 0},200); //new page content loading. scroll to top.
+$('html, body').animate({scrollTop : 850},0); //new page content loading. scroll to top.
 
 				
 				},//filter

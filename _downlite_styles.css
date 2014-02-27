@@ -108,3 +108,12 @@ label.break{
 }
 .filterCategoryCont{
 }
+.resetButton{
+	background-image: url("images/SearchBg.png");
+    border: 1px solid #BFBFBD;
+    color: #858585;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0;
+    padding: 9px 30px;
+}

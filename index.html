@@ -2229,6 +2229,9 @@ The 'data-action' attribute is used to assign an onclick.
 
 
 <form action='#' name='hotelFinderFilterForm' id='hotelFinderFilterForm' class='layeredSearch'>
+	
+    <h4>Browse hotels to find what you are looking for below.</h4>
+    
 
     <button class="resetButton">RESET OPTIONS</button>
     
@@ -2262,150 +2265,175 @@ The 'data-action' attribute is used to assign an onclick.
         <label class='break'><input type='radio' name="hotelType" value='confCenterHotel' onClick="myApp.ext._store_filter.a.hotelTypeSelected($(this),$(this).parent().parent().parent().parent());" />Conference Center Hotels</label>
         <label class='break'><input type='radio' name="hotelType" value='nycHotel' onClick="myApp.ext._store_filter.a.hotelTypeSelected($(this),$(this).parent().parent().parent().parent());" />New York City Hotels</label>
     </div>
-    <fieldset class="filterNatHotelCat filterCat displayNone" data-elastic-key="national_chain_hotels" data-filtertype="checkboxes">
-        <legend class="filterCatTitle">National Chain hotels</legend>
-        <div class="filterCategoryCont">
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='aloft_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Aloft Hotel Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='best_western_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Best Western Hotel Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='choice_hotels_bedding_comfort_inn_quality_inn' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Choice Hotels Bedding (Comfort Inn, Quality Inn...)</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='country_inn__suites_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Country Inn & Suites Hotel Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='drury_inn_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Drury Inn Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='embassy_suites_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Embassy Suites Hotel Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='four_points_by_sheraton_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Four Points By Sheraton Hotel Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='gaylord_hotels__resorts_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Gaylord Hotels & Resorts Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='hilton_garden_inn_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Hilton Garden Inn Hotel Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='hotel_intercontinental_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Hotel Intercontinental Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='hotel_sierra_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Hotel Sierra Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='hyatt_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Hyatt Hotel Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='millennium_hotels_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Millennium Hotels Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='radisson_hotel_beding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Radisson Hotel Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='royal_sonesta_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Royal Sonesta Hotel Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='sheraton_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Sheraton Hotel Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='westin_hotels_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Westin Hotels Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='wyndham_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Wyndham Hotel Bedding</label>
-        </div>
-    </fieldset>
-    <fieldset class="filterLuxResortCat filterCat displayNone" data-elastic-key="luxury_resorts" data-filtertype="checkboxes">
-        <legend class="filterCatTitle">Luxury Resorts</legend>
-        <div class="filterCategoryCont">
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='amara_creekside_resort_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Amara Creekside Resort Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='fontainbleau_resort_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Fontainbleau Resort Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='hawks_cay_resort_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Hawks Cay Resort Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='house_on_the_rock_resort_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />House On The Rock Resort Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='mauna_lani_resort_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Mauna Lani Resort Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='phoenician_resort_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Phoenician Resort Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='safety_harbor_resort__spa_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Safety Harbor Resort & Spa Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='suncadia_resort_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Suncadia Resort Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='the_breakers_resort_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />The Breakers Resort Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='the_greenbrier_resort_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />The Greenbrier Resort Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='the_ranch_at_furnace_creek_resort_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />The Ranch At Furnace Creek Resort Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='woodstock_inn__resort_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Woodstock Inn & Resort Bedding</label>
-        </div>
-    </fieldset><fieldset class="filterluxHotelCat filterCat displayNone" data-elastic-key="luxury_hotels" data-filtertype="checkboxes">
-        <legend class="filterCatTitle">Luxury Hotels</legend>
-        <div class="filterCategoryCont">
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='biltmore_estate_inn_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Biltmore Estate Inn Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='canyon_ranch_spa_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Canyon Ranch Spa Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='fairmont_hotels_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Fairmont Hotels Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='la_fonda_on_the_plaza_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />La Fonda On The Plaza Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='le_meridien_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Le Meridien Hotel Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='luxury_inns' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Luxury Inns</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='martha_washington_inn_spa_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Martha Washington Inn & Spa Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='pan_pacific_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Pan Pacific Hotel Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='st_regis_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />St. Regis Hotel Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='the_inn_at_blackberry_farm_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />The Inn At Blackberry Farm Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='the_inn_at_rancho_santa_fe_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />The Inn At Rancho Santa Fe Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='the_pierre_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />The Pierre Hotel Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='trump_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Trump Hotel Bedding</label>
-        </div>
-    </fieldset>
-    </fieldset><fieldset class="filterBoutHotelCat filterCat displayNone" data-elastic-key="boutique_hotels" data-filtertype="checkboxes">
-        <legend class="filterCatTitle">Boutique Hotels</legend>
-        <div class="filterCategoryCont">
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='andaz_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Andaz Hotel Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='dream_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Dream Hotel Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='gansevoort_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Gansevoort Hotel Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='hotel_indigo_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Hotel Indigo Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='le_parc_suite_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Le Parc Suite Hotel Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='padre_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Padre Hotel Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='public_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Public Hotel Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='the_bowery_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />The Bowery Hotel Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='the_court_hotel_ny_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />The Court Hotel NY Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='the_gramercy_park_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />The Gramercy Park Hotel Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='the_tuscany_ny_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />The Tuscany NY Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='tower_23_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Tower 23 Bedding</label>
-        </div>
-    </fieldset>
-    </fieldset><fieldset class="filterCruiseLineCat filterCat displayNone" data-elastic-key="cruise_lines" data-filtertype="checkboxes">
-        <legend class="filterCatTitle">Cruise Lines</legend>
-        <div class="filterCategoryCont">
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='crystal_cruise_lines_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Crystal Cruise Lines Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='holland_america_cruise_line_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Holland America Cruise Line Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='regent_cruise_line_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Regent Cruise Line Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='seabourn_cruise_line_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Seabourn Cruise Line Bedding</label>
-        </div>
-    </fieldset>
-    </fieldset><fieldset class="filterBNBCat filterCat displayNone" data-elastic-key="bed_and_breakfast" data-filtertype="checkboxes">
-        <legend class="filterCatTitle">BnBs</legend>
-        <div class="filterCategoryCont">
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='applewood_inn_spa_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Applewood Inn & Spa Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='blackberry_farm_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Blackberry Farm Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='crabtree_cottage_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Crabtree Cottage Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='fulton_steamboat_inn_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Fulton Steamboat Inn Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='harbor_view_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Harbor View Hotel Bedding</label>
-        </div>
-    </fieldset>
-    </fieldset><fieldset class="filterLasVegasHotelCat filterCat displayNone" data-elastic-key="las_vegas_hotels" data-filtertype="checkboxes">
-        <legend class="filterCatTitle">Las Vegas Hotels</legend>
-        <div class="filterCategoryCont">
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='mandalay_bay_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Mandalay Bay Hotel Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='venetian_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Venetian Hotel Bedding</label>
-        </div>
-    </fieldset>
-    </fieldset><fieldset class="filterCasinoHotelCat filterCat displayNone" data-elastic-key="casino_hotels" data-filtertype="checkboxes">
-        <legend class="filterCatTitle">Casino Hotels</legend>
-        <div class="filterCategoryCont">
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='aqua_caliente_casino_resort_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Aqua Caliente Casino Resort Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='four_winds_casino_resort_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Four Winds Casino Resort Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='mohegen_sun_casino_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Mohegen Sun Casino Hotel Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='palazzo_casino_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Palazzo Casino Hotel Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='resorts_casino_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Resorts Casino Hotel Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='seven_clans_casino_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Seven Clans Casino Hotel Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='soaring_eagle_casino_resort_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Soaring Eagle Casino Resort Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='treasure_island_casino_resort_bedding_mn' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Treasure Island Casino Resort Bedding (MN)</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='venetian_casino_resort_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Venetian Casino Resort Bedding</label>
-        </div>
-    </fieldset>
-    </fieldset><fieldset class="filterGolfResortCat filterCat displayNone" data-elastic-key="golf_resorts" data-filtertype="checkboxes">
-        <legend class="filterCatTitle">Golf Resorts</legend>
-        <div class="filterCategoryCont">
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='bandon_dunes_golf_resort_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Bandon Dunes Golf Resort Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='pebble_beach_golf_resort' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Pebble Beach Golf Resort</label>
-        </div>
-    </fieldset>
-    </fieldset><fieldset class="filterBeachHotelCat filterCat displayNone" data-elastic-key="beach_hotels" data-filtertype="checkboxes">
-        <legend class="filterCatTitle">Beach hotels</legend>
-        <div class="filterCategoryCont">
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='castle_in_the_sand_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Castle In The Sand Bedding</label>
-        	<label class='break'><input class="fsCheckbox" type='checkbox' value='seacrest_beach_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Seacrest Beach Hotel Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='seacrest_ocenfront_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Seacrest Ocenfront Hotel Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='the_perry_south_beach_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />The Perry South Beach Hotel Bedding</label>
-        </div>
-    </fieldset>
-    </fieldset><fieldset class="filterConfCenterHotelCat filterCat displayNone" data-elastic-key="conference_center_hotels" data-filtertype="checkboxes">
-        <legend class="filterCatTitle">Conference Center Hotels</legend>
-        <div class="filterCategoryCont">
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='gaylord_conference_center_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Gaylord Conference Center Hotel Bedding</label>
-        	<label class='break'><input class="fsCheckbox" type='checkbox' value='mount_washington_conference_center_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Mount Washington Conference Center Hotel Bedding</label>
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='peabody_conference_center_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Peabody Conference Center Hotel Bedding</label>
-        </div>
-    </fieldset>
-    </fieldset><fieldset class="filterNYCHotelCat filterCat displayNone" data-elastic-key="new_york_city_hotels" data-filtertype="checkboxes">
-        <legend class="filterCatTitle">New York City Hotels</legend>
-        <div class="filterCategoryCont">
-            <label class='break'><input class="fsCheckbox" type='checkbox' value='paramount_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Paramount Hotel Bedding</label>
-        </div>
-    </fieldset>
+    <div class="filterNatHotelCat filterCat displayNone">
+        <fieldset data-elastic-key="national_chain_hotels" data-filtertype="checkboxes">
+            <legend class="filterCatTitle">National Chain hotels</legend>
+            <div class="filterCategoryCont">
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='aloft_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Aloft Hotel Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='best_western_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Best Western Hotel Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='choice_hotels_bedding_comfort_inn_quality_inn' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Choice Hotels Bedding (Comfort Inn, Quality Inn...)</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='country_inn__suites_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Country Inn & Suites Hotel Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='drury_inn_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Drury Inn Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='embassy_suites_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Embassy Suites Hotel Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='four_points_by_sheraton_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Four Points By Sheraton Hotel Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='gaylord_hotels__resorts_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Gaylord Hotels & Resorts Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='hilton_garden_inn_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Hilton Garden Inn Hotel Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='hotel_intercontinental_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Hotel Intercontinental Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='hotel_sierra_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Hotel Sierra Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='hyatt_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Hyatt Hotel Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='millennium_hotels_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Millennium Hotels Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='radisson_hotel_beding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Radisson Hotel Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='royal_sonesta_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Royal Sonesta Hotel Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='sheraton_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Sheraton Hotel Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='westin_hotels_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Westin Hotels Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='wyndham_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Wyndham Hotel Bedding</label>
+            </div>
+        </fieldset>
+    </div>
+    <div class="filterLuxResortCat filterCat displayNone">
+        <fieldset data-elastic-key="luxury_resorts" data-filtertype="checkboxes">
+            <legend class="filterCatTitle">Luxury Resorts</legend>
+            <div class="filterCategoryCont">
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='amara_creekside_resort_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Amara Creekside Resort Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='fontainbleau_resort_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Fontainbleau Resort Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='hawks_cay_resort_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Hawks Cay Resort Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='house_on_the_rock_resort_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />House On The Rock Resort Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='mauna_lani_resort_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Mauna Lani Resort Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='phoenician_resort_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Phoenician Resort Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='safety_harbor_resort__spa_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Safety Harbor Resort & Spa Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='suncadia_resort_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Suncadia Resort Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='the_breakers_resort_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />The Breakers Resort Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='the_greenbrier_resort_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />The Greenbrier Resort Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='the_ranch_at_furnace_creek_resort_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />The Ranch At Furnace Creek Resort Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='woodstock_inn__resort_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Woodstock Inn & Resort Bedding</label>
+            </div>
+        </fieldset>
+    </div>
+    <div class="filterluxHotelCat filterCat displayNone">
+        <fieldset data-elastic-key="luxury_hotels" data-filtertype="checkboxes">
+            <legend class="filterCatTitle">Luxury Hotels</legend>
+            <div class="filterCategoryCont">
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='biltmore_estate_inn_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Biltmore Estate Inn Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='canyon_ranch_spa_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Canyon Ranch Spa Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='fairmont_hotels_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Fairmont Hotels Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='la_fonda_on_the_plaza_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />La Fonda On The Plaza Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='le_meridien_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Le Meridien Hotel Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='luxury_inns' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Luxury Inns</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='martha_washington_inn_spa_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Martha Washington Inn & Spa Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='pan_pacific_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Pan Pacific Hotel Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='st_regis_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />St. Regis Hotel Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='the_inn_at_blackberry_farm_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />The Inn At Blackberry Farm Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='the_inn_at_rancho_santa_fe_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />The Inn At Rancho Santa Fe Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='the_pierre_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />The Pierre Hotel Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='trump_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Trump Hotel Bedding</label>
+            </div>
+        </fieldset>
+    </div>
+    <div class="filterBoutHotelCat filterCat displayNone">
+        <fieldset data-elastic-key="boutique_hotels" data-filtertype="checkboxes">
+            <legend class="filterCatTitle">Boutique Hotels</legend>
+            <div class="filterCategoryCont">
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='andaz_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Andaz Hotel Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='dream_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Dream Hotel Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='gansevoort_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Gansevoort Hotel Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='hotel_indigo_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Hotel Indigo Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='le_parc_suite_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Le Parc Suite Hotel Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='padre_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Padre Hotel Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='public_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Public Hotel Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='the_bowery_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />The Bowery Hotel Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='the_court_hotel_ny_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />The Court Hotel NY Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='the_gramercy_park_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />The Gramercy Park Hotel Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='the_tuscany_ny_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />The Tuscany NY Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='tower_23_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Tower 23 Bedding</label>
+            </div>
+        </fieldset>
+    </div>
+    <div class="filterCruiseLineCat filterCat displayNone">
+        <fieldset data-elastic-key="cruise_lines" data-filtertype="checkboxes">
+            <legend class="filterCatTitle">Cruise Lines</legend>
+            <div class="filterCategoryCont">
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='crystal_cruise_lines_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Crystal Cruise Lines Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='holland_america_cruise_line_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Holland America Cruise Line Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='regent_cruise_line_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Regent Cruise Line Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='seabourn_cruise_line_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Seabourn Cruise Line Bedding</label>
+            </div>
+        </fieldset>
+    </div>
+    <div class="filterBNBCat filterCat displayNone">
+        </fieldset><fieldset data-elastic-key="bed_and_breakfast" data-filtertype="checkboxes">
+            <legend class="filterCatTitle">BnBs</legend>
+            <div class="filterCategoryCont">
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='applewood_inn_spa_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Applewood Inn & Spa Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='blackberry_farm_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Blackberry Farm Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='crabtree_cottage_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Crabtree Cottage Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='fulton_steamboat_inn_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Fulton Steamboat Inn Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='harbor_view_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Harbor View Hotel Bedding</label>
+            </div>
+        </fieldset>
+    </div>
+    <div class="filterLasVegasHotelCat filterCat displayNone">
+        <fieldset data-elastic-key="las_vegas_hotels" data-filtertype="checkboxes">
+            <legend class="filterCatTitle">Las Vegas Hotels</legend>
+            <div class="filterCategoryCont">
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='mandalay_bay_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Mandalay Bay Hotel Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='venetian_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Venetian Hotel Bedding</label>
+            </div>
+        </fieldset>
+    </div>
+    <div class="filterCasinoHotelCat filterCat displayNone">
+        <fieldset data-elastic-key="casino_hotels" data-filtertype="checkboxes">
+            <legend class="filterCatTitle">Casino Hotels</legend>
+            <div class="filterCategoryCont">
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='aqua_caliente_casino_resort_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Aqua Caliente Casino Resort Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='four_winds_casino_resort_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Four Winds Casino Resort Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='mohegen_sun_casino_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Mohegen Sun Casino Hotel Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='palazzo_casino_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Palazzo Casino Hotel Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='resorts_casino_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Resorts Casino Hotel Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='seven_clans_casino_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Seven Clans Casino Hotel Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='soaring_eagle_casino_resort_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Soaring Eagle Casino Resort Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='treasure_island_casino_resort_bedding_mn' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Treasure Island Casino Resort Bedding (MN)</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='venetian_casino_resort_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Venetian Casino Resort Bedding</label>
+            </div>
+        </fieldset>
+    </div>
+    <div class="filterGolfResortCat filterCat displayNone">
+        <fieldset data-elastic-key="golf_resorts" data-filtertype="checkboxes">
+            <legend class="filterCatTitle">Golf Resorts</legend>
+            <div class="filterCategoryCont">
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='bandon_dunes_golf_resort_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Bandon Dunes Golf Resort Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='pebble_beach_golf_resort' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Pebble Beach Golf Resort</label>
+            </div>
+        </fieldset>
+    </div>
+    <div class="filterBeachHotelCat filterCat displayNone">
+        <fieldset data-elastic-key="beach_hotels" data-filtertype="checkboxes">
+            <legend class="filterCatTitle">Beach hotels</legend>
+            <div class="filterCategoryCont">
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='castle_in_the_sand_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Castle In The Sand Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='seacrest_beach_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Seacrest Beach Hotel Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='seacrest_ocenfront_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Seacrest Ocenfront Hotel Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='the_perry_south_beach_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />The Perry South Beach Hotel Bedding</label>
+            </div>
+        </fieldset>
+    </div>
+    <div class="filterConfCenterHotelCat filterCat displayNone">
+        <fieldset data-elastic-key="conference_center_hotels" data-filtertype="checkboxes">
+            <legend class="filterCatTitle">Conference Center Hotels</legend>
+            <div class="filterCategoryCont">
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='gaylord_conference_center_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Gaylord Conference Center Hotel Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='mount_washington_conference_center_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Mount Washington Conference Center Hotel Bedding</label>
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='peabody_conference_center_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Peabody Conference Center Hotel Bedding</label>
+            </div>
+        </fieldset>
+    </div>
+    <div class="filterNYCHotelCat filterCat displayNone">
+        </fieldset><fieldset data-elastic-key="new_york_city_hotels" data-filtertype="checkboxes">
+            <legend class="filterCatTitle">New York City Hotels</legend>
+            <div class="filterCategoryCont">
+                <label class='break'><input class="fsCheckbox" type='checkbox' value='paramount_hotel_bedding' onClick="myApp.ext._store_filter.a.filterSelected($(this),$(this).parent().parent().parent().parent());" />Paramount Hotel Bedding</label>
+            </div>
+        </fieldset>
+    </div>
     
     
     <button class="resetButton resetButtonBottom">RESET OPTIONS</button>
