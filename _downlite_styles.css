@@ -401,6 +401,133 @@ label.break{
 /*639 - 480 X 360*/
 @media screen and (max-width: 639px) {
 	.wrapper{
+		width:480px;
+	}
+	.logoContainer{
+		margin: 5px 0 0 35px;
+	}
+	.header_contact{
+		margin: 10px 0 0 35px;
+	}
+	.header_ads{
+		margin: 1px 0 0 22px;
+	}
+	.header_contact p.headerQuestionsText{
+		display:none;
+	}
+	.header_cart_menu{
+		margin-right: 60px;
+		margin-top: -20px;
+	}
+	.vertical_slider{
+		margin-top: -25px;
+		width: 90px;
+		height: 20px;
+	}
+	.showHideBrandsMobile{
+	}
+	#brandCategories{
+		bottom: -165px;
+		left: -145px;
+		width: 210px;
+	}
+	.nav_menu ul{
+		margin: 2px 0 10px;
+	}
+	.nav_menu ul li:hover a{
+		padding: 24px 3px;
+	}
+	.nav_menu ul li a{
+		font-size: 9px;
+		padding: 24px 4px;
+	}
+	.productSearchForm {
+		margin-left: 3px;
+	}
+	input.productSearchKeyword{
+		width: 130px;
+	}
+	.search{
+		width: 65px;
+	}
+	.dotted{
+		width: 5px;
+	}
+	.hotelFindBlurb{
+		padding: 0;
+		width: 120px;
+	}
+	.hotelFinder{
+		font-size: 12px;
+		margin-right: 5px;
+		padding: 9px 3px;
+	}
+	
+	
+	/*FOOTER*/
+	.footer .sign_up_form_inner{
+		width: 480px;
+		position:relative;
+	}
+	.social_icon .p{
+		margin-right: 0;
+	}
+	.sign_up_text{
+		padding-left: 5px;
+		position: absolute;
+		right: 5px;
+		top: -21px;
+		width: 300px;
+	}
+	.sign_up_text h5{
+		float: left;
+		margin: 0 10px 0 0;
+		width: auto;
+	}
+	.sign_up_text p{
+		float: left;
+		font-size: 11px;
+		font-weight: bold;
+		margin: 0;
+		line-height: 20px;
+	}
+	
+	.footer .footer_bottom{
+		height: 470px;
+	}
+	.footer .footer_bottom_inner{
+		width: 480px;
+	}
+	.footer_widget{
+		margin-left: 35px;
+		width: 200px;
+	}
+	.second_last_widget{
+		clear: none;
+	}
+	.last_widget{
+		clear: left;
+	}
+	.last_widget h4{
+		display:none;
+	}
+	.footer_copyright{
+		float: left;
+		margin-top: -60px;
+		width: 460px;
+	}
+	
+	
+	/*HOMEPAGE*/
+	.bannerDuoContainer{
+		margin-top: 5px;
+	}
+	.bannerDuoContainer .stacked{
+		margin-right: 80px;
+	}
+	.homeTextBannerBlock{
+		height: 140px;
+		width: 46%;
 	}
 }
 /*END 639 - 480 X 360*/
