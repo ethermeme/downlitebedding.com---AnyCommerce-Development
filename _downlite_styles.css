@@ -73,6 +73,7 @@ img.prodYTNext{
 .catProdListSidebar{
 	width:230px;
 	float:left;
+	border: 1px solid #D2D2D2;
 }
 
 #categoryTemplate_hotels div.nativeProductList{
@@ -118,6 +119,17 @@ label.break{
     padding: 9px 30px;
 }
 
+#brandCategories{
+	display:block;
+}
+
+.standardDef{
+	display:block;
+}
+.sixhundredfourtyResolution{
+	display:none;
+}
+
 
 
 
@@ -161,6 +173,9 @@ label.break{
 	}
 	.nav_menu ul li a{
 		padding: 21px 6px;
+	}
+	#brandCategories{
+		display:block;
 	}
 	
 	
@@ -217,6 +232,14 @@ label.break{
 	#categoryTemplate_hotels div.searchFilterResults{
 		width: 555px;
 	}
+	
+	/*PRODUCT*/
+	.standardDef{
+		display:block;
+	}
+	.sixhundredfourtyResolution{
+		display:none;
+	}
 }
 /*END 989 - 800 X 480*/
 
@@ -225,6 +248,150 @@ label.break{
 /*799 - 640 X 480*/
 @media screen and (max-width: 799px) {
 	.wrapper{
+		width:640px;
+	}
+	
+	
+	/*HEADER*/
+	.header_ads{
+		margin: 1px 0 0 5px;
+	}
+	.header_contact{
+		clear: left;
+		margin: -25px 0 0 240px;
+	}
+	.header_cart_menu{
+		margin-top: -75px;
+	}
+	.vertical_slider{
+		margin-top: -40px;
+		width: 170px;
+		float: right;
+		position: relative;
+		overflow: visible;
+	}
+	#brandCategories{
+		bottom: -290px;
+		box-shadow: 0 5px 10px #888888;
+		position: absolute;
+		width: 100px;
+		z-index: 50;
+		display:none;
+		padding: 10px;
+		background-color:white;	
+	}
+	#brandCategories li{
+	}
+	.showHideBrandsMobile{
+		display:block;
+		cursor:pointer;
+	}
+	.nav_menu ul li a{
+		padding: 21px 4px;
+		font-size: 12px;
+	}
+	
+	
+	/*FOOTER*/
+	.footer .sign_up_form_inner{
+		width:640px;
+	}
+	.sign_up_form_inner form input{
+		margin: 0 0 0 3px;
+		width: 85px;
+	}
+	.sign_up_text{
+		padding-right:0;
+	}
+	.sign_up_form_inner form input.submit{
+		width: 80px;
+	}
+	
+	.footer .footer_bottom{
+		height: 360px;
+	}
+	.footer .footer_bottom_inner{
+		width: 640px;
+	}
+	.footer_widget{
+		width: 210px;
+	}
+	.second_last_widget{
+		clear:left;
+	}
+	.footer_copyright{
+		float: left;
+		margin-top: -60px;
+		width: 640px;
+	}
+	
+	
+	/*HOMEPAGE*/
+	input.productSearchKeyword{
+		width: 170px;
+	}
+	.hotelFinder{
+		padding: 9px 15px;
+	}
+	.hotelFindBlurb{
+		float: left;
+		font-size: 9px;
+		margin-right: 5px;
+		padding: 3px 0 0;
+		text-align: right;
+		width: 170px;
+	}
+	
+	.homeTextBannerBlock{
+		width: 47%;
+	}
+	
+	.bannerDuoContainer .stacked{
+		margin-right: 160px;
+	}
+	
+	/*CATEGORY*/
+	#categoryTemplate_hotels div.nativeProductList{
+		margin-left: 5px;
+		width: 472px;
+	}
+	#categoryTemplate_hotels div.searchFilterResults{
+		margin-left: 5px;
+		width: 472px;
+	}
+	.catProdListSidebar{
+		width:160px;
+	}
+	.categoryList li, .productList li{
+		margin: 2px;
+	}
+	.filterPriceCat{
+		margin: 0;
+		padding-left: 4px;
+		padding-right: 10px;
+	}
+	.searchFilterResults ul.categoryFilterResults li.searchResultsProduct{
+		margin: 2px;
+	}
+	
+	
+	/*PRODUCT*/
+	.standardDef{
+		display:none;
+	}
+	.sixhundredfourtyResolution{
+		display:block;
+	}
+	.youTubeVideoCont{
+		width: 360px;
+	}
+	.prodVideoContainer{
+		width: 340px;
+	}
+	#prodDescTopContainer{
+		height: auto;
+	}
+	.filterPriceCat{
 	}
 }
 /*END 799 - 640 X 480*/

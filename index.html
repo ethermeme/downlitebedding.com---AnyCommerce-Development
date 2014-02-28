@@ -210,7 +210,8 @@ ANIMATION TESTING
 			</div><!-- /.header_bottom -->
 
 			<div class="vertical_slider">
-				<ul id='brandCategories' class='noPadOrMargin listStyleNone categoryList fluidList'></ul><!-- BRAND LIST WILL GO HERE -->
+				<a class="showHideBrandsMobile displayNone" onClick="myApp.ext.store_downlite.a.showHideBrands();">Our Brands</a>
+                <ul id='brandCategories' class='noPadOrMargin listStyleNone categoryList fluidList'></ul><!-- BRAND LIST WILL GO HERE -->
 			</div>
 
 			<div class="nav_menu">
@@ -305,7 +306,7 @@ ANIMATION TESTING
 						<li><a href="http://www.dustmitefacts.org/" target='_blank'>Dust Mite Facts</a></li>
 					</ul>
 				</div>
-				<div class="footer_widget">
+				<div class="footer_widget second_last_widget">
 					<h4>LINKS</h4>
 					<ul>
 						<li><a href="http://downandfeathercouncil.com/" target='_blank'>Hypoallergenic Down</a></li>
@@ -928,10 +929,16 @@ this will likely become more flexible in the future. ###
 	<td class='imageContainer'>
 <!--	<img src='%PROJECT_URL%/blank.gif' id='bobWasHere' class='prodBigImage' data-bind='var: product(zoovy:prod_image1); format: magicZoomPlus; extension: magicToolBox;' width='340' height='340' /> -->
 	
-		<div data-app-click='myRIA|productPicsInModalShow' class='pointer clearfix'  >
+		<div data-app-click='myRIA|productPicsInModalShow' class='pointer clearfix standardDef'  >
 
 			<div data-bind="var: product(zoovy:prod_is_tags); format:addTagSpans;" class='tagsContainer'></div>
 			<img src='blank.gif' class='prodBigImage' alt='' data-bind='var: product(zoovy:prod_image1); format:imageURL;' width='476' height='360' />
+
+		</div>
+        <div data-app-click='myRIA|productPicsInModalShow' class='pointer clearfix sixhundredfourtyResolution'  >
+
+			<div data-bind="var: product(zoovy:prod_is_tags); format:addTagSpans;" class='tagsContainer'></div>
+			<img src='blank.gif' class='prodBigImage' alt='' data-bind='var: product(zoovy:prod_image1); format:imageURL;' width='357' height='270' />
 
 		</div>
 

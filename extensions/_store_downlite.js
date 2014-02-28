@@ -40,6 +40,25 @@ var store_downlite = function(_app) {
 					 _app.ext.store_downlite.u.loadBanners();
 					 _app.ext.store_downlite.u.startHomepageSlideshow();
 				 });
+				 
+				 //FUNCTIONALITY FOR 
+				 $( window ).resize(function() {
+				 	var resolution = $(window).width();
+					if (resolution >= 990){
+						$("#brandCategories").show();
+					}
+					else if ((resolution < 990) && (resolution >= 800)) {
+						$("#brandCategories").show();
+					}
+					else if ((resolution < 800) && (resolution >= 640)) {
+						if($(".showHideBrandsMobile").data("brandsState") == false){
+							$("#brandCategories").hide();
+						}
+						else if($(".showHideBrandsMobile").data("brandsState") == true){
+							$("#brandCategories").show();
+						}
+					}
+				 });
 				//if there is any functionality required for this extension to load, put it here. such as a check for async google, the FB object, etc. return false if dependencies are not present. don't check for other extensions.
 				r = true;
 
@@ -60,6 +79,22 @@ var store_downlite = function(_app) {
 //actions are functions triggered by a user interaction, such as a click/tap.
 //these are going the way of the do do, in favor of app events. new extensions should have few (if any) actions.
 		a : {
+			showHideBrands : function (){
+				if($(".showHideBrandsMobile").data("brandsState")){
+				}
+				else{
+					$(".showHideBrandsMobile").data("brandsState",false).append();
+				}
+				
+				if($(".showHideBrandsMobile").data("brandsState") == false){
+					$("#brandCategories").show("slide", { direction:"up" }, 1000);
+					$(".showHideBrandsMobile").data("brandsState",true).append();
+				}
+				else if($(".showHideBrandsMobile").data("brandsState") == true){
+					$("#brandCategories").hide("slide", { direction:"up" }, 1000);
+					$(".showHideBrandsMobile").data("brandsState",false).append();
+				}
+			}
 
 			}, //Actions
 
@@ -74,7 +109,7 @@ var store_downlite = function(_app) {
 					$tag.append("<input type='hidden' name='sku' value='"+data.value+"' />");
 					//_app.u.dump($tag);
 					//_app.u.dump(data.value);
-					/*REPLACE THIS ATTRIBUTE WITH NEW CUSTOM ATTRIBUTE WHENEVER IT IS CREATED.*/if(_app.data['appProductGet|'+data.value]['%attribs'] && _app.data['appProductGet|'+data.value]['%attribs']["is:user2"]){
+					/*REPLACE THIS ATTRIBUTE WITH NEW CUSTOM ATTRIBUTE WHENEVER IT IS CREATED.*/if(_app.data['appProductGet|'+data.value]['%attribs'] && _app.data['appProductGet|'+data.value]['%attribs']["user:offer_pillow_protector"]){
 						//_app.u.dump("user2 is checked. running the modal pop for pillow protectors.");
 						$tag.attr("onSubmit","").unbind("submit");
 						$tag.bind('submit', function(){
