@@ -623,7 +623,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
 		<div class='catMediaContainer displayNone' data-bind='var:category(%page.picture1);format:showIfSet;'>
 			<div class='catBigImageContainer displayNone' data-bind='var:category(%page.picture1);format:showIfSet;'><img src='blank.gif' data-bind='var: category(%page.picture1); format:imageURL;' width='480' height='360' /></div>
 			<div class='displayNone' data-bind='var:category(%page.youtube_videoid); format:showIfSet;'>
-				<div class='catVideoContainer clearfix pointer' data-bind='var:category(%page.youtube_videoid);format:assignAttribute; attribute:data-videoid;' onClick="myApp.ext.myRIA.a.showYoutubeInModal($(this).attr('data-videoid'));" >
+				<div class='catVideoContainer clearfix pointer' data-bind='var:category(%page.youtube_videoid);format:assignAttribute; attribute:data-videoid;' onClick="myApp.ext.store_downlite.a.showYoutubeInModal($(this).attr('data-videoid'));" >
 				<div class='vidThumb'><img src='blank.gif' data-bind='var: category(%page.youtube_videoid); format:youtubeThumbnail; extension:myRIA;'  width='120' height='90' /></div>
 				<h2 data-bind="var: category(%page.youtube_videoheader); format: text;"></h2>
 				<p  data-bind="var: category(%page.youtube_videodescription); format: text;"></p>
@@ -643,7 +643,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
 
 	<ul data-bind="var: category(@subcategoryDetail); format: categoryList; extension: store_navcats; loadsTemplate: categoryListTemplate; detail: max;" class='listStyleNone clearfix noPadOrMargin fluidList categoryList marginBottom'></ul>
 
-	<div>
+	<div class="catProdListContainer">
     	<div class="catProdListSidebar">
         </div>
         <div class="nativeProductList">
@@ -941,6 +941,12 @@ this will likely become more flexible in the future. ###
 			<img src='blank.gif' class='prodBigImage' alt='' data-bind='var: product(zoovy:prod_image1); format:imageURL;' width='357' height='270' />
 
 		</div>
+        <div data-app-click='myRIA|productPicsInModalShow' class='pointer clearfix fourHundredEightyResolution'  >
+
+			<div data-bind="var: product(zoovy:prod_is_tags); format:addTagSpans;" class='tagsContainer'></div>
+			<img src='blank.gif' class='prodBigImage' alt='' data-bind='var: product(zoovy:prod_image1); format:imageURL;' width='238' height='180' />
+
+		</div>
 
 		<div data-bind='var:product(pid);format:assignAttribute; attribute:data-pid;' class='prodThumbs'>
 	
@@ -971,7 +977,7 @@ this will likely become more flexible in the future. ###
 	<td class='prodSummaryContainer marginBottom no_underline'>
 	<h1 data-bind='var: product(zoovy:prod_name); format:text;'></h1>
 		
-	<div class='floatRight marginBottom'>
+	<div class='floatRight marginBottom prodLiveChatCont'>
 	<a href="http://messenger.providesupport.com/messenger/1jz93amcu7bu108sbhe3gwkhul.html" target="_blank">
 	<img src='images/livechat-140x50.jpg' width='140' height='50' alt='click here for live chat' />
 	</a>

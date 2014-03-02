@@ -85,17 +85,17 @@ var _store_filter = function(_app) {
 					
 					_app.u.dump("BEGIN categoryTemplate onCompletes for filtering");
 					if(_app.ext._store_filter.filterMap[infoObj.navcat])	{
-						_app.u.dump(" -> safe id DOES have a filter.");
+						//_app.u.dump(" -> safe id DOES have a filter.");
 				
 						var $page = $(_app.u.jqSelector('#',infoObj.parentID));
-						_app.u.dump(" -> $page.length: "+$page.length);
+						//_app.u.dump(" -> $page.length: "+$page.length);
 						if($page.data('filterAdded'))	{} //filter is already added, don't add again.
 						else	{
 							$page.data('filterAdded',true)
 							var $form = $("[name='"+_app.ext._store_filter.filterMap[infoObj.navcat].filter+"']",'#appFilters').clone().appendTo($('.catProdListSidebar',$page));
 							$form.on('submit.filterSearch',function(event){
 								event.preventDefault()
-								_app.u.dump(" -> Filter form submitted.");
+								//_app.u.dump(" -> Filter form submitted.");
 								_app.ext._store_filter.a.execFilter($form,$page);
 								});
 					
@@ -126,6 +126,10 @@ var _store_filter = function(_app) {
 							//_app.u.dump($(".sliderValue",$context));
 						}
 					}
+					else{
+						//_app.u.dump(" -> safe id DOES NOT have a filter. Hiding filter area.");
+						$(".catProdListSidebar",$context).hide();
+					}
 						
 								
 							
@@ -147,6 +151,9 @@ var _store_filter = function(_app) {
 								}
 								else if ((width < 800) && (width >= 640)) {
 									$('html, body').animate({scrollTop : 3270},0);
+								}
+								else if ((width < 640) && (width >= 480)) {
+									$('html, body').animate({scrollTop : 3240},0);
 								}
 							},150); 
 						});
@@ -279,6 +286,9 @@ else if ((width < 990) && (width >= 800)) {
 	$('html, body').animate({scrollTop : 1100},0);
 }
 else if ((width < 800) && (width >= 640)) {
+	$('html, body').animate({scrollTop : 1100},0);
+}
+else if ((width < 640) && (width >= 480)) {
 	$('html, body').animate({scrollTop : 1100},0);
 }
 

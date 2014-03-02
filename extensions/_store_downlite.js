@@ -94,7 +94,39 @@ var store_downlite = function(_app) {
 					$("#brandCategories").hide("slide", { direction:"up" }, 1000);
 					$(".showHideBrandsMobile").data("brandsState",false).append();
 				}
-			}
+			},
+			
+			
+			showYoutubeInModal : function(videoid)	{
+				var resolution = $(window).width();
+				var $ele = $('#youtubeVideoModal');
+				if($ele.length == 0)	{
+					$ele = $("<div />").attr('id','youtubeVideoModal').appendTo('body');
+					}
+					if(resolution > 480){
+						$ele.empty().append("<iframe style='z-index:1;' width='560' height='315' src='https://www.youtube.com/embed/"+videoid+"' frameborder='0' allowfullscreen></iframe>"); //clear any past videos.
+						$ele.dialog({
+							modal:true,
+							width:600,
+							height:400,
+							'close' : function(event, ui){$(this).dialog('destroy').remove()},
+							autoOpen:false
+							});
+						$ele.dialog('open');
+					}
+					else if(resolution <= 480){
+						$ele.empty().append("<iframe style='z-index:1;' width='420' height='240' src='https://www.youtube.com/embed/"+videoid+"' frameborder='0' allowfullscreen></iframe>"); //clear any past videos.
+						$ele.dialog({
+							modal:true,
+							width:460,
+							height:300,
+							'close' : function(event, ui){$(this).dialog('destroy').remove()},
+							autoOpen:false
+							});
+						$ele.dialog('open');
+					}
+				return false;
+				}
 
 			}, //Actions
 

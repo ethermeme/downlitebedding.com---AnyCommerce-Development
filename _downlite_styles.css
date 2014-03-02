@@ -129,6 +129,9 @@ label.break{
 .sixhundredfourtyResolution{
 	display:none;
 }
+.fourHundredEightyResolution{
+	display:none;
+}
 
 
 
@@ -238,6 +241,9 @@ label.break{
 		display:block;
 	}
 	.sixhundredfourtyResolution{
+		display:none;
+	}
+	.fourHundredEightyResolution{
 		display:none;
 	}
 }
@@ -381,6 +387,9 @@ label.break{
 	}
 	.sixhundredfourtyResolution{
 		display:block;
+	}
+	.fourHundredEightyResolution{
+		display:none;
 	}
 	.youTubeVideoCont{
 		width: 360px;
@@ -529,6 +538,88 @@ label.break{
 		height: 140px;
 		width: 46%;
 	}
+	
+	
+	/*CATEGORY*/
+	.catMediaContainer{
+		padding:0;
+	}
+	.catProdListContainer{
+		border:none;
+	}
+	
+	
+	/*PRODUCT*/
+	.standardDef{
+		display:none;
+	}
+	.sixhundredfourtyResolution{
+		display:none;
+	}
+	.fourHundredEightyResolution{
+		display:block;
+	}
+	.youTubeVideoCont{
+		width: 240px;
+	}
+	.prodVideoContainer{
+		width: 222px;
+	}
+	.prodSummaryContainer{
+		width:auto;
+	}
+	.prodLiveChatCont{
+		float: left;
+	}
+	.prodSummaryContainer h5{
+		clear: left;
+		float: left;
+	}
+	#prodViewerReviewSummary{
+		clear: left;
+		float: left;
+	}
+	.priceContainer{
+		clear: left;
+		float: left;
+	}
+	.savings{
+		lear: left;
+		float: left;
+		margin-left: 0;
+	}
+	.tabbedProductContentTD .ui-tabs .ui-tabs-nav li{
+		overflow: hidden;
+	}
+	
+	
+	/*HOTEL FINDER*/
+	.catMediaContainer{
+		width: 482px;
+	}
+	.catBigImageContainer{
+		border: medium none;
+	}
+	.catVideoContainer{
+		width: 462px;
+	}
+	#categoryTemplate_hotels div.nativeProductList{
+		float: none;
+		margin-left: 5px;
+		width: auto;
+	}
+	.nativeProductList ul.productList{
+		clear:none;
+	}
+	#categoryTemplate_hotels div.searchFilterResults{
+		float: none;
+		margin-left: 5px;
+		width: auto;
+	}
+	.catProdListSidebar{
+		width: 239px;
+	}
+	
 }
 /*END 639 - 480 X 360*/
 
