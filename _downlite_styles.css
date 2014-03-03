@@ -628,6 +628,147 @@ label.break{
 /*479 - 320 X 480*/
 @media screen and (max-width: 479px) {
 	.wrapper{
+		width:320px;
 	}
+	
+	/*APP PREVIEW*/
+	#appPreView{
+		margin: 54px auto;
+		width: 320px;
+	}
+	#appPreView table td:nth-of-type(1){
+		padding: 10px 60px 0;
+		float:left;
+		height: 70px;
+	}
+	#appPreView table td:nth-of-type(2){
+		float: left;
+		height: 60px;
+		padding: 0 100px;
+	}
+	
+	/*HEADER*/
+	.header_top p{
+		font-size: 9px;
+	}
+	
+	.header_ads{
+		display:none;
+	}
+	
+	.logoContainer{
+		margin: 0;
+	}
+	
+	.header_contact {
+		margin: 10px 0 0;
+	}
+	
+	.header_cart_menu{
+		margin-right: 0;
+		margin-top: -33px;
+		width: 115px;
+	}
+	.header_cart_menu ul.cart{
+		width: 110px;
+	}
+	.header_cart_menu ul.account{
+		width: 130px;
+		margin: 0 0 0 1px;
+	}
+	.header_cart_menu ul.cart li{
+		padding: 7px 4px;
+	}
+	.header_cart_menu ul.cart li a {
+		font-size: 9px;
+	}
+	#brandCategories{
+		bottom: -160px;
+		left: -165px;
+		width: 200px;
+	}
+	.vertical_slider{
+		height: 20px;
+		margin-top: -25px;
+		width: 60px;
+	}
+	
+	.nav_menu{
+		position:relative;
+	}
+	.nav_menu ul{
+		margin: 14px 0 10px;
+	}
+	.nav_menu ul li a{
+		font-size: 9px;
+		padding: 24px 1px;
+		text-align: center;
+		width: 74px;
+	}
+	.headerTopNavPrev{
+		display: block;
+		left: 0;
+		position: absolute;
+		top: 39px;
+	}
+	.headerTopNavNext{
+		display: block;
+		position: absolute;
+		right: 0;
+		top: 39px;
+	}
+	
+	
+	/*FOOTER*/
+	.footer .sign_up_form_inner{
+		width: 320px;
+	}
+	.sign_up_form_inner form{
+		float: left;
+		margin: 18px 0 0;
+	}
+	.sign_up_form_inner form input{
+		font-size: 9px;
+		height: 10px;
+		margin: 0 0 0 2px;
+		width: 40px;
+	}
+	.sign_up_form_inner form input.submit{
+		font-size: 8px;
+		height: 32px;
+		margin-left: 2px;
+		margin-top: 0;
+		padding-bottom: 12px;
+		padding-top: 11px;
+		width: 43px;
+	}
+	.sign_up_text{
+		right: -10px;
+		top: -22px;
+	}
+	.sign_up_text p{
+		line-height: 12px;
+	}
+	.social_icon{
+		margin-top: 20px;
+	}
+	
+	.footer .footer_bottom{
+		height: 500px;
+	}
+	.footer .footer_bottom_inner{
+		width: 320px;
+	}
+	.footer_widget{
+		margin-left: 5px;
+		width: 155px;
+	}
+	.footer_copyright{
+		margin-top: -10px;
+		width: 320px;
+	}
+	
+	
+	
 }
 /*END 479 - 320 X 480*/

@@ -147,6 +147,21 @@ myApp.u.appInitComplete = function(P)	{
 			}
 		}
 	} //simpleSubcats
+	
+	//TOP NAV CAROUSEL FOR 320 X 480 RESOLUTION.
+	
+	setTimeout(function(){
+	$('#tier1categories').carouFredSel({
+		width   : 320,
+		height	: 60,
+		items   : 4,
+		scroll: 1,
+		auto : false,
+		prev : ".headerTopNavPrev",
+		next : ".headerTopNavNext"
+	});
+	}, 1000);
+	
 }
 
 /*$(document).ready(function(){
