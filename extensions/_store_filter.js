@@ -155,6 +155,9 @@ var _store_filter = function(_app) {
 								else if ((width < 640) && (width >= 480)) {
 									$('html, body').animate({scrollTop : 3240},0);
 								}
+								else if (width < 480) {
+									$('html, body').animate({scrollTop : 5090},0);
+								}
 							},150); 
 						});
 						
@@ -289,6 +292,9 @@ else if ((width < 800) && (width >= 640)) {
 	$('html, body').animate({scrollTop : 1100},0);
 }
 else if ((width < 640) && (width >= 480)) {
+	$('html, body').animate({scrollTop : 1100},0);
+}
+else if (width < 480) {
 	$('html, body').animate({scrollTop : 1100},0);
 }
 

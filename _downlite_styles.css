@@ -764,6 +764,10 @@ div.nav_menu div.caroufredsel_wrapper{
 		margin-top: 14px !important;
 	}
 	
+	.showHideBrandsMobile {
+		font-size: 12px;
+	}
+	
 	
 	/*FOOTER*/
 	.footer .sign_up_form_inner{
@@ -840,6 +844,74 @@ div.nav_menu div.caroufredsel_wrapper{
 	.homeTextBannerBlock p{
 		float: left;
 		clear: left;
+	}
+	
+	
+	/*CATEGORY*/
+	.catVideoContainer{
+		width: 302px;
+	}
+	.catVideoContainer P{
+		float: left;
+		width: 170px;
+	}
+	.catDesc{
+		width: 320px;
+	}
+	.categoryList {
+		margin-left: 43px;
+    	width: 277px;
+	}
+	
+	.breadcrumb{
+		margin: 12px 0 12px 15px;
+		width: 90%;
+	}
+	
+	.nativeProductList{
+		margin-left: 43px;
+		width: 277px;
+	}
+	
+	
+	/*SEARCH PAGE*/
+	#resultsProductListContainer{
+		margin-left: 43px;
+	}
+	
+	
+	/*QUICKVIEW*/
+	.prodSummaryContainer{
+		float:left;
+	}
+	
+	
+	/*PRODUCT PAGE*/
+	.imageContainer{
+		float: left;
+		margin-left: 25px;
+		width: 75%;
+	}
+	
+	.prodlistRelatedContainer{
+	}
+	.prodlistRelatedContainer h4{
+	}
+	.prodlistRelatedContainer ul{
+		margin-left: 42px;
+	}
+	
+	
+	/*HPTE; FINDER PAGE*/
+	.catProdListSidebar{
+		margin-left: 40px;
+		width: 240px;
+	}
+	#categoryTemplate_hotels div.nativeProductList{
+		margin-left: 41px;
+	}
+	#categoryTemplate_hotels div.searchFilterResults{
+		margin-left: 41px;
 	}
 	
 	
