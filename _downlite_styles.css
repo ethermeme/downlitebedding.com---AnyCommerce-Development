@@ -3,6 +3,12 @@
 	float: left;
 }
 
+.index{
+	margin-top: 60px;
+}
+#mainContentArea{
+}
+
 .preflightInputContainer label {width: 100px;display:inline-block;}
 
 /*
@@ -119,6 +125,12 @@ label.break{
     padding: 9px 30px;
 }
 
+div.nav_menu div.caroufredsel_wrapper{
+	overflow:visible !important;
+	position:absolute !important;
+	margin-top: 11px !important;
+}
+
 #brandCategories{
 	display:block;
 }
@@ -131,6 +143,15 @@ label.break{
 }
 .fourHundredEightyResolution{
 	display:none;
+}
+
+.nav_menu ul li a{
+	color: #605B57;
+    float: left;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 21px 12px;
+    text-decoration: none;
 }
 
 
@@ -179,6 +200,11 @@ label.break{
 	}
 	#brandCategories{
 		display:block;
+	}
+	div.nav_menu div.caroufredsel_wrapper{
+		overflow:visible !important;
+		position:absolute !important;
+		margin-top: 10px !important;
 	}
 	
 	
@@ -295,6 +321,12 @@ label.break{
 	.nav_menu ul li a{
 		padding: 21px 4px;
 		font-size: 12px;
+	}
+	
+	div.nav_menu div.caroufredsel_wrapper{
+		overflow:visible !important;
+		position:absolute !important;
+		margin-top: 9px !important;
 	}
 	
 	
@@ -470,6 +502,15 @@ label.break{
 		font-size: 12px;
 		margin-right: 5px;
 		padding: 9px 3px;
+	}
+	
+	div.nav_menu div.caroufredsel_wrapper{
+		overflow:visible !important;
+		position:absolute !important;
+		margin-top: 1px !important;
+	}
+	div.nav_menu div.caroufredsel_wrapper ul#tier1categories{
+    	width: 480px !important;
 	}
 	
 	
@@ -717,6 +758,11 @@ label.break{
 		right: 0;
 		top: 39px;
 	}
+	div.nav_menu div.caroufredsel_wrapper{
+		overflow:hidden !important;
+		position:absolute !important;
+		margin-top: 14px !important;
+	}
 	
 	
 	/*FOOTER*/
@@ -766,6 +812,34 @@ label.break{
 	.footer_copyright{
 		margin-top: -10px;
 		width: 320px;
+	}
+	
+	
+	/*HOMEPAGE*/
+	.hotelFindBlurb{
+		display:none;
+	}
+	.hotelFinder{
+		font-size: 9px;
+		margin-right: 0;
+		margin-top: 3px;
+		padding: 11px 2px;
+	}
+	
+	.bannerDuoContainer .stacked{
+		margin-right: 0;
+	}
+	.homeTextBannerBlock{
+		height: 255px;
+		width: 45%;
+	}
+	.homeTextBannerBlock h1{
+		float: left;
+		clear: left;
+	}
+	.homeTextBannerBlock p{
+		float: left;
+		clear: left;
 	}
 	
 	

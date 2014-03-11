@@ -299,25 +299,25 @@ else if ((width < 640) && (width >= 480)) {
 				showFilterResultsOnPriceChange : function($context){
 					//Make all altering of the price slider submit the form and show results list.
 						$context.submit(); 
-						//app.u.dump("The price slider was moved.");
+						//_app.u.dump("The price slider was moved.");
 						$("#resultsProductListContainer",$context).hide();  
 		
 						$group1 = $('.fsCheckbox',$context);
 						$priceGroup = $( ".sliderValue",$context ).val().toString();
 						
 						if($(".sliderValue",$context).val() == "$0 - $1000"){
-							//app.u.dump("Price slider is set to stock. Checking For filter options being checked.");
+							//_app.u.dump("Price slider is set to stock. Checking For filter options being checked.");
 							if($group1.filter(':checked').length === 0){
-								//app.u.dump("No filter options checked. Showing stock product list.");
+								//_app.u.dump("No filter options checked. Showing stock product list.");
 								$(".nativeProductList", ($context.parent().parent().parent())).show(); 
 								$(".searchFilterResults", ($context.parent().parent().parent())).hide(); 
 							}
 							else{
-								//app.u.dump("One or more filter options were checked. Still showing filter search results.");
+								//_app.u.dump("One or more filter options were checked. Still showing filter search results.");
 							}
 						}
 						else{
-							//app.u.dump("Price slider is set to custom value. Showing Search results.");
+							//_app.u.dump("Price slider is set to custom value. Showing Search results.");
 							$(".nativeProductList", ($context.parent().parent().parent())).hide(); 
 							$(".searchFilterResults", ($context.parent().parent().parent())).show();  
 						}  

@@ -148,19 +148,49 @@ myApp.u.appInitComplete = function(P)	{
 		}
 	} //simpleSubcats
 	
-	//TOP NAV CAROUSEL FOR 320 X 480 RESOLUTION.
-	
+	//TOP NAV CAROUSEL.
+		
 	setTimeout(function(){
 	$('#tier1categories').carouFredSel({
-		width   : 320,
-		height	: 60,
-		items   : 4,
+		width   : "100%",
+		//height	: 500,
+		//items   : hpTopNavItems,
 		scroll: 1,
 		auto : false,
 		prev : ".headerTopNavPrev",
 		next : ".headerTopNavNext"
 	});
 	}, 1000);
+	
+	//CONTROLING FUNCTION FOR POSITIONING THE TOP NAV CAROUSEL CORRECTLY AT ANY RESOLUTION
+	$(window).resize(function(){
+		if($(window).width() >= 990){
+			setTimeout(function(){
+				$("div.nav_menu div.caroufredsel_wrapper ul#tier1categories").css("left","20px");
+			}, 100);
+		}
+		else if(($(window).width() < 990) && ($(window).width() >= 800)){
+			setTimeout(function(){
+				$("div.nav_menu div.caroufredsel_wrapper ul#tier1categories").css("left","0");
+			}, 100);
+			
+		}
+		else if(($(window).width() < 800) && ($(window).width() >= 640)){
+			setTimeout(function(){
+				$("div.nav_menu div.caroufredsel_wrapper ul#tier1categories").css("left","15px");
+			}, 100);
+		}
+		else if(($(window).width() < 640) && ($(window).width() >= 480)){
+			setTimeout(function(){
+				$("div.nav_menu div.caroufredsel_wrapper ul#tier1categories").css("left","1px");
+			}, 100);
+		}
+		else if(($(window).width() < 480) && ($(window).width() >= 320)){
+			setTimeout(function(){
+				$("div.nav_menu div.caroufredsel_wrapper ul#tier1categories").css("left","8px");
+			}, 100);
+		}
+	})
 	
 }
 
