@@ -89,7 +89,9 @@ css files should be included before any .js file to ensure they are downloaded i
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-<script src="resources/jquery.ui.widget.min.js"></script><!-- here so that plugins that may load before the jqueryui lib load without error -->
+<script type="text/javascript" src="http://www.zazar.net/developers/jquery/zrssfeed/jquery.zrssfeed.min.js"></script>
+<script src="resources/jquery.ui.widget.min.js"></script>
+<!-- here so that plugins that may load before the jqueryui lib load without error -->
 <script type="text/javascript" src="loadscript.js"></script>
 <script type="text/javascript" src="model.js"></script>
 
@@ -108,7 +110,7 @@ css files should be included before any .js file to ensure they are downloaded i
 
 <script type="text/javascript">
 app.u.loadScript(app.vars.baseURL+"downlite_init.js");
-console.log(" -> domain: "+document.domain);
+// console.log(" -> domain: "+document.domain);
 </script>
 
 
@@ -504,6 +506,43 @@ the homepageTemplate template is loaded into mainContentArea by default when the
 	<a title="Eddie Bauer Bedding" href="#category?navcat=.brands.100-eddiebauer-bedding" class="bannerBind"><img alt="Eddie Bauer Bedding" src="images/150x150_classic_american_brands_eddie_bauer_bedding.jpg" height="90" width="90"></a>
 	<div class="textBlock"><p>Eddie Bauer, Tommy Bahama, Good Housekeeping and Jessica McClintock are brands that DOWNLITE has an exclusive partnership with. Learn about our classic American brands.</p></div>
 </div>
+<div class="clearfix"></div>
+
+<script type="text/javascript">
+	$(document).ready(function () {
+		// Load blog content
+		$('.blog1').rssfeed('http://blog.downlitebedding.com/rss.xml', {
+			limit: 1,
+			header: false,
+			snippet: false,
+			date: false,
+			showerror: true,
+			errormsg: 'Sorry, the blog couldn\'t be loaded right now due to a technical problem. Please try again later.'
+		});
+		$('.blog2').rssfeed('http://blog.downlitebedding.com/rss.xml', {
+			limit: 1,
+			offset: 2,
+			header: false,
+			snippet: false,
+			date: false
+		});
+		$('.blog3').rssfeed('http://blog.downlitebedding.com/rss.xml', {
+			limit: 1,
+			offset: 3,
+			header: false,
+			snippet: false,
+			date: false
+		});
+	});
+</script>
+
+<h3 class="rssTitle">Our Latest Blog Entries</h3>
+<div class="rssfeed">
+	<div class="blog1"></div>
+	<div class="blog2"></div>
+	<div class="blog3"></div>
+</div>
+
 <div class="clearfix"></div>
 <div class="textBlock">
 	<p>DOWNLITE is a 100 year old family business based in the United States supplying Luxury Down Bedding for the finest department stores, catalogs, hotels and resorts in the country. DOWNLITE is unique because we do not just make down bedding for stores, we also supply our RestAssured Hypoallergenic down fillings to other manufacturers.</p>

@@ -12,3 +12,60 @@
 .hideTitleBarAndClose .ui-dialog-titlebar {
 	display: none;
 }
+
+
+/* RSS feed styles */
+
+h3.rssTitle {
+	color: #5D5D44;
+	font-weight: normal;
+	font-size: 20px;
+}
+
+.rssfeed {
+	margin: 0 auto 20px auto;
+	width: 990px;
+	display: table;
+	color: white;
+}
+
+.rssfeed a, .rssfeed a:visited {
+	color: white;
+	text-decoration: none;
+}
+
+.rssfeed h4 {
+	font-size: 26px;
+}
+
+.rssfeed a:hover, .rssfeed a:active {
+	color: white;
+	text-decoration: underline;
+}
+
+.blog1, .blog2, .blog3 {
+	display: table-cell;
+	width: 280px;
+	padding: 15px 15px 0 25px;
+	border-right: 10px solid white;
+	background-color: #918484;
+}
+
+.blog2, .blog3 {
+	margin-left: 15px;
+}
+
+.blog3 {
+	border-right: 0;
+}
+
+
+.rssRow p:last-child {
+	margin-bottom: 0;
+}
+
+.rssBody ul {
+	list-style: none;
+	padding-left: 0;
+	margin: 0;
+}
